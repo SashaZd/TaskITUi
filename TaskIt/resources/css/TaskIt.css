@@ -1,1 +1,56 @@
-.yourclassname{ background-color:#000;color:#fff;font:normal 12px Arial;}
+/*a {
+ font-size: 15px;
+ font-family: Helvetica, Sans-Serif;
+ font-weight: bold;
+}
+
+a:hover {
+ color: #b54090;
+ text-decoration: none;
+ font-weight: normal;
+}
+ 
+p {
+ background-color: #e7e8fe;
+ font-size: 14pt;
+ text-indent: 20px;
+ font-family: Arial, Sans-Serif;
+} 
+*/
+
+.myTaskBackground {
+	/*background-image: url("../images/mytaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
+	/*background-color: gray;*/
+	text-align: center;
+	max-width: 100%
+
+} 
+
+.myTaskText {
+	position: relative;
+	color: #0174DF;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;
+	
+}
+.otherTaskBackground {
+	/*background-image: url("../images/othertaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
+	/*background-color: white;*/
+	text-align: center;
+	max-width: 100%
+} 
+
+.otherTaskText {
+	position: relative;
+	color: black;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;
+}

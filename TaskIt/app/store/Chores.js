@@ -2,10 +2,16 @@ Ext.define("TaskIt.store.Chores", {
     extend: "Ext.data.Store",
     config: {
         model: "TaskIt.model.Chore",
-        data: [
-            {id : 1, userId: 1, name: 'Cooking' },
-        	{id : 2, userId: 2, name: 'Cleaning' }
-        ]
+        autoLoad : true,
+
+        proxy : {
+            type : 'ajax',
+            url : 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/?group_id=1',
+                // url: 'app/store/temp.json',
+            reader : {
+                type : 'json'
+            }
+        }      
     }
 });
 

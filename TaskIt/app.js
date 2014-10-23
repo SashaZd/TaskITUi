@@ -18,15 +18,16 @@ Ext.application({
     ],
 
     models : [
-        'Roommate', 'Chore'
+        'Roommate', 'Chore','GroceryItem'
     ],
 
     stores : [
-        
+
+        'Roommates','Chores','Groceries'
     ],
 
     views: [
-        'Main', 'Settings', 'Home', 'Groceries', 'UserList'
+        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', , 'GroceryList'
     ],
 
     icon: {

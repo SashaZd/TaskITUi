@@ -11,6 +11,7 @@
 Ext.Loader.addClassPathMappings({
   "Ext": "touch/src",
   "Ext-more": "touch/src/core/Ext-more.js",
+  "Ext.Boot": ".sencha/app/Boot.js",
   "Ext.DomHelper": "touch/src/dom/Helper.js",
   "Ext.DomQuery": "touch/src/dom/Query.js",
   "Ext.Element-alignment": "touch/src/dom/Element.alignment.js",
@@ -81,6 +82,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.Template": [],
   "Ext.Title": [],
   "Ext.TitleBar": [],
+  "Ext.Toast": [],
   "Ext.Toolbar": [],
   "Ext.Video": [],
   "Ext.XTemplate": [],
@@ -665,6 +667,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "TaskIt.model.Chore": [],
+  "TaskIt.model.Roommate": [],
+  "TaskIt.store.Chores": [],
+  "TaskIt.store.Roommates": [],
+  "TaskIt.view.ChoreList": [],
   "TaskIt.view.Groceries": [],
   "TaskIt.view.Home": [],
   "TaskIt.view.Main": [],
@@ -749,6 +756,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.TitleBar": [
     "widget.titlebar"
   ],
+  "Ext.Toast": [],
   "Ext.Toolbar": [
     "widget.toolbar"
   ],
@@ -1399,6 +1407,13 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "TaskIt.model.Chore": [],
+  "TaskIt.model.Roommate": [],
+  "TaskIt.store.Chores": [],
+  "TaskIt.store.Roommates": [],
+  "TaskIt.view.ChoreList": [
+    "widget.choreList"
+  ],
   "TaskIt.view.Groceries": [
     "widget.groceries"
   ],

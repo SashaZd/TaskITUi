@@ -1,10 +1,12 @@
+var mytemp;
+
 Ext.define('TaskIt.view.Home', {
     extend: 'Ext.Panel',
     xtype: 'home',
-    cls:  'yourclassname',
     requires: [
         'Ext.TitleBar',
-        'Ext.DataView'
+        'Ext.DataView',
+        'Ext.MessageBox'
     ],
     config: {
         title: 'Home',
@@ -13,18 +15,109 @@ Ext.define('TaskIt.view.Home', {
         layout : {
             type : 'vbox'
         },
-        scrollable : true,
+        // scrollable : true,
         items: [
             {
                 xtype: 'titlebar',
                 docked: 'top',
-                title: 'Home'
+                title: '<font size=3>Home</font>'
             },
             {
-                xtype : 'userList',
-                id : 'myUserList',
-                flex : 1,
+                xtype : 'choreList',
+                id : 'myChoreList',
+                flex : 3,
                 styleHtmlContent : true, 
+                scrollable : true
+            },
+            {
+                xtype : 'panel',
+                flex : 1,
+                layout : {
+                    type : 'hbox',
+                    align : 'middle'
+
+                },
+                items : [
+                    {
+                        xtype : 'spacer'
+                    },
+                    {
+                        xtype : 'button',
+                        width : '40%',
+                        text : '<font size=3>Done All</font>',
+
+                        height : 40,
+                        handler : function(){
+                            // var tempStore=Ext.getStore('Chores');
+
+                           Ext.getStore('Chores').each(function(rec) {
+                                // if (something here) {
+                                    var array=rec.get('users');
+                                    for (i=0;i<array.length;i++){
+                                         if (array[i].email == userEmail){
+                                            for (var j =0; j< array[i].todays_chores.length; j++) {
+                                                var tempChoreID = array[i].todays_chores[j].chore_id;
+
+                                                if(!array[i].todays_chores[j].is_done){
+                                                    var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/chore/'+tempChoreID+'/';
+                                                    console.log(tempURL);
+                                                    Ext.Ajax.request({
+                                                        url: tempURL,
+                                                        method : 'PUT',
+                                                        success: function(response){
+                                                            var text = response.responseText;
+                                                            console.log("Successs true...");
+                                                            console.log(text);
+                                                            Ext.getStore('Chores').sync();
+                                                            Ext.getStore('Chores').load();
+                                                        }
+                                                    });
+                                                }
+
+                                            };
+                                         }
+                                    }
+                                // }
+                            });
+
+                            
+
+                            Ext.Msg.alert(
+                                'Great!', 
+                                'Go read a book!', 
+                                Ext.emptyFn
+                            );
+                        }
+
+                        // ui : 'confirm',
+
+
+
+                    },
+                    {
+                        xtype : 'spacer'
+                    },
+                    {
+                        xtype : 'button',
+                        text : '<font size=3>Not at Home</font>',
+
+                        width : '40%',
+                        height : 40,
+                        handler : function(){
+                            Ext.Msg.alert(
+                                'Uh Oh!', 
+                                "Well, we'll getcha tomorrow.", 
+                                Ext.emptyFn
+                            );
+                        }
+
+                        // ui : 'decline',
+
+                    },
+                    {
+                        xtype : 'spacer'
+                    }
+                ]
             }
             
         ]
