@@ -27,7 +27,7 @@ Ext.application({
     ],
 
     views: [
-        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', , 'GroceryList'
+        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', , 'GroceryList', 'Start', 'Login'
     ],
 
     icon: {
@@ -53,7 +53,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('TaskIt.view.Main'));
+        Ext.Viewport.add(Ext.create('TaskIt.view.Start'));
     },
 
     onUpdated: function() {

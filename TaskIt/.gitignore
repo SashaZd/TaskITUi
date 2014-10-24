@@ -1,0 +1,11 @@
+bootstrap.js
+bootstrap.json
+build/
+build.xml
+index.html
+packages/
+touch/
+.sencha/
+
+
+
