@@ -13,6 +13,9 @@ Ext.define('TaskIt.view.Start', {
                 xtype : 'login'
             },
             {
+                xtype : 'setup'
+            },
+            {
                 xtype : 'main'
             }
         ]
