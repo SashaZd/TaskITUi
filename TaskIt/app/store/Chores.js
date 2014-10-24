@@ -10,7 +10,8 @@ Ext.define("TaskIt.store.Chores", {
                 // url: 'app/store/temp.json',
             useDefaultXhrHeader : false,
             reader : {
-                type : 'json'
+                type : 'json',
+                root : 'users'
             }
         }      
     }

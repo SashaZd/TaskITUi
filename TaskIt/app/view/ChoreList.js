@@ -1,10 +1,8 @@
 var userEmail = 'brandonchastain@abc.com';
 
 var tpl = new Ext.XTemplate(
-    '<center>',
-    '<tpl for=".">', 
-        '<tpl for="users">',                // process the data.kids node
-            '<tpl switch="email">',
+    '<center>',      
+           '<tpl switch="email">',
                 '<tpl case="',userEmail,'">',
                    '<tpl for="todays_chores">',
                         '<tpl if="is_done">',
@@ -28,9 +26,18 @@ var tpl = new Ext.XTemplate(
                     '</div>',
                 '</tpl>',
             '</tpl>',
-        '</tpl>',                           // process the data.kids node
-    '</tpl>',
+ 
+
+
     '</center>'
+
+
+    
+    // '<tpl for=".">', 
+    //     '<tpl for="users">',                // process the data.kids node
+    //     '</tpl>',                           // process the data.kids node
+    // '</tpl>',
+    
 );
 
 
@@ -46,7 +53,13 @@ Ext.define('TaskIt.view.ChoreList', {
         store: 'Chores',
         styleHtmlContent : true, 
         // cls : 'intro',
-        itemTpl : tpl
+        itemTpl : tpl,
+        listeners : {
+            itemtap : function(){
+                console.log('Happening');
+
+            }
+        }
         
     }
     
