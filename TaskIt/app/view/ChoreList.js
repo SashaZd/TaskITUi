@@ -26,17 +26,16 @@ var tpl = new Ext.XTemplate(
                     '</div>',
                 '</tpl>',
             '</tpl>',
- 
-
-
-    '</center>'
-
-
-    
-    // '<tpl for=".">', 
-    //     '<tpl for="users">',                // process the data.kids node
-    //     '</tpl>',                           // process the data.kids node
-    // '</tpl>',
+    '</center>',
+    {
+        // XTemplate configuration:
+        haveYouPrinted: function(name){
+           return name == 'Sara Grace';
+        },
+        isBaby: function(age){
+           return age < 1;
+        }
+    }
     
 );
 
@@ -57,7 +56,6 @@ Ext.define('TaskIt.view.ChoreList', {
         listeners : {
             itemtap : function(){
                 console.log('Happening');
-
             }
         }
         
