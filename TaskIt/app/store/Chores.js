@@ -11,7 +11,7 @@ Ext.define("TaskIt.store.Chores", {
             useDefaultXhrHeader : false,
             reader : {
                 type : 'json',
-                root : 'users'
+                rootProperty : 'users'
             }
         }      
     }
