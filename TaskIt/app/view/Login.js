@@ -46,7 +46,8 @@ Ext.define('TaskIt.view.Login', {
                                         Ext.getCmp('startScreen').getLayout().setAnimation({
                                             type: 'slide',
                                             duration: 300,
-                                            reverse: true
+                                            reverse: true,
+                                            direction:'right'
                                         });
                                         Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'}); 
                                     });

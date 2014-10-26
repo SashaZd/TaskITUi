@@ -1,41 +1,52 @@
-var userEmail = 'brandonchastain@abc.com';
+var userEmail = "brandonchastain@gmail.com";
+var myChoreCount = 0;
 
 var tpl = new Ext.XTemplate(
-    '<center>',      
-           '<tpl switch="email">',
-                '<tpl case="',userEmail,'">',
-                   '<tpl for="todays_chores">',
-                        '<tpl if="is_done">',
-                            '',
-                        '<tpl else>',
-                            '<div class="myTaskBackground">',
-                               '<div class="myTaskText">',
-                                    'You are {chore_name}',
-                                 '</div>',
-                            '</div>',    
-                        '</tpl>',
-                    '</tpl>',
-                        
-                '<tpl default>',
-                        
-                            '<tpl for="todays_chores">',
-                    '<div class="otherTaskBackground">',
-                        '<div class="otherTaskText">',
-                            '{parent.first_name} is {chore_name} ',
-                        '</div>',
-                    '</div>',
-                '</tpl>',
-            '</tpl>',
-    '</center>',
+    '<tpl if="email == \"',userEmail,'\" " " >',
+        '<tpl for = "todays_chores">',
+            'You are {[this.haveYouPrinted(xcount, chore_name)]}',
+        '</tpl>',
+    '</tpl>',
+
     {
-        // XTemplate configuration:
-        haveYouPrinted: function(name){
-           return name == 'Sara Grace';
-        },
-        isBaby: function(age){
-           return age < 1;
+        disableFormats: true,
+        haveYouPrinted: function(count, cname) {
+            if(count > myChoreCount){
+                myChoreCount = myChoreCount+1;
+                return cname
+            }
+            else {
+                return "Hello"
+            }
         }
     }
+
+    // '<center>',      
+    //        '<tpl switch="email">',
+    //             '<tpl case="',userEmail,'">',
+    //                '<tpl for="todays_chores">',
+    //                     '<tpl if="is_done">',
+    //                         '',
+    //                     '<tpl else>',
+    //                         '<div class="myTaskBackground">',
+    //                            '<div class="myTaskText">',
+    //                                 // 'You are {chore_name}',
+    //                                 '{[this.haveYouPrinted()]} is {chore_name}',
+    //                              '</div>',
+    //                         '</div>',    
+    //                     '</tpl>',
+    //                 '</tpl>',
+    //         '</tpl>',
+    // '</center>',
+    // {
+    //     // XTemplate configuration:
+    //     haveYouPrinted: function(){
+    //        return 'Sara Grace';
+    //     },
+    //     isBaby: function(age){
+    //        return age < 1;
+    //     }
+    // }
     
 );
 

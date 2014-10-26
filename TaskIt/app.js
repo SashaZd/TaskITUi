@@ -27,7 +27,7 @@ Ext.application({
     ],
 
     views: [
-        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', , 'GroceryList', 'Start', 'Login', 'Setup'
+        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', 'ChoreListPanel', 'GroceryList', 'Start', 'Login', 'Setup', 'OthersChoreList'
     ],
 
     icon: {

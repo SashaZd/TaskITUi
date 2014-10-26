@@ -23,11 +23,9 @@ Ext.define('TaskIt.view.Home', {
                 title: '<font size=3>Home</font>'
             },
             {
-                xtype : 'choreList',
-                id : 'myChoreList',
+                xtype : 'choreListPanel',
                 flex : 3,
-                styleHtmlContent : true, 
-                scrollable : true
+                styleHtmlContent : true
             },
             {
                 xtype : 'panel',
