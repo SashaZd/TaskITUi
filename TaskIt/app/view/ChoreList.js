@@ -19,6 +19,8 @@ Ext.define('TaskIt.view.ChoreList', {
         store: 'Chores',
         styleHtmlContent : true, 
         itemTpl : tpl,
+        iconCls : 'list',
+        store : 'Chores',
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){
                 console.log(record.data);

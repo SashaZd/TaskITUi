@@ -26,9 +26,28 @@ myNewGroceryItem = new Ext.Panel({
                     //         var text = response.responseText;
                     //     }
                     // });
-
+		    var grocery_item=Ext.getCmp('addNewGroceryItem').getValue();
                     Ext.getStore('Groceries').add({grocery_item: Ext.getCmp('addNewGroceryItem').getValue()});
                     Ext.getStore('Groceries').sync();
+                    var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
+                    console.log(tempURL);
+                    Ext.Ajax.request({
+                        url: tempURL,
+                        method : 'PUT',
+			params : {
+			    user_id: USER_ID,
+			    group_id: GROUP_ID,
+			    item: grocery_item
+			},
+                        success: function(response){
+                            var text = response.responseText;
+                            console.log("Successs true...");
+                            console.log(text);
+                            Ext.getStore('Groceries').sync();
+                            Ext.getStore('Groceries').load();
+                        }
+                    });
+                                    
                 }
             }
         ]
