@@ -1,8 +1,4 @@
 var userEmail = "brandonchastain@gmail.com";
-var myChoreCount = 0;
-
-var myChoreStore = Ext.create('TaskIt.store.Chores');
-myChoreStore.filter('email', "brandonchastain@gmail.com");
 
 var tpl = new Ext.XTemplate(
     "<tpl if='email == \"brandonchastain@gmail.com\" '>",
@@ -20,7 +16,7 @@ Ext.define('TaskIt.view.ChoreList', {
         'Ext.dataview.List'
     ],
     config: {
-        store: myChoreStore,
+        store: 'Chores',
         styleHtmlContent : true, 
         itemTpl : tpl,
         listeners : {
