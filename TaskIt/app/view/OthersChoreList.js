@@ -1,16 +1,17 @@
 var tplOther = new Ext.XTemplate(
-    '<tpl if="email != \'',userEmail,'\'">',
+    'Ahhhh {first_name}'
+    // '<tpl if="email != \'',userEmail,'\'">',
         
-        '<tpl for = "todays_chores">',
-            'You are {[this.haveYouPrinted(xcount)]}',
-        '</tpl>',
-    '</tpl>',
+    //     '<tpl for = "todays_chores">',
+    //         'You are {[this.haveYouPrinted(xcount)]}',
+    //     '</tpl>',
+    // '</tpl>',
 
-    {
-        haveYouPrinted: function(args) {
-            return args
-        }
-    }
+    // {
+    //     haveYouPrinted: function(args) {
+    //         return args
+    //     }
+    // }
 
     // '<center>',      
     //        '<tpl switch="email">',

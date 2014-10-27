@@ -17,6 +17,10 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
+    controllers : [
+        'Login'
+    ],
+
     models : [
         'Roommate', 'Chore','GroceryItem'
     ],

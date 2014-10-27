@@ -1,11 +1,12 @@
+
+
 Ext.define('TaskIt.view.Login', {
     extend: 'Ext.Panel',
     xtype: 'login',
+    id : 'loginView',
     requires: [
         'Ext.TitleBar',
-        'Ext.form.Panel',
         'Ext.field.Email',
-        'Ext.form.FieldSet',
         'Ext.field.Password'
     ],
     config: {
@@ -28,11 +29,12 @@ Ext.define('TaskIt.view.Login', {
                         styleHtmlContent : true,
                         defaults: {
                             margin: '5 5 5 5'
-                          },
+                        },
                         items: [
                             {
-                                xtype: 'textfield',
-                                label: 'Email ID'
+                                xtype: 'emailfield',
+                                label: 'Email ID',
+                                id : 'loginEmail'
                             },
                             {
                                 xtype: 'passwordfield',
@@ -40,18 +42,8 @@ Ext.define('TaskIt.view.Login', {
                             },
                             {
                                 xtype : 'button', 
-                                text : 'Login', 
-                                handler : function(){
-                                    setTimeout(function() {
-                                        Ext.getCmp('startScreen').getLayout().setAnimation({
-                                            type: 'slide',
-                                            duration: 300,
-                                            reverse: true,
-                                            direction:'right'
-                                        });
-                                        Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'}); 
-                                    });
-                                }
+                                text : 'Login',
+                                action : 'doLogin'
                             }
                         ]
                     }

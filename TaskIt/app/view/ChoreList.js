@@ -1,53 +1,13 @@
 var userEmail = "brandonchastain@gmail.com";
 var myChoreCount = 0;
 
+var myChoreStore = Ext.create('TaskIt.store.Chores');
+myChoreStore.filter('email', "brandonchastain@gmail.com");
+
 var tpl = new Ext.XTemplate(
-    '<tpl if="email == \"',userEmail,'\" " " >',
-        '<tpl for = "todays_chores">',
-            'You are {[this.haveYouPrinted(xcount, chore_name)]}',
-        '</tpl>',
-    '</tpl>',
-
-    {
-        disableFormats: true,
-        haveYouPrinted: function(count, cname) {
-            if(count > myChoreCount){
-                myChoreCount = myChoreCount+1;
-                return cname
-            }
-            else {
-                return "Hello"
-            }
-        }
-    }
-
-    // '<center>',      
-    //        '<tpl switch="email">',
-    //             '<tpl case="',userEmail,'">',
-    //                '<tpl for="todays_chores">',
-    //                     '<tpl if="is_done">',
-    //                         '',
-    //                     '<tpl else>',
-    //                         '<div class="myTaskBackground">',
-    //                            '<div class="myTaskText">',
-    //                                 // 'You are {chore_name}',
-    //                                 '{[this.haveYouPrinted()]} is {chore_name}',
-    //                              '</div>',
-    //                         '</div>',    
-    //                     '</tpl>',
-    //                 '</tpl>',
-    //         '</tpl>',
-    // '</center>',
-    // {
-    //     // XTemplate configuration:
-    //     haveYouPrinted: function(){
-    //        return 'Sara Grace';
-    //     },
-    //     isBaby: function(age){
-    //        return age < 1;
-    //     }
-    // }
-    
+    "<tpl if='email == \"brandonchastain@gmail.com\" '>",
+        "{first_name}",
+    "</tpl>"
 );
 
 
@@ -60,14 +20,14 @@ Ext.define('TaskIt.view.ChoreList', {
         'Ext.dataview.List'
     ],
     config: {
-        store: 'Chores',
+        store: myChoreStore,
         styleHtmlContent : true, 
-        // cls : 'intro',
         itemTpl : tpl,
         listeners : {
-            itemtap : function(){
-                console.log('Happening');
-            }
+            itemtap : function(t, index, target, record, e, eOpts){
+                console.log(record.data);
+            },
+
         }
         
     }

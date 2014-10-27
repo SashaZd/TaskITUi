@@ -6,83 +6,46 @@
 			{
 				first_name : 'Sasha',
 				last_name : 'Azad',
-				email : 'a@b.com',
-
-				todays_chores : [
-					{
-						chore_id : 1,
-						chore_name : 'Cooking'
-					}
-				]
-			}
-		]
-	},
-	{
-		group_id : 1,
-		group_name : 'Apartment 203',
-		users : [
-			{
-				first_name : 'Rahul',
-				last_name : 'Goel',
-				email : 'rahul.goel@gatech.edu',
-				todays_chores : [
-					{
-						chore_id : 2,
-						chore_name : 'Cleaning the Dishes'
-					}
-				]
-			}
-		]
-	},
-	{
-		group_id : 2,
-		group_name : 'Apartment 204',
-		users : [
+				email : 's@a.com'
+			},
 			{
 				first_name : 'Brandon',
 				last_name : 'Chastain',
-				email : 'brandon.chastain@gatech.edu',
-				todays_chores : [
-					{
-						chore_id : 3,
-						chore_name : 'Buying Groceries'
-					}
-				]
+				email : 'b@c.com'
+			},
+			{
+				first_name : 'Christian',
+				last_name : 'Botkin',
+				email : 'c@b.com'
+			},
+			{
+				first_name : 'Rahul',
+				last_name : 'Goel',
+				email : 'r@g.com'
+			},
+			{
+				first_name : 'Shanu',
+				last_name : 'Salunke',
+				email : 's@s.com'
+			}
+		],
+		todays_chores : [
+			{
+				chore_id : 1,
+				chore_name : 'Cleaning the Dishes'
+			},
+			{
+				chore_id : 2,
+				chore_name : 'Walking the Dog'
+			},
+			{
+				chore_id : 3,
+				chore_name : 'Taking out the Trash'
+			},
+			{
+				chore_id : 4,
+				chore_name : 'Cooking'
 			}
 		]
-	},
-    {
-        group_id : 3,
-        group_name : 'Delta Kappa',
-        users : [
-            {
-                first_name : 'Christian',
-                last_name : 'Botkin',
-                email : 'christian.botkin@gatech.edu',
-                todays_chores : [
-                    {
-                        chore_id : 3,
-                        chore_name : 'Cleaning the Home'
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        group_id : 3,
-        group_name : 'Delta Kappa',
-        users : [
-            {
-                first_name : 'Shanu',
-                last_name : 'Salunke',
-                email : 'shanu.salunke@gatech.edu',
-                todays_chores : [
-                    {
-                        chore_id : 3,
-                        chore_name : 'Renting a Movie'
-                    }
-                ]
-            }
-        ]
-    }
+	}
 ]
