@@ -3,7 +3,7 @@ Ext.define('TaskIt.model.Setting', {
     config: {
         fields: [
             { name: 'group_id', type: 'int' },
-            { name: 'groupName', type: 'auto' },
+            { name: 'group_name', type: 'auto' },
             { name: 'users', type: 'auto' },
             { name: 'first_name', type: 'auto' },
             { name: 'last_name', type: 'auto' },
@@ -19,3 +19,5 @@ Ext.define('TaskIt.model.Setting', {
         // }
     }
 });
+
+//Ext.getStore('Settings').getData().all[0].raw

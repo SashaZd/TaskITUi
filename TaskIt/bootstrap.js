@@ -31,7 +31,8 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "TaskIt": "app"
+  "TaskIt": "app",
+  "TaskIt.view.Settings": "app/view/Settings.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -654,18 +655,26 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "TaskIt.controller.Login": [],
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
   "TaskIt.model.Roommate": [],
+  "TaskIt.model.Setting": [],
   "TaskIt.store.Chores": [],
   "TaskIt.store.Groceries": [],
   "TaskIt.store.Roommates": [],
+  "TaskIt.store.Settings": [],
   "TaskIt.view.ChoreList": [],
+  "TaskIt.view.ChoreListPanel": [],
   "TaskIt.view.Groceries": [],
   "TaskIt.view.GroceryList": [],
   "TaskIt.view.Home": [],
+  "TaskIt.view.Login": [],
   "TaskIt.view.Main": [],
+  "TaskIt.view.OthersChoreList": [],
   "TaskIt.view.Settings": [],
+  "TaskIt.view.Setup": [],
+  "TaskIt.view.Start": [],
   "TaskIt.view.UserList": []
 });
 
@@ -1386,14 +1395,20 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "TaskIt.controller.Login": [],
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
   "TaskIt.model.Roommate": [],
+  "TaskIt.model.Setting": [],
   "TaskIt.store.Chores": [],
   "TaskIt.store.Groceries": [],
   "TaskIt.store.Roommates": [],
+  "TaskIt.store.Settings": [],
   "TaskIt.view.ChoreList": [
     "widget.choreList"
+  ],
+  "TaskIt.view.ChoreListPanel": [
+    "widget.choreListPanel"
   ],
   "TaskIt.view.Groceries": [
     "widget.groceries"
@@ -1404,11 +1419,23 @@ Ext.ClassManager.addNameAliasMappings({
   "TaskIt.view.Home": [
     "widget.home"
   ],
+  "TaskIt.view.Login": [
+    "widget.login"
+  ],
   "TaskIt.view.Main": [
     "widget.main"
   ],
+  "TaskIt.view.OthersChoreList": [
+    "widget.othersChoreList"
+  ],
   "TaskIt.view.Settings": [
     "widget.settings"
+  ],
+  "TaskIt.view.Setup": [
+    "widget.setup"
+  ],
+  "TaskIt.view.Start": [
+    "widget.start"
   ],
   "TaskIt.view.UserList": [
     "widget.userList"
