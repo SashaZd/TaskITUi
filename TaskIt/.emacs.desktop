@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Sun Oct 26 21:31:48 2014
+;; Created Tue Oct 28 18:20:42 2014
 ;; Desktop file format version 206
 ;; Emacs version 24.3.1
 
@@ -13,82 +13,16 @@
 (setq search-ring '("addnew" "addToGroc"))
 (setq regexp-search-ring nil)
 (setq register-alist '((48 . "Ext.getCmp('addNewChore').getValue()")))
-(setq file-name-history '("/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/test.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/store/Chores.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/ChoreList.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Home.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Main.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Login.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Groceries.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Settings.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app.js" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/trunk/02_Matlab/02_ReadingData/readme.txt" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/trunk/02_Matlab/02_Reading/readme.txt" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/readme.txt" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/here.proto" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/here.pb.h"))
+(setq file-name-history '("/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/store/Chores.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/controller/Login.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Login.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Home.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/store/Chores.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/test.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/store/Chores.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/ChoreList.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Home.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Main.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Login.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Groceries.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Settings.js" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/" "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app.js" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/trunk/02_Matlab/02_ReadingData/readme.txt" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/trunk/02_Matlab/02_Reading/readme.txt" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/readme.txt" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/here.proto" "/home/rahul/workspace/GeorgiaTech-RC_SVN_Export/c++ matlab/here.pb.h"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
-(desktop-create-buffer 206
-  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Settings.js"
-  "Settings.js"
-  'js-mode
-  '(global-auto-revert-mode company-mode)
-  683
-  '(1 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix) (overwrite-mode)))
-
-(desktop-create-buffer 206
-  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/test.js"
-  "test.js"
-  'js-mode
-  '(global-auto-revert-mode company-mode)
-  1
-  '(715 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Groceries.js"
-  "Groceries.js"
-  'js-mode
-  '(global-auto-revert-mode company-mode)
-  2558
-  '(160 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
 (desktop-create-buffer 206
   "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/store/Chores.js"
   "Chores.js"
   'js-mode
   '(global-auto-revert-mode company-mode)
-  20
-  '(277 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/ChoreList.js"
-  "ChoreList.js"
-  'js-mode
-  '(global-auto-revert-mode company-mode)
-  2083
-  '(2083 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Home.js"
-  "Home.js"
-  'js-mode
-  '(global-auto-revert-mode company-mode)
-  3056
-  '(1951 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Main.js"
-  "Main.js"
-  'js-mode
-  '(global-auto-revert-mode company-mode)
-  1
-  '(nil nil)
+  532
+  '(184 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
@@ -98,8 +32,19 @@
   "Login.js"
   'js-mode
   '(global-auto-revert-mode company-mode)
-  1479
+  837
   '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/controller/Login.js"
+  "Login.js<2>"
+  'js-mode
+  '(global-auto-revert-mode company-mode)
+  2010
+  '(1773 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
@@ -107,6 +52,39 @@
 (desktop-create-buffer 206
   "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app.js"
   "app.js"
+  'js-mode
+  '(global-auto-revert-mode company-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Home.js"
+  "Home.js"
+  'js-mode
+  '(global-auto-revert-mode company-mode)
+  961
+  '(3051 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/test.js"
+  "test.js"
+  'js-mode
+  '(global-auto-revert-mode company-mode)
+  63
+  '(715 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt/app/view/Main.js"
+  "Main.js"
   'js-mode
   '(global-auto-revert-mode company-mode)
   1

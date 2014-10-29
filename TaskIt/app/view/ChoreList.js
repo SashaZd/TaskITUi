@@ -1,8 +1,10 @@
 var userEmail = "brandonchastain@gmail.com";
 
-var tpl = new Ext.XTemplate(
-    "<tpl if='email == \"brandonchastain@gmail.com\" '>",
-        "{first_name}",
+var chorelisttpl = new Ext.XTemplate(
+    "<tpl if='email == \"",userEmail,"\" '>",
+        "<h1>Arghhhh {first_name}</h1>",
+    "<tpl else>",
+    "<h1>Blahhhhh</h1>",
     "</tpl>"
 );
 
@@ -18,11 +20,11 @@ Ext.define('TaskIt.view.ChoreList', {
     config: {
         store: 'Chores',
         styleHtmlContent : true, 
-        itemTpl : tpl,
+        itemTpl : chorelisttpl,
         iconCls : 'list',
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){
-                console.log(record.data);
+            console.log(record.data);
             },
 
         }
