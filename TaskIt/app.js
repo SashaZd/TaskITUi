@@ -18,7 +18,7 @@ Ext.application({
     ],
 
     controllers : [
-        'Login', 'Signup'
+        'Login', 'Signup', 'MainTabs'
     ],
 
     models : [
@@ -31,7 +31,7 @@ Ext.application({
     ],
 
     views: [
-        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', 'ChoreListPanel', 'GroceryList', 'Start', 'Login', 'Setup', 'OthersChoreList', 'Signup'
+        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', 'ChoreListPanel', 'GroceryList', 'Start', 'Login', 'Setup', 'OthersChoreList', 'Signup', 'RoommatesList'
     ],
 
     icon: {

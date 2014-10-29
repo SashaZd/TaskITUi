@@ -31,9 +31,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "TaskIt": "app",
-  "TaskIt.view.Settings": "app/view/Settings.js"
-
+  "TaskIt": "app"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -83,7 +81,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.Template": [],
   "Ext.Title": [],
   "Ext.TitleBar": [],
-  "Ext.Toast": [],
   "Ext.Toolbar": [],
   "Ext.Video": [],
   "Ext.XTemplate": [],
@@ -658,6 +655,7 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "TaskIt.controller.Login": [],
+  "TaskIt.controller.MainTabs": [],
   "TaskIt.controller.Signup": [],
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
@@ -678,7 +676,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.view.Settings": [],
   "TaskIt.view.Setup": [],
   "TaskIt.view.Signup": [],
-
   "TaskIt.view.Start": [],
   "TaskIt.view.UserList": []
 });
@@ -761,7 +758,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.TitleBar": [
     "widget.titlebar"
   ],
-  "Ext.Toast": [],
   "Ext.Toolbar": [
     "widget.toolbar"
   ],
@@ -1402,6 +1398,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "TaskIt.controller.Login": [],
+  "TaskIt.controller.MainTabs": [],
   "TaskIt.controller.Signup": [],
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
@@ -1441,11 +1438,9 @@ Ext.ClassManager.addNameAliasMappings({
   "TaskIt.view.Setup": [
     "widget.setup"
   ],
-
   "TaskIt.view.Signup": [
     "widget.signup"
   ],
-
   "TaskIt.view.Start": [
     "widget.start"
   ],

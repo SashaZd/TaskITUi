@@ -66,7 +66,7 @@ Ext.define('TaskIt.controller.Login', {
 
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-
+        
         Ext.Ajax.request({
             type : 'GET',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/?group_id=1',

@@ -1,5 +1,5 @@
 var groupSettingsTpl = new Ext.XTemplate(
-    'Hello {group_name}'
+    '<h3>Group Joined : <b>{group_name}</b></h3>'
 )
 
 Ext.define('TaskIt.view.Settings', {
@@ -12,10 +12,10 @@ Ext.define('TaskIt.view.Settings', {
     ],
     config: {
         title: 'Settings',
-		id: 'chorePanel',
+		id: 'settingsPanel',
         iconCls: 'list',
         styleHtmlContent : true,
-        
+        scrollable : true,
         items : [
         	{
         		xtype : 'titlebar',
@@ -30,15 +30,31 @@ Ext.define('TaskIt.view.Settings', {
         			align : 'center'
         		},
         		defaults : { 
-        			width : '70%'
+        			width : '80%',
+                    margin : '5 5 5 5'
         		},
         		items : [
         			{
         				xtype : 'panel',
-        				style : 'background-color:#fcc;',
-        				tpl : groupSettingsTpl,
-                        data : [] //Ext.getStore('Settings').getData().all[0].raw
-        			}
+                        flex : 1,
+                        id : 'householdDetails',
+        				// style : 'background-color:#fcc;',
+        				tpl : groupSettingsTpl
+                        // data : 
+        			},
+                    {xtype : 'spacer'},
+                    {xtype : 'titlebar', title: 'Roommates'},
+                    {
+                        xtype : 'panel',
+                        styleHtmlContent : true,
+                        layout : 'fit',
+                        flex : 2,
+                        items : [
+                            {
+                                xtype : 'roommatesList'
+                            }
+                        ]
+                    }
         		]
         	}
 

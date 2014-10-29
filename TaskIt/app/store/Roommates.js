@@ -6,6 +6,6 @@ Ext.define("TaskIt.store.Roommates", {
     config: {
     	storeId : 'Roommates',
         model: "TaskIt.model.Roommate",
-          
+		autoLoad : true
     }
 });

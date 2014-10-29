@@ -41,14 +41,27 @@ Ext.define('TaskIt.view.Login', {
                                 label: 'Password'
                             },
                             {
-                                xtype : 'button',
-                                text : 'Login',
-                                action : 'doLogin'
-                            },
-                            {
-                                xtype: 'button',
-                                text: 'Sign Up',
-                                action: 'goToSignUp'
+                                xtype : 'panel',
+                                layout : {
+                                    type : 'hbox'
+                                },
+                                defaults : {
+                                    flex : 1,
+                                    margin: '5 5 5 5'
+                                },
+                                items : [
+                                    {
+                                        xtype: 'button',
+                                        text: 'Sign Up',
+                                        action: 'goToSignUp'
+                                    },
+                                    {
+                                        xtype : 'button',
+                                        text : 'Login',
+                                        action : 'doLogin',
+                                        ui : 'action'
+                                    }
+                                ]
                             }
                         ]
                     }
