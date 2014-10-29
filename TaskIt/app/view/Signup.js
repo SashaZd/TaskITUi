@@ -1,13 +1,12 @@
 
-
-Ext.define('TaskIt.view.Login', {
+Ext.define('TaskIt.view.Signup', {
     extend: 'Ext.Panel',
-    xtype: 'login',
-    id : 'loginView',
+    xtype: 'signup',
+    id : 'signupView',
     requires: [
         'Ext.TitleBar',
         'Ext.field.Email',
-        'Ext.field.Password'
+        'Ext.field.Text'
     ],
     config: {
         layout : {
@@ -22,9 +21,6 @@ Ext.define('TaskIt.view.Login', {
                 width : '90%',
                 items : [
                     {
-                        html : '<div class="otherTaskText">Task It</div>'
-                    },
-                    {
                         xtype: 'container',
                         styleHtmlContent : true,
                         defaults: {
@@ -33,22 +29,23 @@ Ext.define('TaskIt.view.Login', {
                         items: [
                             {
                                 xtype: 'emailfield',
-                                label: 'Email ID',
-                                id : 'loginEmail'
+                                label: 'Email',
+                                id : 'email'
                             },
                             {
-                                xtype: 'passwordfield',
-                                label: 'Password'
+                                xtype: 'textfield',
+                                label: 'First Name',
+                                id: 'firstname'
                             },
                             {
-                                xtype : 'button',
-                                text : 'Login',
-                                action : 'doLogin'
+                                xtype: 'textfield',
+                                label: 'Last Name',
+                                id: 'lastname'
                             },
                             {
                                 xtype: 'button',
                                 text: 'Sign Up',
-                                action: 'goToSignUp'
+                                action: 'signUp'
                             }
                         ]
                     }
@@ -57,7 +54,3 @@ Ext.define('TaskIt.view.Login', {
         ]
     }
 });
-
-
-// I've provided a sample button that switches to the main app screen. When you finish verifying the login, make a similar sort of button to switch to the main screen (with the tabs) :
-// Check button handler for code
