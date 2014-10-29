@@ -1,4 +1,3 @@
-
 Ext.define("TaskIt.store.Settings", {
     extend: "Ext.data.Store",
     config: {
@@ -8,9 +7,9 @@ Ext.define("TaskIt.store.Settings", {
             type : 'ajax',
             // url : 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
             url: 'app/store/temp.json',
-            // useDefaultXhrHeader : false,
+            useDefaultXhrHeader : false,
             reader : {
-                type : 'json',
+                type : 'json'
             }
         }      
 

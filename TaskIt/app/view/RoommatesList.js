@@ -13,7 +13,8 @@ Ext.define('TaskIt.view.RoommatesList', {
         'Ext.dataview.List'
     ],
     config: {
-        store: 'Roommmates',
+        store: 'Chores',
+        fullscreen : true,
         styleHtmlContent : true, 
         itemTpl : roommatesTpl,
         id : 'roommatesListId'
