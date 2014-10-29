@@ -17,6 +17,9 @@ Ext.define('TaskIt.view.Start', {
             },
             {
                 xtype : 'main'
+            },
+            {
+                xtype: 'signup'
             }
         ]
     }

@@ -33,6 +33,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "TaskIt": "app",
   "TaskIt.view.Settings": "app/view/Settings.js"
+
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -82,6 +83,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.Template": [],
   "Ext.Title": [],
   "Ext.TitleBar": [],
+  "Ext.Toast": [],
   "Ext.Toolbar": [],
   "Ext.Video": [],
   "Ext.XTemplate": [],
@@ -656,6 +658,10 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "TaskIt.controller.Login": [],
+<<<<<<< HEAD
+=======
+  "TaskIt.controller.Signup": [],
+>>>>>>> e1526c5e8736afc55c112e43b90027ea882b08a1
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
   "TaskIt.model.Roommate": [],
@@ -663,7 +669,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.store.Chores": [],
   "TaskIt.store.Groceries": [],
   "TaskIt.store.Roommates": [],
+<<<<<<< HEAD
   "TaskIt.store.Settings": [],
+=======
+  "TaskIt.store.Setitngs": [],
+>>>>>>> e1526c5e8736afc55c112e43b90027ea882b08a1
   "TaskIt.view.ChoreList": [],
   "TaskIt.view.ChoreListPanel": [],
   "TaskIt.view.Groceries": [],
@@ -674,6 +684,10 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.view.OthersChoreList": [],
   "TaskIt.view.Settings": [],
   "TaskIt.view.Setup": [],
+<<<<<<< HEAD
+=======
+  "TaskIt.view.Signup": [],
+>>>>>>> e1526c5e8736afc55c112e43b90027ea882b08a1
   "TaskIt.view.Start": [],
   "TaskIt.view.UserList": []
 });
@@ -756,6 +770,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.TitleBar": [
     "widget.titlebar"
   ],
+  "Ext.Toast": [],
   "Ext.Toolbar": [
     "widget.toolbar"
   ],
@@ -1396,6 +1411,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "TaskIt.controller.Login": [],
+<<<<<<< HEAD
+=======
+  "TaskIt.controller.Signup": [],
+>>>>>>> e1526c5e8736afc55c112e43b90027ea882b08a1
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
   "TaskIt.model.Roommate": [],
@@ -1403,7 +1422,11 @@ Ext.ClassManager.addNameAliasMappings({
   "TaskIt.store.Chores": [],
   "TaskIt.store.Groceries": [],
   "TaskIt.store.Roommates": [],
+<<<<<<< HEAD
   "TaskIt.store.Settings": [],
+=======
+  "TaskIt.store.Setitngs": [],
+>>>>>>> e1526c5e8736afc55c112e43b90027ea882b08a1
   "TaskIt.view.ChoreList": [
     "widget.choreList"
   ],
@@ -1434,6 +1457,12 @@ Ext.ClassManager.addNameAliasMappings({
   "TaskIt.view.Setup": [
     "widget.setup"
   ],
+<<<<<<< HEAD
+=======
+  "TaskIt.view.Signup": [
+    "widget.signup"
+  ],
+>>>>>>> e1526c5e8736afc55c112e43b90027ea882b08a1
   "TaskIt.view.Start": [
     "widget.start"
   ],
