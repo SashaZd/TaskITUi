@@ -9,13 +9,19 @@ Ext.define('TaskIt.view.Main', {
         styleHtmlContent : true,
         items: [
             {
-                xtype : 'home'
+                xtype : 'home',
+                styleHtmlContent : true,
+                styleHtmlCls:'myAppBackground'
             },
             {
-                xtype : 'groceries'
+                xtype : 'groceries',
+                styleHtmlContent : true,
+                styleHtmlCls:'myAppBackground'
             },
             {
-                xtype : 'settings'
+                xtype : 'settings',
+                styleHtmlContent : true,
+                styleHtmlCls:'myAppBackground'
             }
         ]
     }

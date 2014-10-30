@@ -13,6 +13,7 @@ Ext.define('TaskIt.view.Login', {
             pack : 'center',
             align : 'center'
         },
+
         fullscreen : true,
         items: [
             {
@@ -24,7 +25,7 @@ Ext.define('TaskIt.view.Login', {
                     },
                     {
                         xtype: 'container',
-                        styleHtmlContent : true,
+
                         defaults: {
                             margin: '5 5 5 5'
                         },
@@ -32,11 +33,13 @@ Ext.define('TaskIt.view.Login', {
                             {
                                 xtype: 'emailfield',
                                 label: 'Email ID',
+                                style:'background-color:rgba(0,0,0,0);',
                                 id : 'loginEmail'
                             },
                             {
                                 xtype: 'passwordfield',
-                                label: 'Password'
+                                label: 'Password',
+                                style:'background-color:rgba(0,0,0,0);'
                             },
                             {
                                 xtype : 'panel',

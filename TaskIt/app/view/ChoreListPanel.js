@@ -14,6 +14,8 @@ Ext.define('TaskIt.view.ChoreListPanel', {
                 xtype : 'choreList',
                 id : 'myChoreList',
                 flex : 1,
+                style:'background-color:rgba(0,0,0,0);',
+                styleHtmlCls:'mySemiTransparentList',
                 styleHtmlContent : true
             },
             {
@@ -23,6 +25,8 @@ Ext.define('TaskIt.view.ChoreListPanel', {
                 xtype : 'othersChoreList',
                 id : 'othersChoreList',
                 flex : 1,
+                style:'background-color:rgba(0,0,0,0);',
+                styleHtmlCls:'mySemiTransparentList',
                 styleHtmlContent : true
             }
         ]

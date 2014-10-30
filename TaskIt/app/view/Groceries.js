@@ -65,6 +65,7 @@ Ext.define('TaskIt.view.Groceries', {
         title: 'Groceries',
         id : 'groceryPanel',
         iconCls: 'list',
+        style:'background-color:rgba(0,0,0,0);',
         styleHtmlContent : true,
         layout : {
             type : 'vbox'
@@ -104,6 +105,8 @@ Ext.define('TaskIt.view.Groceries', {
             },
             {
                 xtype : 'groceryList',
+
+                        //cls:'myAppBackground',
                 flex : 3,
                 styleHtmlContent : true, 
                 scrollable : true
