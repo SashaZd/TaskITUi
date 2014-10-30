@@ -37,13 +37,16 @@ Ext.define('TaskIt.view.ChoreList', {
                 if(record.data.email == userEmail){
                     var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
                     Ext.Ajax.request({
-                    type : 'PUT',
-                    url: tempURL,
-                    success: function(response){
-                        console.log(response.responseText);
-                        console.log('Done the chore!');
-                    }
-                });
+                        type : 'PUT',
+                        url: tempURL,
+                        success: function(response){
+                            console.log(tempURL);
+                            console.log(response.responseText);
+                            console.log('Done the chore!');
+                        }
+                    });
+
+                    Ext.get
                 }
                 else {
                     console.log("Not your chore to do!!");

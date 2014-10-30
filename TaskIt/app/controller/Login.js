@@ -36,7 +36,10 @@ Ext.define('TaskIt.controller.Login', {
             params: {
                 email : email
             },
+            // withCredentials : true,
+            useDefaultXhrHeader: false,
             success: function(response){
+                console.log(response.responseText);
                 if (JSON.parse(response.responseText).success){
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
@@ -69,21 +72,21 @@ Ext.define('TaskIt.controller.Login', {
         });
     },
 
-    //called when the Application is launched, remove if not needed
-    launch: function(app) {
-            Ext.Ajax.request({
+    setChores: function(){
+        console.log('Setting Chores');
+        Ext.Ajax.request({
             type : 'GET',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
             success: function(response){
                 myVar = JSON.parse(response.responseText);
                 var chorestore = Ext.getStore('Chores');
-		        var x=0;
+                var x=0;
                 GROUP_ID = myVar.group_id;
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
                         // myChoreStore[x] = myVar.users[i].todays_chores[j];
-		                  // console.log(i);
-            			myChoreStore[x]={};
+                          // console.log(i);
+                        myChoreStore[x]={};
                         myChoreStore[x].chore_name = myVar.users[i].todays_chores[j].chore_name;
                         myChoreStore[x].chore_id = myVar.users[i].todays_chores[j].chore_id;
                         myChoreStore[x].is_done = myVar.users[i].todays_chores[j].is_done;
@@ -91,15 +94,17 @@ Ext.define('TaskIt.controller.Login', {
                         myChoreStore[x].last_name = myVar.users[i].last_name;
                         myChoreStore[x].email = myVar.users[i].email;
                         // console.log(myVar.users[i].email);
-		                chorestore.insert(x,myChoreStore[x]);
-			            x++;
+                        chorestore.insert(x,myChoreStore[x]);
+                        x++;
                     }
                 }
 
 
             }
         });
+    },
 
+    setGroceryStore: function(){
         Ext.Ajax.request({
             type : 'GET',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/grocery/',
@@ -118,13 +123,16 @@ Ext.define('TaskIt.controller.Login', {
                     // console.log(myVar[i].name);
                     grocerystore.insert(x,myGroceryStore[x]);
                     x++;
-                
                 }
-
-
             }
-        });   
+        }); 
+    },
 
+    //called when the Application is launched, remove if not needed
+    launch: function(app) {
+        this.setChores();
+
+        this.setGroceryStore();  
 
         // GroceryStore.getProxy().clear();
         Ext.getStore('Groceries').removeAll();
