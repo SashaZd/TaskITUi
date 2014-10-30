@@ -24,7 +24,7 @@ Ext.define('TaskIt.view.ChoreList', {
         iconCls : 'list',
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){
-            console.log(record.data);
+                console.log(record.data);
             },
 
         }

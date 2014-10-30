@@ -18,6 +18,19 @@ p {
 } 
 */
 
+
+.myRoommatesText {
+	position: relative;
+	color: white;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;
+	
+}
+
 .myTaskBackground {
 	/*background-image: url("../images/mytaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
 	/*background-color: gray;*/

@@ -22,12 +22,12 @@ Ext.application({
     ],
 
     models : [
-        'Roommate', 'Chore','GroceryItem', 'Setting'
+        'Roommate', 'Chore','GroceryItem', 'Setting', 'OnlyChore'
     ],
 
     stores : [
 
-        'Roommates','Chores','Groceries', 'Settings'
+        'Roommates','Chores','Groceries', 'Settings', 'OnlyChores'
     ],
 
     views: [

@@ -13,81 +13,119 @@ Ext.define('TaskIt.view.Settings', {
     config: {
         title: 'Settings',
 		id: 'settingsPanel',
-        iconCls: 'list',
+        iconCls: 'settings',
         styleHtmlContent : true,
-        scrollable : true,
-        items : [
-        	{
-        		xtype : 'titlebar',
-        		title : '<font size=3>Settings</font>',
-        		docked : 'top'
-        	},
-        	{
-        		xtype : 'panel',
+        layout : {
+            type : 'vbox',
+            pack : 'center',
+            align : 'center'
+        },    
+        defaults : {
+            width : '80%'
+        },    
+        // scrollable : true,
+        items: [
+            {
+                xtype : 'titlebar',
+                title : 'Settings',
+                docked : 'top',
+                width : '100%'
+            },
+            {
+                xtype : 'panel',
+                flex : 1,
+                layout : 'fit',
+                id : 'householdDetails',
                 styleHtmlContent : true,
-        		layout : {
-        			type : 'vbox',
-        			pack : 'center',
-        			align : 'center'
-        		},
-        		defaults : { 
-        			width : '80%',
-                    margin : '5 5 5 5'
-        		},
-        		items : [
-        			{
-        				xtype : 'panel',
-                        flex : 1,
-                        layout : 'fit',
-                        id : 'householdDetails',
-        				style : 'background-color:#fcc;',
-                        styleHtmlContent : true,
-        				tpl : groupSettingsTpl
-                        // data : 
-        			},
-                    // {xtype : 'spacer'},
-                    {
-                        xtype : 'titlebar', 
-                        title: 'Roommates'
-                    },
-                    {
-                        xtype : 'panel',
-                        html : 'Hello World',
-                        layout : 'fit',
-                        flex : 4,
-                        // styleHtmlContent : true,
-                        // layout : 'fit',
-                        // flex : 2,
-                        // items : [
-                        //     {
-                        //         xtype : 'roommatesList',
-                        //         layout : 'fit'
-                        //     }
-                        // ]
-                    },
-                    // {xtype : 'spacer'},
-                    {
-                        xtype : 'titlebar',
-                        title : 'Chores For Group'
-                    },
-                    {
-                        xtype : 'panel',
-                        html : 'World, Hello',
-                        layout : 'fit',
-                        flex : 2
-                        // styleHtmlContent : true,
-                        // layout : 'fit',
-                        // flex : 2,
-                        // items : [
-                        //     {
-                        //         xtype : 'allChoresList'
-                        //     }
-                        // ]
-                    }
-        		]
-        	}
-
+                tpl : groupSettingsTpl
+                // data : 
+            },
+            {
+                xtype : 'titlebar',
+                html : '<font color="white">Roommmates</font>',
+                styleHtmlContent : true,
+                style : 'background-color:#0174DF;'
+            },
+            {
+                xtype : 'roommatesList',
+                layout : 'fit',
+                // id : 'myChoreList',
+                flex : 3,
+                styleHtmlContent : true
+            },
+            {
+                xtype : 'panel',
+                html : 'Chores',
+                styleHtmlContent : true,
+                style : 'background-color:#0174DF;'
+            },
+            {
+                xtype : 'othersChoreList',
+                // id : 'othersChoreList',
+                flex : 3,
+                styleHtmlContent : true
+            }
         ]
+
+
+
+
+        	// {
+        	// 	xtype : 'panel',
+         //        styleHtmlContent : true,
+        	// 	layout : {
+        	// 		type : 'vbox',
+        	// 		pack : 'center',
+        	// 		align : 'center'
+        	// 	},
+        	// 	defaults : { 
+        	// 		width : '80%',
+         //            margin : '5 5 5 5'
+        	// 	},
+        	// 	items : [
+        			
+         //            // {xtype : 'spacer'},
+         //            {
+         //                xtype : 'titlebar', 
+         //                title: 'Roommates'
+         //            },
+         //            {
+         //                xtype : 'panel',
+         //                html : 'Hello World',
+         //                layout : 'fit',
+         //                flex : 4,
+         //                // styleHtmlContent : true,
+         //                // layout : 'fit',
+         //                // flex : 2,
+         //                // items : [
+         //                //     {
+         //                //         xtype : 'roommatesList',
+         //                //         layout : 'fit'
+         //                //     }
+         //                // ]
+         //            },
+         //            // {xtype : 'spacer'},
+         //            {
+         //                xtype : 'titlebar',
+         //                title : 'Chores For Group'
+         //            },
+         //            {
+         //                xtype : 'panel',
+         //                html : 'World, Hello',
+         //                layout : 'fit',
+         //                flex : 2
+         //                // styleHtmlContent : true,
+         //                // layout : 'fit',
+         //                // flex : 2,
+         //                // items : [
+         //                //     {
+         //                //         xtype : 'allChoresList'
+         //                //     }
+         //                // ]
+         //            }
+        	// 	]
+        	// }
+
     }
 });
 
