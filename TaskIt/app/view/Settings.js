@@ -24,6 +24,7 @@ Ext.define('TaskIt.view.Settings', {
         	},
         	{
         		xtype : 'panel',
+                styleHtmlContent : true,
         		layout : {
         			type : 'vbox',
         			pack : 'center',
@@ -37,23 +38,51 @@ Ext.define('TaskIt.view.Settings', {
         			{
         				xtype : 'panel',
                         flex : 1,
+                        layout : 'fit',
                         id : 'householdDetails',
-        				// style : 'background-color:#fcc;',
+        				style : 'background-color:#fcc;',
+                        styleHtmlContent : true,
         				tpl : groupSettingsTpl
                         // data : 
         			},
-                    {xtype : 'spacer'},
-                    {xtype : 'titlebar', title: 'Roommates'},
+                    // {xtype : 'spacer'},
+                    {
+                        xtype : 'titlebar', 
+                        title: 'Roommates'
+                    },
                     {
                         xtype : 'panel',
-                        styleHtmlContent : true,
+                        html : 'Hello World',
                         layout : 'fit',
-                        flex : 2,
-                        items : [
-                            {
-                                xtype : 'roommatesList'
-                            }
-                        ]
+                        flex : 4,
+                        // styleHtmlContent : true,
+                        // layout : 'fit',
+                        // flex : 2,
+                        // items : [
+                        //     {
+                        //         xtype : 'roommatesList',
+                        //         layout : 'fit'
+                        //     }
+                        // ]
+                    },
+                    // {xtype : 'spacer'},
+                    {
+                        xtype : 'titlebar',
+                        title : 'Chores For Group'
+                    },
+                    {
+                        xtype : 'panel',
+                        html : 'World, Hello',
+                        layout : 'fit',
+                        flex : 2
+                        // styleHtmlContent : true,
+                        // layout : 'fit',
+                        // flex : 2,
+                        // items : [
+                        //     {
+                        //         xtype : 'allChoresList'
+                        //     }
+                        // ]
                     }
         		]
         	}
