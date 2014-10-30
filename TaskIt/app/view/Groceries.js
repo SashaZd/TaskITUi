@@ -37,7 +37,7 @@ myNewGroceryItem = new Ext.Panel({
 			params : {
 			    // user_id: USER_ID,
 			    group_id: GROUP_ID,
-			    item: grocery_item
+			    name: grocery_item
 			},
                         success: function(response){
                             var text = response.responseText;

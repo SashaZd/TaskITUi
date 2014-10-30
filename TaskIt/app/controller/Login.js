@@ -1,6 +1,7 @@
 var myChoreStore={};
+var myGroceryStore={};
 var myVar;
-var GROUP_ID;
+var GROUP_ID=1;
 // var myChoreStore;
 //
 Ext.define('TaskIt.controller.Login', {
@@ -66,14 +67,13 @@ Ext.define('TaskIt.controller.Login', {
 
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-        
-        Ext.Ajax.request({
+            Ext.Ajax.request({
             type : 'GET',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
             success: function(response){
                 myVar = JSON.parse(response.responseText);
                 var chorestore = Ext.getStore('Chores');
-		var x=0;
+		        var x=0;
                 GROUP_ID = myVar.group_id;
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
@@ -95,8 +95,35 @@ Ext.define('TaskIt.controller.Login', {
             }
         });
 
+        Ext.Ajax.request({
+            type : 'GET',
+            url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/grocery/',
+            success: function(response){
+                myVar = JSON.parse(response.responseText);
+                var grocerystore = Ext.getStore('Groceries');
+                var x=0;
 
-        
+                for (var i = 0; i< myVar.length; i++) {
+                    // for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
+                        // myChoreStore[x] = myVar.users[i].todays_chores[j];
+                    console.log(i);
+                    myGroceryStore[x]={};
+                    myGroceryStore[x].id=myVar[i].grocery_id;
+                    myGroceryStore[x].grocery_item=myVar[i].name;
+                    console.log(myVar[i].name);
+                    grocerystore.insert(x,myGroceryStore[x]);
+                    x++;
+                
+                }
+
+
+            }
+        });   
+
+
+        // GroceryStore.getProxy().clear();
+        Ext.getStore('Groceries').removeAll();
+
 
     }
 });
