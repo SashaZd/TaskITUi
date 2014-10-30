@@ -46,6 +46,11 @@ Ext.define('TaskIt.view.Signup', {
                                 id: 'lastname'
                             },
                             {
+                                xtype: 'textfield',
+                                label: 'Group Name',
+                                id: 'groupname'
+                            },
+                            {
                                 xtype: 'button',
                                 text: 'Sign Up',
                                 action: 'signUp'

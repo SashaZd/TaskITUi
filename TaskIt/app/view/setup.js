@@ -1,6 +1,6 @@
 var mytemp;
 
-Ext.define('TaskIt.view.setup', {
+Ext.define('TaskIt.view.Setup', {
     extend: 'Ext.Panel',
     // xtype: 'home',
     requires: [
@@ -23,7 +23,7 @@ Ext.define('TaskIt.view.setup', {
                 title: '<font size=3>Setup the Group</font>'
             },
             {
-                xtype : 'DefaultTaskList',
+                xtype : 'defaultTaskList',
                 flex : 3,
                 styleHtmlContent : true
             },
@@ -39,7 +39,7 @@ Ext.define('TaskIt.view.setup', {
                     {
                         xtype : 'spacer'
                     },
-                   {
+                    {
                         xtype : 'button',
                         id : 'addToChoreList',
                         iconCls : 'add',
@@ -56,55 +56,20 @@ Ext.define('TaskIt.view.setup', {
                             // }
                             // else {
                             //     Ext.getCmp('addToGroceryList').setText('<font size=3>Done</font>');
-                            //     Ext.getCmp('addToGroceryList').setIconCls('');   
+                            //     Ext.getCmp('addToGroceryList').setIconCls('');
                             //     Ext.getCmp('groceryPanel').remove(myNewGroceryItem);
                             // }
-                            
-
-                        }
-                    }
-
-                            
-
                             Ext.Msg.alert(
-                                'Add!', 
-                                'To the store', 
+                                'Add!',
+                                'To the store',
                                 Ext.emptyFn
                             );
                         }
 
-                        // ui : 'confirm',
-
-
-
-                    },
-                //     {
-                //         xtype : 'spacer'
-                //     },
-                //     {
-                //         xtype : 'button',
-                //         text : '<font size=3>Not at Home</font>',
-
-                //         width : '40%',
-                //         height : 40,
-                //         handler : function(){
-                //             Ext.Msg.alert(
-                //                 'Uh Oh!', 
-                //                 "Well, we'll getcha tomorrow.", 
-                //                 Ext.emptyFn
-                //             );
-                //         }
-
-                //         // ui : 'decline',
-
-                //     },
-                //     {
-                //         xtype : 'spacer'
-                //     }
-                // ]
+                    }
+                ]
             }
-            
+
         ]
     }
 });
-

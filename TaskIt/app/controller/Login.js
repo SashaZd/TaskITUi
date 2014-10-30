@@ -125,14 +125,14 @@ Ext.define('TaskIt.controller.Login', {
                     x++;
                 }
             }
-        }); 
+        });
     },
 
     //called when the Application is launched, remove if not needed
     launch: function(app) {
         this.setChores();
 
-        this.setGroceryStore();  
+        this.setGroceryStore();
 
         // GroceryStore.getProxy().clear();
         Ext.getStore('Groceries').removeAll();
