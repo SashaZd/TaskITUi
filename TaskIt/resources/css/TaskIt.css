@@ -18,6 +18,43 @@ p {
 } 
 */
 
+.myTransparentList {
+
+	background-color: rgba(0,0,0,0);
+}
+.myTransparentLabel {
+	background-color: rgba(255,255,255,0);
+}
+
+.mySemiTransparentList {
+	background-color:rgba(125,125,125,0.5);
+}
+
+.myAppBackground {
+	background-color: white;
+	background-image:
+    radial-gradient(
+      circle at top left,
+      rgba(176,18,60,50),
+      rgba(255,255,255,0)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(247,159,16,50),
+      rgba(255,255,255,0)
+    ),
+    radial-gradient(
+      circle at bottom right,
+      #49ad02,
+      rgba(255,255,255,0)
+    ),
+    radial-gradient(
+      circle at bottom left,
+      #1854a2,
+      rgba(255,255,255,0)
+    );
+}
+
 .x-list .x-list-item.strikethrough {
     background-color: #ffccff;
 }
@@ -31,12 +68,11 @@ p {
 	text-align: center;
 	padding-top: 15px;
 	padding-left: 15px;
-	
 }
 
 .myTaskBackground {
 	/*background-image: url("../images/mytaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
-	/*background-color: gray;*/
+	/*background-color: purple;*/
 	text-align: center;
 	max-width: 100%
 
@@ -55,6 +91,7 @@ p {
 }
 
 .myTaskText {
+	/*background-color: blue;*/
 	position: relative;
 	color: #0174DF;
 	font-weight: bolder;
@@ -67,12 +104,13 @@ p {
 
 .otherTaskBackground {
 	/*background-image: url("../images/othertaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
-	/*background-color: white;*/
+	/*background-color: green;*/
 	text-align: center;
 	max-width: 100%
 } 
 
 .otherTaskText {
+	/*background-color: gray;*/
 	position: relative;
 	color: black;
 	font-weight: bolder;

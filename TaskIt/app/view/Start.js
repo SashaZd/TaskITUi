@@ -6,20 +6,30 @@ Ext.define('TaskIt.view.Start', {
     ],
     config: {
         styleHtmlContent : true,
+        style:'background-color:black;',
         id : 'startScreen',
         layout : 'card',
+        html:'<p>Poleo</p>',
         items: [
             {
-                xtype : 'login'
+                xtype : 'login',
+                styleHtmlContent : true,
+                styleHtmlCls:'myAppBackground'
             },
             {
-                xtype : 'setup'
+                xtype : 'setup',
+                styleHtmlContent : true,
+                styleHtmlCls:'myAppBackground'
             },
             {
-                xtype : 'main'
+                xtype : 'main',
+                styleHtmlContent : true,
+                styleHtmlCls:'myAppBackground'
             },
             {
-                xtype: 'signup'
+                xtype: 'signup',
+                styleHtmlContent : true,
+                styleHtmlCls:'myAppBackground'
             }
         ]
     }
