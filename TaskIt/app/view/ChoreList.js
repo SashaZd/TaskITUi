@@ -2,9 +2,9 @@ var userEmail = "brandonchastain@gmail.com";
 
 var chorelisttpl = new Ext.XTemplate(
     "<tpl if='email == \"",userEmail,"\" '>",
-        "<h1>Arghhhh {first_name}</h1>",
+        "<h1>You are {chore_name} </h1>",
     "<tpl else>",
-    "<h1>Blahhhhh</h1>",
+    "<h1>{first_name} is {chore_name}</h1>",
     "</tpl>"
 );
 

@@ -16,15 +16,15 @@ Ext.define('TaskIt.view.ChoreListPanel', {
                 flex : 1,
                 styleHtmlContent : true
             },
-            {
-                html : 'Rest of the Household'
-            },
-            {
-                xtype : 'othersChoreList',
-                id : 'othersChoreList',
-                flex : 1,
-                styleHtmlContent : true
-            }
+            // {
+            //     html : 'Rest of the Household'
+            // },
+            // // {
+            //     xtype : 'othersChoreList',
+            //     id : 'othersChoreList',
+            //     flex : 1,
+            //     styleHtmlContent : true
+            // }
         ]
     }
 });
