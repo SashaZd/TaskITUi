@@ -2,6 +2,10 @@ var myChoreStore={};
 var myGroceryStore={};
 var myVar;
 var GROUP_ID=1;
+
+var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/'
+
+
 // var myChoreStore;
 //
 Ext.define('TaskIt.controller.Login', {
@@ -81,6 +85,7 @@ Ext.define('TaskIt.controller.Login', {
 		                  // console.log(i);
             			myChoreStore[x]={};
                         myChoreStore[x].chore_name = myVar.users[i].todays_chores[j].chore_name;
+                        myChoreStore[x].chore_id = myVar.users[i].todays_chores[j].chore_id;
                         myChoreStore[x].is_done = myVar.users[i].todays_chores[j].is_done;
                         myChoreStore[x].first_name = myVar.users[i].first_name;
                         myChoreStore[x].last_name = myVar.users[i].last_name;

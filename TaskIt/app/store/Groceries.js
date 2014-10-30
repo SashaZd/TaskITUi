@@ -1,4 +1,4 @@
-var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/'
+
 GroceryStore=Ext.define("TaskIt.store.Groceries", {
     extend: "Ext.data.Store",
     requires : [

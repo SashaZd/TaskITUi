@@ -1,4 +1,3 @@
-
 var roommatesTpl = new Ext.XTemplate(
     '<tpl if="email==\'',userEmail,'\'">',
         '<div class="myTaskText">{first_name}</div>',
@@ -23,7 +22,7 @@ Ext.define('TaskIt.view.RoommatesList', {
         iconCls : 'list',
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){
-                console.log(record.data);
+                
             }
 
         }

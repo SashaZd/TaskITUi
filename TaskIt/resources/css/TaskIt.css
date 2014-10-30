@@ -18,6 +18,9 @@ p {
 } 
 */
 
+.x-list .x-list-item.strikethrough {
+    background-color: #ffccff;
+}
 
 .myRoommatesText {
 	position: relative;
@@ -39,6 +42,18 @@ p {
 
 } 
 
+.myTaskTextCompleted {
+	position: relative;
+	color: grey;
+	text-decoration: line-through;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;	
+}
+
 .myTaskText {
 	position: relative;
 	color: #0174DF;
@@ -47,9 +62,9 @@ p {
 	font-family: Arial, Sans-Serif;
 	text-align: center;
 	padding-top: 15px;
-	padding-left: 15px;
-	
+	padding-left: 15px;	
 }
+
 .otherTaskBackground {
 	/*background-image: url("../images/othertaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
 	/*background-color: white;*/

@@ -1,5 +1,5 @@
 var groupSettingsTpl = new Ext.XTemplate(
-    '<h3>Group Joined : <b>{group_name}</b></h3>'
+    '<h2>Group Joined : <b>{group_name}</b></h2>'
 )
 
 Ext.define('TaskIt.view.Settings', {
