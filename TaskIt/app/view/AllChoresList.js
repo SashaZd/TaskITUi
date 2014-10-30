@@ -1,26 +1,22 @@
-var userEmail = "brandonchastain@gmail.com";
-
-var chorelisttpl = new Ext.XTemplate(
-    "<tpl if='email == \"",userEmail,"\" '>",
-        "<h1>You are {chore_name} </h1>",
-    "<tpl else>",
-    "<h1>{first_name} is {chore_name}</h1>",
+var allChoresTpl = new Ext.XTemplate(
+    "<tpl if='email == \"brandonchastain@gmail.com\" '>",
+        "{first_name}",
     "</tpl>"
 );
 
 
-Ext.define('TaskIt.view.ChoreList', {
+Ext.define('TaskIt.view.AllChoresList', {
     extend: 'Ext.List',
-    xtype: 'choreList',
+    xtype: 'allChoresList',
     requires: [
         'Ext.TitleBar',
         'Ext.DataView',
         'Ext.dataview.List'
     ],
     config: {
-        store: 'Chores',
+        store: 'OnlyChores',
         styleHtmlContent : true, 
-        itemTpl : chorelisttpl,
+        itemTpl : allChoresTpl,
         iconCls : 'list',
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){

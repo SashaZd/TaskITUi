@@ -22,16 +22,16 @@ Ext.application({
     ],
 
     models : [
-        'Roommate', 'Chore','GroceryItem', 'Setting'
+        'Roommate', 'Chore','GroceryItem', 'Setting', 'OnlyChore'
     ],
 
     stores : [
 
-        'Roommates','Chores','Groceries', 'Settings'
+        'Roommates','Chores','Groceries', 'Settings', 'OnlyChores'
     ],
 
     views: [
-        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', 'ChoreListPanel', 'GroceryList', 'Start', 'Login', 'Setup', 'OthersChoreList', 'Signup', 'RoommatesList'
+        'Main', 'Settings', 'Home', 'Groceries', 'ChoreList', 'ChoreListPanel', 'GroceryList', 'Start', 'Login', 'Setup', 'OthersChoreList', 'Signup', 'RoommatesList', 'AllChoresList'
     ],
 
     icon: {
