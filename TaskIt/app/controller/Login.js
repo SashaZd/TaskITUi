@@ -78,14 +78,14 @@ Ext.define('TaskIt.controller.Login', {
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
                         // myChoreStore[x] = myVar.users[i].todays_chores[j];
-		                  console.log(i);
+		                  // console.log(i);
             			myChoreStore[x]={};
                         myChoreStore[x].chore_name = myVar.users[i].todays_chores[j].chore_name;
                         myChoreStore[x].is_done = myVar.users[i].todays_chores[j].is_done;
                         myChoreStore[x].first_name = myVar.users[i].first_name;
                         myChoreStore[x].last_name = myVar.users[i].last_name;
                         myChoreStore[x].email = myVar.users[i].email;
-                        console.log(myVar.users[i].email);
+                        // console.log(myVar.users[i].email);
 		                chorestore.insert(x,myChoreStore[x]);
 			            x++;
                     }
@@ -106,11 +106,11 @@ Ext.define('TaskIt.controller.Login', {
                 for (var i = 0; i< myVar.length; i++) {
                     // for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
                         // myChoreStore[x] = myVar.users[i].todays_chores[j];
-                    console.log(i);
+                    // console.log(i);
                     myGroceryStore[x]={};
                     myGroceryStore[x].id=myVar[i].grocery_id;
                     myGroceryStore[x].grocery_item=myVar[i].name;
-                    console.log(myVar[i].name);
+                    // console.log(myVar[i].name);
                     grocerystore.insert(x,myGroceryStore[x]);
                     x++;
                 
