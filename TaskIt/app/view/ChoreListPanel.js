@@ -29,6 +29,15 @@ Ext.define('TaskIt.view.ChoreListPanel', {
                 styleHtmlCls:'mySemiTransparentList',
                 styleHtmlContent : true
             }
+            // {
+            //     html : 'Rest of the Household'
+            // },
+            // // {
+            //     xtype : 'othersChoreList',
+            //     id : 'othersChoreList',
+            //     flex : 1,
+            //     styleHtmlContent : true
+            // }
         ]
     }
 });

@@ -10,7 +10,8 @@ Ext.define('TaskIt.model.Chore', {
             { name: 'email', type: 'auto' },
             { name: 'todays_chores', type: 'auto' },
             { name: 'chore_id', type: 'auto' },
-            { name: 'chore_name', type: 'auto' }
+            { name: 'chore_name', type: 'auto' },
+            { name: 'is_done', type: 'boolean'}
         ]
 
         // belongsTo : {

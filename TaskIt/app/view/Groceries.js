@@ -33,11 +33,11 @@ myNewGroceryItem = new Ext.Panel({
                     console.log(tempURL);
                     Ext.Ajax.request({
                         url: tempURL,
-                        method : 'PUT',
+                        method : 'POST',
 			params : {
-			    user_id: USER_ID,
+			    // user_id: USER_ID,
 			    group_id: GROUP_ID,
-			    item: grocery_item
+			    name: grocery_item
 			},
                         success: function(response){
                             var text = response.responseText;

@@ -18,6 +18,7 @@ Ext.define('TaskIt.view.Login', {
         items: [
             {
                 xtype : 'panel',
+                styleHtmlContent: true,
                 width : '90%',
                 items : [
                     {

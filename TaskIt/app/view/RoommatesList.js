@@ -1,6 +1,9 @@
-
 var roommatesTpl = new Ext.XTemplate(
-    'Hello {first_name}'
+    '<tpl if="email==\'',userEmail,'\'">',
+        '<div class="myTaskText">{first_name}</div>',
+    '<tpl else>',
+        '<div class="otherTaskText">{first_name}</div>',
+    '</tpl>'
 );
 
 
@@ -13,17 +16,16 @@ Ext.define('TaskIt.view.RoommatesList', {
         'Ext.dataview.List'
     ],
     config: {
-        store: 'Chores',
-        fullscreen : true,
+        store: 'Roommates',
         styleHtmlContent : true, 
         itemTpl : roommatesTpl,
-        id : 'roommatesListId'
-        // listeners : {
-        //     itemtap : function(t, index, target, record, e, eOpts){
-        //         console.log(record.data);
-        //     },
+        iconCls : 'list',
+        listeners : {
+            itemtap : function(t, index, target, record, e, eOpts){
+                
+            }
 
-        // }
+        }
         
     }
     
