@@ -105,6 +105,8 @@ Ext.define('TaskIt.view.Groceries', {
             },
             {
                 xtype : 'groceryList',
+                style:'background-color:rgba(0,0,0,0);',
+                styleHtmlCls:'mySemiTransparentList',
 
                         //cls:'myAppBackground',
                 flex : 3,
