@@ -1,6 +1,6 @@
 var myChoreStore={};
 var myVar;
-
+var GROUP_ID;
 // var myChoreStore;
 //
 Ext.define('TaskIt.controller.Login', {
@@ -74,7 +74,7 @@ Ext.define('TaskIt.controller.Login', {
                 myVar = JSON.parse(response.responseText);
                 var chorestore = Ext.getStore('Chores');
 		var x=0;
-
+                GROUP_ID = myVar.group_id;
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
                         // myChoreStore[x] = myVar.users[i].todays_chores[j];
