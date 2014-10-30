@@ -1,4 +1,3 @@
-
 GroceryStore=Ext.define("TaskIt.store.Groceries", {
     extend: "Ext.data.Store",
     requires : [
@@ -9,12 +8,13 @@ GroceryStore=Ext.define("TaskIt.store.Groceries", {
         autoLoad: true,
          proxy : {
             type : 'ajax',
-            url : base_URL.concat('/group/',GROUP_ID,'/grocery/'),
+            method: 'get',
+            url : base_URL.concat('group/',GROUP_ID,'/grocery/'),
                 // url: 'app/store/temp.json',
             useDefaultXhrHeader : false,
             reader : {
                 type : 'json',
-                rootProperty : 'chores'
+                // rootProperty : 'chores'
             }
         }
     }

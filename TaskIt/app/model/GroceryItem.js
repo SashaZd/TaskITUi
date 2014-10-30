@@ -3,7 +3,8 @@ Ext.define('TaskIt.model.GroceryItem', {
     config: {
         fields: [
             { name: 'id', type: 'int' },
-            { name: 'grocery_item', type: 'auto' }
+            { name: 'grocery_item', type: 'auto' },
+            {name: 'is_done', type: 'boolean'}
         ]
 
         // belongsTo : {

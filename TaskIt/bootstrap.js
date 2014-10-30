@@ -11,6 +11,7 @@
 Ext.Loader.addClassPathMappings({
   "Ext": "touch/src",
   "Ext-more": "touch/src/core/Ext-more.js",
+  "Ext.Boot": ".sencha/app/Boot.js",
   "Ext.DomHelper": "touch/src/dom/Helper.js",
   "Ext.DomQuery": "touch/src/dom/Query.js",
   "Ext.Element-alignment": "touch/src/dom/Element.alignment.js",
@@ -31,7 +32,8 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "TaskIt": "app"
+  "TaskIt": "app",
+  "TaskIt.view.Settings": "app/view/test.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -81,6 +83,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.Template": [],
   "Ext.Title": [],
   "Ext.TitleBar": [],
+  "Ext.Toast": [],
   "Ext.Toolbar": [],
   "Ext.Video": [],
   "Ext.XTemplate": [],
@@ -530,6 +533,17 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -659,12 +673,15 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.controller.Signup": [],
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
+  "TaskIt.model.OnlyChore": [],
   "TaskIt.model.Roommate": [],
   "TaskIt.model.Setting": [],
   "TaskIt.store.Chores": [],
   "TaskIt.store.Groceries": [],
+  "TaskIt.store.OnlyChores": [],
   "TaskIt.store.Roommates": [],
   "TaskIt.store.Settings": [],
+  "TaskIt.view.AllChoresList": [],
   "TaskIt.view.ChoreList": [],
   "TaskIt.view.ChoreListPanel": [],
   "TaskIt.view.Groceries": [],
@@ -673,6 +690,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.view.Login": [],
   "TaskIt.view.Main": [],
   "TaskIt.view.OthersChoreList": [],
+  "TaskIt.view.RoommatesList": [],
   "TaskIt.view.Settings": [],
   "TaskIt.view.Setup": [],
   "TaskIt.view.Signup": [],
@@ -758,6 +776,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.TitleBar": [
     "widget.titlebar"
   ],
+  "Ext.Toast": [],
   "Ext.Toolbar": [
     "widget.toolbar"
   ],
@@ -1257,6 +1276,17 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -1402,12 +1432,17 @@ Ext.ClassManager.addNameAliasMappings({
   "TaskIt.controller.Signup": [],
   "TaskIt.model.Chore": [],
   "TaskIt.model.GroceryItem": [],
+  "TaskIt.model.OnlyChore": [],
   "TaskIt.model.Roommate": [],
   "TaskIt.model.Setting": [],
   "TaskIt.store.Chores": [],
   "TaskIt.store.Groceries": [],
+  "TaskIt.store.OnlyChores": [],
   "TaskIt.store.Roommates": [],
   "TaskIt.store.Settings": [],
+  "TaskIt.view.AllChoresList": [
+    "widget.allChoresList"
+  ],
   "TaskIt.view.ChoreList": [
     "widget.choreList"
   ],
@@ -1431,6 +1466,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "TaskIt.view.OthersChoreList": [
     "widget.othersChoreList"
+  ],
+  "TaskIt.view.RoommatesList": [
+    "widget.roommatesList"
   ],
   "TaskIt.view.Settings": [
     "widget.settings"
