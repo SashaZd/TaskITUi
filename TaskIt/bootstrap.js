@@ -33,7 +33,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "TaskIt": "app",
-  "TaskIt.view.Settings": "app/view/test.js"
+  "TaskIt.view.Settings": "app/view/Settings.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({

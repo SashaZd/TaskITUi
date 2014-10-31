@@ -14,6 +14,7 @@ Ext.define('TaskIt.view.OthersChoreList', {
     config: {
         store: 'OnlyChores',
         styleHtmlContent : true, 
+        styleHtmlCls:'mySemiTransparentList',
         // cls : 'intro',
         itemTpl : tplOther,
         listeners : {
