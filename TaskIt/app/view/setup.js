@@ -99,6 +99,7 @@ Ext.define('TaskIt.view.Setup', {
                             {
                                 xtype : 'button',
                                 iconCls : 'add',
+                                id : 'addGroupChoresButton',
                                 action : 'addGroupChores'
                             }
                         ]
@@ -116,10 +117,32 @@ Ext.define('TaskIt.view.Setup', {
                     },
                     {
                         xtype : 'panel',
-                        flex : 1
-                    }
+                        flex : 1,
+                        items : [
+                            {
+                                xtype : 'button',
+                                text : 'Finish',
+                                styleHtmlContent : true,
+                                id : 'SetupFinish',
+                                handler : function(){
+                                    TaskIt.app.getController('Login').doLogin();
+                                    TaskIt.app.getController('Login').setChores();
+                                    TaskIt.app.getController('Login').setGroceryStore();
+                                    setTimeout(function() {
+                                        Ext.getCmp('startScreen').getLayout().setAnimation({
+                                            type: 'slide',
+                                            duration: 300,
+                                            reverse: true,
+                                            direction:'right'
+                                        });
+                                        Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+                                    });
+                                }
+                            }
+                        ]
+                    },
         
-           
+                        
 
                  //    {
                  //        xtype : 'spacer'

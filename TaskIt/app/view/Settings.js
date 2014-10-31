@@ -13,62 +13,142 @@ Ext.define('TaskIt.view.Settings', {
     config: {
         title: 'Settings',
         id: 'settingsPanel',
-        iconCls: 'settings',
-        styleHtmlContent : true,
+        iconCls: 'settings',  
         layout : {
             type : 'vbox',
-            pack : 'center',
-            align : 'center'
-        },    
+            align : 'center',
+            pack : 'center'
+        },
         defaults : {
-            width : '80%'
-        },    
-        // scrollable : true,
+            width : '90%'
+        },
         items: [
             {
-                xtype : 'titlebar',
-                title : 'Settings',
-                docked : 'top',
-                width : '100%'
+                xtype: 'titlebar',
+                docked: 'top',
+                title: '<font size=3>Setup the Group</font>'
             },
             {
                 xtype : 'panel',
                 flex : 1,
-                layout : 'fit',
-                id : 'householdDetails',
-                styleHtmlContent : true,
-                tpl : groupSettingsTpl
-                // data : 
-            },
-            {
-                xtype : 'titlebar',
-                html : '<font color="white">Roommmates</font>',
-                styleHtmlContent : true,
-                style : 'background-color:#0174DF;'
-            },
-            {
-                xtype : 'roommatesList',
-                layout : 'fit',
-                // id : 'myChoreList',
-                flex : 3,
-                styleHtmlContent : true
-            },
-            {
-                xtype : 'panel',
-                html : 'Chores',
-                styleHtmlContent : true,
-                style : 'background-color:#0174DF;'
-            },
-            {
-                xtype : 'othersChoreList',
-                // id : 'othersChoreList',
-                flex : 3,
-                styleHtmlContent : true
+                height : '40%',
+                layout : {
+                    type : 'vbox',
+                    align : 'center',
+                    pack : 'center'
+                },
+                defaults : {
+                    width : '90%',
+                    margin : '5 5 5 5'
+                },
+                items : [
+                    {
+                        xtype : 'panel',
+                        flex : 1
+                    },
+                    {
+                        xtype : 'panel',
+                        flex : 1,
+                        layout : 'fit',
+                        id : 'householdDetails',
+                        styleHtmlContent : true,
+                        tpl : groupSettingsTpl
+                    },
+                    {
+                        xtype :'toolbar',
+                        flex : 1,
+                        styleHtmlContent : true,
+                        title : '<h3> Group Members </h3>',
+                        items : [
+                            {
+                                xtype : 'button',
+                                iconCls : 'add',
+                                action : 'addGroupMembers',
+                            }
+                        ]
+                    },
+                    {
+                        xtype : 'panel',
+                        flex : 4,
+                        items : [
+                            {  
+                                xtype : 'roommatesList',
+                                layout : 'fit',
+                                height : '100%',
+                                styleHtmlContent : true
+                            }
+                        ]
+        
+                    },
+                    {
+                        xtype : 'toolbar',
+                        styleHtmlContent : true,
+                        title : '<h3>Group Chores</h3>',
+                        flex : 1,
+                        items : [
+                            {
+                                xtype : 'button',
+                                iconCls : 'add',
+                                action : 'addGroupChores'
+                            }
+                        ]
+                    },
+                    {
+                        xtype : 'panel',
+                        flex : 4, 
+                        items : [
+                            {
+                                xtype : 'onlyChoresList',
+                                height : '100%',
+                                styleHtmlContent : true
+                            }
+                        ]
+                    },
+                    {
+                        xtype : 'panel',
+                        flex : 1
+                    }
+                ]
             }
+            // {
+            //     xtype : 'titlebar',
+            //     title : 'Settings',
+            //     docked : 'top',
+            //     width : '100%'
+            // },
+            // {
+            //     xtype : 'panel',
+            //     layout : {
+            //         type : 'vbox',
+            //         pack : 'center',
+            //         align : 'center'
+            //     },
+            //     defaults : {
+            //         width : '90%',
+            //         margin : '5 5 5 5'
+            //     },
+            //     items : [
+            //         
+            //         {
+            //             xtype : 'toolbar',
+            //             flex : 1,
+            //             html : '<font color="white">Roommmates</font>',
+            //             styleHtmlContent : true
+            //         },
+            //         
+            //         {
+            //             xtype : 'toolbar',
+            //             html : '<font color="white">Chores</font>',
+            //             styleHtmlContent : true
+            //         },
+            //         {
+            //             xtype : 'othersChoreList',
+            //             flex : 3
+            //         }
+
+            //     ]
+            // }
         ]
-
-
-
 
             // {
             //  xtype : 'panel',

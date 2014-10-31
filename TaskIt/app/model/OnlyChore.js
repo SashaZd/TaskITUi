@@ -5,7 +5,8 @@ Ext.define('TaskIt.model.OnlyChore', {
             { name: 'group_id', type: 'int' },
             { name: 'groupName', type: 'auto' },
             { name: 'chore_id', type: 'auto' },
-            { name: 'chore_name', type: 'auto' }
+            { name: 'chore_name', type: 'auto' },
+            { name: 'frequency', type: 'auto' }
         ]
 
         // belongsTo : {

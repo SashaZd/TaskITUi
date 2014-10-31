@@ -9,6 +9,16 @@ Ext.define("TaskIt.store.Roommates", {
 		reader : {
             type : 'json',
             rootProperty : 'users'
-        }
+        },
+        sorters : [
+            {
+                property : 'first_name',
+                direction : 'ASC'
+            },
+            {
+                property : 'last_name',
+                direction : 'ASC'
+            }
+        ]
     }
 });

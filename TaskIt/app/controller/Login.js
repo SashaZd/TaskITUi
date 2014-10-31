@@ -42,6 +42,12 @@ Ext.define('TaskIt.controller.Login', {
                         Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
                     });
 
+                    allChoresTpl = new Ext.XTemplate(
+                        "<div width='100%' class='otherTaskText'><p class='alignleft'>{chore_name}</p><p class='alignright'>{frequency}</p></div>"
+                    );
+
+                    Ext.getCmp('onlyChoresList').setItemTpl(allChoresTpl);
+
                     chorelisttpl = new Ext.XTemplate(
                         "<tpl if='email == \"",userEmail,"\" '>",
                             "<tpl if='is_done==true'>",

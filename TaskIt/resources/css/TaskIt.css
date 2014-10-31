@@ -18,6 +18,14 @@ p {
 } 
 */
 
+.alignleft {
+	float : left;
+}
+
+.alignright {
+	flat : right;
+}
+
 .myTransparentList {
 
 	background-color: rgba(0,0,0,0);

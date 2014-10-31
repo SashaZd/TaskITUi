@@ -13,7 +13,11 @@ Ext.define("TaskIt.store.OnlyChores", {
                 type : 'json',
                 rootProperty : 'chores'
             }
-        }      
+        },
+        sorters : [{
+                property : 'chore_name',
+                direction : 'ASC'
+            }]      
 
     }
 });
