@@ -28,19 +28,18 @@ Ext.define('TaskIt.view.Login', {
                         xtype: 'container',
 
                         defaults: {
-                            margin: '5 5 5 5'
+                            margin: '5 5 5 5',
+                            labelWidth: '40%'
                         },
                         items: [
                             {
                                 xtype: 'emailfield',
                                 label: 'Email ID',
-                                style:'background-color:rgba(0,0,0,0);',
                                 id : 'loginEmail'
                             },
                             {
                                 xtype: 'passwordfield',
                                 label: 'Password',
-                                style:'background-color:rgba(0,0,0,0);'
                             },
                             {
                                 xtype : 'panel',

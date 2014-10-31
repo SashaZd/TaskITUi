@@ -18,7 +18,6 @@ Ext.define('TaskIt.view.RoommatesList', {
     config: {
         store: 'Roommates',
         styleHtmlContent : true,
-        styleHtmlCls:'mySemiTransparentList',
         itemTpl : roommatesTpl,
         iconCls : 'list',
         listeners : {

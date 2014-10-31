@@ -21,21 +21,22 @@ p {
 .alignleft {
 	float : left;
 }
-
 .alignright {
 	flat : right;
 }
-
-.myTransparentList {
-
-	background-color: rgba(0,0,0,0);
-}
-.myTransparentLabel {
-	background-color: rgba(255,255,255,0);
-}
-
 .mySemiTransparentList {
 	background-color:rgba(125,125,125,0.5);
+	border-radius: 5px;
+}
+.x-toolbar.x-docked-top {
+	background-color: rgba(255,255,255,0.7);
+}
+.myToolBars {
+	background-color:rgba(125,125,125,0.5);
+}
+.myInAppToolbar{
+	background-color:rgba(255,255,255,0.5);
+	border-radius: 5px;
 }
 
 .myAppBackground {
@@ -43,28 +44,52 @@ p {
 	background-image:
     radial-gradient(
       circle at top left,
-      rgba(176,18,60,50),
+      rgba(176,18,60,0.5),
       rgba(255,255,255,0)
     ),
     radial-gradient(
       circle at top right,
-      rgba(247,159,16,50),
+      rgba(247,159,16,0.5),
       rgba(255,255,255,0)
     ),
     radial-gradient(
       circle at bottom right,
-      #49ad02,
+      rgba(73,173,2,0.5),
       rgba(255,255,255,0)
     ),
     radial-gradient(
       circle at bottom left,
-      #1854a2,
+      rgba(24,84,162,0.5),
       rgba(255,255,255,0)
     );
 }
 
+.x-panel .x-field {
+	background-color: transparent;
+}
+
+.x-form-label {
+    text-align: right;
+    background-color: transparent;
+ }
+
+/* highlighted tab bar icon color */
+.x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon:before {
+  	color: white;
+}
+
+/* tab bar highlighted icon background color */
+.x-tabbar-dark.x-docked-bottom .x-tab-active{
+	background-color:black;
+}
+
+/* tab bar background color */
+.x-tabbar-dark.x-docked-bottom {
+	background-color: rgb(224,224,224);
+}
+
 .x-list .x-list-item.strikethrough {
-    background-color: #ffccff;
+    background-color: #ffffff;
 }
 
 .myRoommatesText {
@@ -86,38 +111,9 @@ p {
 
 } 
 
-.my    Added a Login Empty Screen for Brandon to code in
-
-commit 02a78c002f86a5314b4444a7c11a16e0495c0aeb
-Author: Rahul Goel <irodov.rg@gmail.com>
-Date:   Thu Oct 23 12:17:34 2014 -0400
-
-    New files
-
-commit 6fba7d64de6cb71e75755c3968efc268d8038ba4
-Author: Rahul Goel <irodov.rg@gmail.com>
-Date:   Thu Oct 23 12:14:34 2014 -0400
-
-    Removed unneeded folders
-
-commit b203f4ec2b651a0222a85f10d29060271ab50767
-Author: brandonchastain <brandonchastain@gmail.com>
-Date:   Thu Oct 23 11:17:32 2014 -0400
-
-    Added the UI code
-
-commit 71ad30b16aa28ef04b29af1e0625b2b2df6121c1
-Author: Chastain, Brandon Clay <brandonchastain@gatech.edu>
-Date:   Thu Oct 23 11:06:36 2014 -0400
-
-    Initial commit
-rahul@rahul-ThinkPad-T440s /opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt $ 
-rahul@rahul-ThinkPad-T440s /opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt $ git pull
-Already up-to-date.
-rahul@rahul-ThinkPad-T440s /opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt $ 
-TaskTextCompleted {
+.myTaskTextCompleted {
 	position: relative;
-	color: grey;
+	color: gray;
 	text-decoration: line-through;
 	font-weight: bolder;
 	font-size: 16px;

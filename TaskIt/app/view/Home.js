@@ -11,6 +11,7 @@ Ext.define('TaskIt.view.Home', {
     config: {
         title: 'Home',
         iconCls: 'home',
+        style:'background-color:rgba(0,0,0,0);',
         styleHtmlContent : true,
         layout : {
             type : 'vbox'
@@ -20,6 +21,9 @@ Ext.define('TaskIt.view.Home', {
             {
                 xtype: 'titlebar',
                 docked: 'top',
+                //style:'background-color:rgba(0,0,0,0);',
+                //styleHtmlContent:true,
+                //styleHtmlCls:'myTitleBar',
                 title: '<font size=3>Home</font>'
             },
             {

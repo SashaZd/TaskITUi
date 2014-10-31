@@ -24,25 +24,23 @@ Ext.define('TaskIt.view.Signup', {
                         xtype: 'container',
                         styleHtmlContent : true,
                         defaults: {
-                            margin: '5 5 5 5'
+                            margin: '5 5 5 5',
+                            labelWidth: '45%'
                         },
                         items: [
                             {
                                 xtype: 'emailfield',
                                 label: 'Email',
-                                style:'background-color:rgba(0,0,0,0);',
                                 id : 'signup_email'
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'First Name',
-                                style:'background-color:rgba(0,0,0,0);',
                                 id: 'signup_firstname'
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'Last Name',
-                                style:'background-color:rgba(0,0,0,0);',
                                 id: 'signup_lastname'
                             },
                             {

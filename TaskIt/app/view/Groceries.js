@@ -68,7 +68,9 @@ Ext.define('TaskIt.view.Groceries', {
         style:'background-color:rgba(0,0,0,0);',
         styleHtmlContent : true,
         layout : {
-            type : 'vbox'
+            type : 'vbox',
+            align : 'center',
+            pack : 'center'
         },
         items : [
             {
@@ -104,15 +106,23 @@ Ext.define('TaskIt.view.Groceries', {
                 ]
             },
             {
+                xtype:'spacer',
+                flex:1
+            },
+            {
                 xtype : 'groceryList',
                 style:'background-color:rgba(0,0,0,0);',
                 styleHtmlCls:'mySemiTransparentList',
-
+                width:'90%',
                         //cls:'myAppBackground',
-                flex : 3,
+                flex : 7,
                 styleHtmlContent : true, 
                 scrollable : true
             },
+            {
+                xtype:'spacer',
+                flex:1
+            }
         ]
 
 

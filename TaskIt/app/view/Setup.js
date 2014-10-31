@@ -11,6 +11,7 @@ Ext.define('TaskIt.view.Setup', {
     config: {
         // title: 'Setup',
         // iconCls: 'home',
+        style:'background-color: white; background-image:radial-gradient(circle at top left,rgba(176,18,60,0.5),rgba(255,255,255,0)),radial-gradient(circle at top right,rgba(247,159,16,0.5),rgba(255,255,255,0)),radial-gradient(circle at bottom right,rgba(73,173,2,0.5),rgba(255,255,255,0)),radial-gradient(circle at bottom left,rgba(24,84,162,0.5),rgba(255,255,255,0));',
         styleHtmlContent : true,
           
         // scrollable : true,
@@ -33,6 +34,7 @@ Ext.define('TaskIt.view.Setup', {
             {
                 xtype: 'titlebar',
                 docked: 'top',
+                width:'100%',
                 title: '<font size=3>Setup the Group</font>'
             },
             {
@@ -65,6 +67,8 @@ Ext.define('TaskIt.view.Setup', {
                         xtype :'toolbar',
                         flex : 1,
                         styleHtmlContent : true,
+                        style:'background-color:rgba(0,0,0,0);',
+                        styleHtmlCls:'myInAppToolbar',
                         title : '<h3> Group Members </h3>',
                         items : [
                             {
@@ -84,6 +88,8 @@ Ext.define('TaskIt.view.Setup', {
                                 xtype : 'defaultTaskList',
                                 // flex : 3,
                                 height : '100%',
+                                style:'background-color:rgba(0,0,0,0);',
+                                styleHtmlCls:'mySemiTransparentList',
                                 styleHtmlContent : true,
 
                               },
@@ -93,6 +99,8 @@ Ext.define('TaskIt.view.Setup', {
                     {
                         xtype : 'toolbar',
                         styleHtmlContent : true,
+                        style:'background-color:rgba(0,0,0,0);',
+                        styleHtmlCls:'myInAppToolbar',
                         title : '<h3>Group Chores</h3>',
                         flex : 1,
                         items : [
@@ -106,11 +114,15 @@ Ext.define('TaskIt.view.Setup', {
                     },
                     {
                         xtype : 'panel',
-                        flex : 4, 
+                        flex : 4,
+                        style:'background-color:rgba(0,0,0,0);',
+                        styleHtmlCls:'mySemiTransparentList',
                         items : [
                             {
                                 xtype : 'defaultTaskList',
                                 height : '100%',
+                                style:'background-color:rgba(0,0,0,0);',
+                                styleHtmlCls:'mySemiTransparentList',
                                 styleHtmlContent : true  
                             }
                         ]

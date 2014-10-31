@@ -13,7 +13,8 @@ Ext.define('TaskIt.view.Settings', {
     config: {
         title: 'Settings',
         id: 'settingsPanel',
-        iconCls: 'settings',  
+        style:'background-color:rgba(0,0,0,0);',
+        iconCls: 'settings',
         layout : {
             type : 'vbox',
             align : 'center',
@@ -25,6 +26,7 @@ Ext.define('TaskIt.view.Settings', {
         items: [
             {
                 xtype: 'titlebar',
+                width:'100%',
                 docked: 'top',
                 title: '<font size=3>Setup the Group</font>'
             },
@@ -57,6 +59,8 @@ Ext.define('TaskIt.view.Settings', {
                     {
                         xtype :'toolbar',
                         flex : 1,
+                        style:'background-color:rgba(0,0,0,0)',
+                        styleHtmlCls:'myInAppToolbar',
                         styleHtmlContent : true,
                         title : '<h3> Group Members </h3>',
                         items : [
@@ -75,6 +79,8 @@ Ext.define('TaskIt.view.Settings', {
                                 xtype : 'roommatesList',
                                 layout : 'fit',
                                 height : '100%',
+                                style:'background-color:rgba(0,0,0,0)',
+                                styleHtmlCls:'mySemiTransparentList',
                                 styleHtmlContent : true
                             }
                         ]
@@ -82,6 +88,8 @@ Ext.define('TaskIt.view.Settings', {
                     },
                     {
                         xtype : 'toolbar',
+                        style:'background-color:rgba(0,0,0,0)',
+                        styleHtmlCls:'myInAppToolbar',
                         styleHtmlContent : true,
                         title : '<h3>Group Chores</h3>',
                         flex : 1,
@@ -100,6 +108,8 @@ Ext.define('TaskIt.view.Settings', {
                             {
                                 xtype : 'onlyChoresList',
                                 height : '100%',
+                                style:'background-color:rgba(0,0,0,0)',
+                                styleHtmlCls:'mySemiTransparentList',
                                 styleHtmlContent : true
                             }
                         ]

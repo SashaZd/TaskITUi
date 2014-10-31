@@ -6,6 +6,8 @@ Ext.define('TaskIt.view.Main', {
     ],
     config: {
         tabBarPosition: 'bottom',
+        style:'background-color:rgba(0,0,0,0);',
+        ui:'transparent',
         styleHtmlContent : true,
         items: [
             {
