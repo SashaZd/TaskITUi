@@ -9,6 +9,7 @@ Ext.define('TaskIt.controller.Signup', {
             signUpButton: 'signup button[action=signUp]',
             setupNewGroupMembers : 'setup button[action=addGroupMembers]',
             setupNewGroupChores : 'setup button[action=addGroupChores]'
+
         },
         control: {
             setupNewGroupMembers : {

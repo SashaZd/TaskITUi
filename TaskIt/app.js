@@ -1,3 +1,12 @@
+var userEmail;
+var myChoreStore={};
+var myGroceryStore={};
+var myVar;
+var GROUP_ID=1;
+var chorelisttpl;
+var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/'
+
+
 /*
     This file is generated and updated by Sencha Cmd. You can edit this file as
     needed for your application, but these edits will have to be merged by

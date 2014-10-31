@@ -1,22 +1,3 @@
-var userEmail = "brandonchastain@gmail.com";
-
-var chorelisttpl = new Ext.XTemplate(
-    "<tpl if='email == \"",userEmail,"\" '>",
-        "<tpl if='is_done==true'>",
-            "<div class='taskTextCompleted'>You are {chore_name}</div>",
-        "<tpl else>",
-            "<div class='myTaskText'>You are {chore_name} </div>",
-        "</tpl>",
-    "<tpl else>",
-    "<tpl if='is_done==true'>",
-            "<div class='myTaskTextCompleted'>{first_name} : {chore_name}</div>",
-        "<tpl else>",
-            "<div class='otherTaskText'>{first_name} : {chore_name}</div>",
-        "</tpl>",
-    "</tpl>"
-);
-
-
 Ext.define('TaskIt.view.ChoreList', {
     extend: 'Ext.List',
     xtype: 'choreList',
@@ -27,17 +8,16 @@ Ext.define('TaskIt.view.ChoreList', {
     ],
     config: {
         store: 'Chores',
+        id : 'myChoreList',
         styleHtmlContent : true, 
         itemTpl : chorelisttpl,
         iconCls : 'list',
         listeners : {
             itemswipe : function(t, index, target, record, e, eOpts){
-                console.log(record.data.chore_id);
-
                 if(record.data.email == userEmail){
                     var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
                     Ext.Ajax.request({
-                        type : 'PUT',
+                        method : 'PUT',
                         url: tempURL,
                         success: function(response){
                             console.log(tempURL);
@@ -46,7 +26,7 @@ Ext.define('TaskIt.view.ChoreList', {
                         }
                     });
 
-                    Ext.get
+                    
                 }
                 else {
                     console.log("Not your chore to do!!");
@@ -54,7 +34,11 @@ Ext.define('TaskIt.view.ChoreList', {
 
                 
             },
+            activate : function(){
+                
 
+
+            }
         }
         
     }

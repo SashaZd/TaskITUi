@@ -1,9 +1,3 @@
-var myChoreStore={};
-var myGroceryStore={};
-var myVar;
-var GROUP_ID=1;
-
-var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/'
 
 
 // var myChoreStore;
@@ -28,13 +22,13 @@ Ext.define('TaskIt.controller.Login', {
 
     doLogin : function(){
 
-        var email = Ext.getCmp('loginEmail').getValue();
+        userEmail = Ext.getCmp('loginEmail').getValue();
 
         Ext.Ajax.request({
             type : 'POST',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
             params: {
-                email : email
+                email : userEmail
             },
             // withCredentials : true,
             useDefaultXhrHeader: false,
@@ -50,6 +44,24 @@ Ext.define('TaskIt.controller.Login', {
                         });
                         Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
                     });
+
+                    chorelisttpl = new Ext.XTemplate(
+                        "<tpl if='email == \"",userEmail,"\" '>",
+                            "<tpl if='is_done==true'>",
+                                "<div class='taskTextCompleted'>You are {chore_name}</div>",
+                            "<tpl else>",
+                                "<div class='myTaskText'>You are {chore_name} </div>",
+                            "</tpl>",
+                        "<tpl else>",
+                        "<tpl if='is_done==true'>",
+                                "<div class='myTaskTextCompleted'>{first_name} : {chore_name}</div>",
+                            "<tpl else>",
+                                "<div class='otherTaskText'>{first_name} : {chore_name}</div>",
+                            "</tpl>",
+                        "</tpl>"
+                    );
+
+                    Ext.getCmp('myChoreList').setItemTpl(chorelisttpl);
                 }
                 else {
                     console.log("Login Error");
@@ -74,12 +86,12 @@ Ext.define('TaskIt.controller.Login', {
 
     setChores: function(){
         console.log('Setting Chores');
+        Ext.getStore('Chores').removeAll();
         Ext.Ajax.request({
             type : 'GET',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
             success: function(response){
                 myVar = JSON.parse(response.responseText);
-                var chorestore = Ext.getStore('Chores');
                 var x=0;
                 GROUP_ID = myVar.group_id;
                 for (var i = 0; i< myVar.users.length; i++) {
@@ -94,7 +106,7 @@ Ext.define('TaskIt.controller.Login', {
                         myChoreStore[x].last_name = myVar.users[i].last_name;
                         myChoreStore[x].email = myVar.users[i].email;
                         // console.log(myVar.users[i].email);
-                        chorestore.insert(x,myChoreStore[x]);
+                        Ext.getStore('Chores').insert(x,myChoreStore[x]);
                         x++;
                     }
                 }
