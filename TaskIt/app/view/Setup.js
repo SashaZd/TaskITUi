@@ -99,6 +99,7 @@ Ext.define('TaskIt.view.Setup', {
                             {
                                 xtype : 'button',
                                 iconCls : 'add',
+                                id : 'addGroupChoresButton',
                                 action : 'addGroupChores'
                             }
                         ]

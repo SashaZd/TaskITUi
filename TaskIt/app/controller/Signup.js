@@ -1,19 +1,22 @@
 
 var myNewRoomm;
+var myNewRoomm1;
 Ext.define('TaskIt.controller.Signup', {
     extend: 'Ext.app.Controller',
 
     config: {
         refs: {
             signUpButton: 'signup button[action=signUp]',
-            setupNewGroupMembers : 'setup button[action=addGroupMembers]'
-            setupNewGroupMembers : 'setup button[action=addGroupChores]'
+            setupNewGroupMembers : 'setup button[action=addGroupMembers]',
+            setupNewGroupChores : 'setup button[action=addGroupChores]'
         },
         control: {
             setupNewGroupMembers : {
                 tap : 'setupNewGroupMembersFn'
             },
-
+            setupNewGroupChores : {
+                tap : 'setupNewGroupChoresFn'
+            },
             signUpButton: {
                 tap: function() {
                     var email = Ext.getCmp('signup_email').getValue();
@@ -157,8 +160,72 @@ Ext.define('TaskIt.controller.Signup', {
         }
     },
 
-    //called when the Application is launched, remove if not needed
-    launch: function(app) {
 
-    }
-});
+    setupNewGroupChoresFn : function(){
+        var buttonIconCls = Ext.getCmp('addGroupChoresButton').getIconCls();
+        if (buttonIconCls == "add"){
+
+            myNewChoresNewPanel = new Ext.Panel({
+                layout : {
+                    type : 'hbox'
+                },
+                items : [
+                    {
+                        xtype: 'textfield',
+                        name: 'name',
+                        id : 'addNewChores',
+                        width : '80%'
+
+                    },
+                    {xtype : 'spacer', width : '2%'},
+                    {
+                        xtype : 'button',
+                        text : 'Add',
+                        width : '18%',
+                        handler : function(){
+                            var chore_item=Ext.getCmp('addNewChoresName').getValue();
+                            Ext.getStore('OnlyChore').add({chore_name: Ext.getCmp('addNewChoresName').getValue()});
+                            Ext.getStore('OnlyChore').sync();
+                            var tempURL = "http://tempUrl.com";
+                            // var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
+                            console.log(tempURL);
+                            Ext.Ajax.request({
+                                url: tempURL,
+                                method : 'POST',
+                                params : {
+                                    // user_id: USER_ID,
+                                    group_id: GROUP_ID,
+                                    chore_name: chore_item
+                                },
+                                success: function(response){
+                                    var text = response.responseText;
+                                    console.log("Successs true...");
+                                    console.log(text);
+                                    Ext.getStore('OnlyChores').sync();
+                                    Ext.getStore('OnlyChores').load();
+                                }
+                            });                                
+                        }
+                    }
+                ]
+            });
+
+            Ext.getCmp('addMembersAndChoresPanel').insert(5,myNewChoresNewPanel);
+            Ext.getCmp('addGroupChoresButton').setText('<font size=3>Done</font>');
+            Ext.getCmp('addGroupChoresButton').setIconCls('');
+        }
+        else {
+            // console.log('Going in');
+            Ext.getCmp('addGroupChoresButton').setText('');
+            Ext.getCmp('addGroupChoresButton').setIconCls('add');   
+            Ext.getCmp('addMembersAndChoresPanel').remove(myNewChoresNewPanel);
+        }
+    },
+
+        //called when the Application is launched, remove if not needed
+        launch: function(app) {
+
+        }
+    });
+
+
