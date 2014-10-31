@@ -6,7 +6,7 @@ Ext.define('TaskIt.controller.Signup', {
     config: {
         refs: {
             signUpButton: 'signup button[action=signUp]',
-            setupNewGroupMembers : 'setup button[action=addGroupMembers]'
+            setupNewGroupMembers : 'setup button[action=addGroupMembers]',
             setupNewGroupMembers : 'setup button[action=addGroupChores]'
         },
         control: {
