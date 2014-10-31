@@ -1,7 +1,4 @@
 
-
-// var myChoreStore;
-//
 Ext.define('TaskIt.controller.Login', {
     extend: 'Ext.app.Controller',
 

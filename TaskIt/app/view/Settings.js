@@ -7,13 +7,13 @@ Ext.define('TaskIt.view.Settings', {
     xtype: 'settings',
     requires: [
         'Ext.TitleBar',
-		'Ext.List',
+        'Ext.List',
         'Ext.MessageBox'
     ],
     config: {
         title: 'Settings',
-		id: 'settingsPanel',
-        icon: 'settings',
+        id: 'settingsPanel',
+        iconCls: 'settings',
         styleHtmlContent : true,
         layout : {
             type : 'vbox',
@@ -41,7 +41,7 @@ Ext.define('TaskIt.view.Settings', {
                 // data : 
             },
             {
-                xtype : 'toolbar',
+                xtype : 'titlebar',
                 html : '<font color="white">Roommmates</font>',
                 styleHtmlContent : true,
                 style : 'background-color:#0174DF;'
@@ -50,7 +50,6 @@ Ext.define('TaskIt.view.Settings', {
                 xtype : 'roommatesList',
                 layout : 'fit',
                 // id : 'myChoreList',
-
                 flex : 3,
                 styleHtmlContent : true
             },
@@ -71,20 +70,20 @@ Ext.define('TaskIt.view.Settings', {
 
 
 
-        	// {
-        	// 	xtype : 'panel',
+            // {
+            //  xtype : 'panel',
          //        styleHtmlContent : true,
-        	// 	layout : {
-        	// 		type : 'vbox',
-        	// 		pack : 'center',
-        	// 		align : 'center'
-        	// 	},
-        	// 	defaults : { 
-        	// 		width : '80%',
+            //  layout : {
+            //      type : 'vbox',
+            //      pack : 'center',
+            //      align : 'center'
+            //  },
+            //  defaults : { 
+            //      width : '80%',
          //            margin : '5 5 5 5'
-        	// 	},
-        	// 	items : [
-        			
+            //  },
+            //  items : [
+                    
          //            // {xtype : 'spacer'},
          //            {
          //                xtype : 'titlebar', 
@@ -124,8 +123,8 @@ Ext.define('TaskIt.view.Settings', {
          //                //     }
          //                // ]
          //            }
-        	// 	]
-        	// }
+            //  ]
+            // }
 
     }
 });
@@ -138,7 +137,7 @@ Ext.define('TaskIt.view.Settings', {
 //             type : 'vbox'
 //         },
 //     defaults:{ 
-// 	margin: '5 5 5 5'
+//  margin: '5 5 5 5'
 //     },
 //         items : [
 //             {
@@ -148,18 +147,18 @@ Ext.define('TaskIt.view.Settings', {
 //                 width : '30%'
 
 //             },
-// 	    // insert space here
-// 	    {
-// 		xtype: 'selectfield',
+//      // insert space here
+//      {
+//      xtype: 'selectfield',
 //                 name: 'name',
 //                 id : 'choreFrequency',
 //                 width : '30%'
-// 		options: [
+//      options: [
 //                         {text: 'First Option',  value: 'Weekly'},
 //                         {text: 'Second Option', value: 'Daily'},
 //                         {text: 'Third Option',  value: 'Mon'}
-//                     ]		
-// 	    },
+//                     ]        
+//      },
 
 //             {xtype : 'spacer', width : '2%'},
 //             {
@@ -177,8 +176,8 @@ Ext.define('TaskIt.view.Settings', {
 //                     //         var text = response.responseText;
 //                     //     }
 //                     // });
-// 		    var chore=Ext.getCmp('addNewChore').getValue();
-// 		    var frequency=Ext.getCmp('choreFrequency').getValue();
+//          var chore=Ext.getCmp('addNewChore').getValue();
+//          var frequency=Ext.getCmp('choreFrequency').getValue();
 
 //                     Ext.getStore('Chores').add({Chore: chore});
 //                     Ext.getStore('Chores').sync();
@@ -187,12 +186,12 @@ Ext.define('TaskIt.view.Settings', {
 //                     // Ext.Ajax.request({
 //                     //     url: tempURL,
 //                     //     method : 'PUT',
-// 		    // 	params : {
-// 		    // 	    user_id: USER_ID,
-// 		    // 	    group_id: GROUP_ID,
-// 		    // 	    chore_name: chore,
-// 		    // 	    chore_frequency: frequency
-// 		    // 	},
+//          //  params : {
+//          //      user_id: USER_ID,
+//          //      group_id: GROUP_ID,
+//          //      chore_name: chore,
+//          //      chore_frequency: frequency
+//          //  },
 //                     //     success: function(response){
 //                     //         var text = response.responseText;
 //                     //         console.log("Successs true...");
@@ -213,12 +212,12 @@ Ext.define('TaskIt.view.Settings', {
 //     xtype: 'settings',
 //     requires: [
 //         'Ext.TitleBar',
-// 	'Ext.List',
+//  'Ext.List',
 //         'Ext.MessageBox'
 //     ],
 //     config: {
 //         title: 'Settings',
-// 	id: 'chorePanel',
+//  id: 'chorePanel',
 //         iconCls: 'list',
 //         // iconMask : true,
 //         styleHtmlContent : true,
@@ -235,7 +234,7 @@ Ext.define('TaskIt.view.Settings', {
 //                     {xtype : 'spacer'},
 //                     {
 //                         xtype : 'button',
-// 			id: 'addToChores',
+//          id: 'addToChores',
 //                         iconCls : 'add',
 //                         align : 'right',
 //                         handler : function (){
