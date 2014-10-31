@@ -78,7 +78,36 @@ p {
 
 } 
 
-.myTaskTextCompleted {
+.my    Added a Login Empty Screen for Brandon to code in
+
+commit 02a78c002f86a5314b4444a7c11a16e0495c0aeb
+Author: Rahul Goel <irodov.rg@gmail.com>
+Date:   Thu Oct 23 12:17:34 2014 -0400
+
+    New files
+
+commit 6fba7d64de6cb71e75755c3968efc268d8038ba4
+Author: Rahul Goel <irodov.rg@gmail.com>
+Date:   Thu Oct 23 12:14:34 2014 -0400
+
+    Removed unneeded folders
+
+commit b203f4ec2b651a0222a85f10d29060271ab50767
+Author: brandonchastain <brandonchastain@gmail.com>
+Date:   Thu Oct 23 11:17:32 2014 -0400
+
+    Added the UI code
+
+commit 71ad30b16aa28ef04b29af1e0625b2b2df6121c1
+Author: Chastain, Brandon Clay <brandonchastain@gatech.edu>
+Date:   Thu Oct 23 11:06:36 2014 -0400
+
+    Initial commit
+rahul@rahul-ThinkPad-T440s /opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt $ 
+rahul@rahul-ThinkPad-T440s /opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt $ git pull
+Already up-to-date.
+rahul@rahul-ThinkPad-T440s /opt/lampp/htdocs/NewUiRepo/TaskITUi/TaskIt $ 
+TaskTextCompleted {
 	position: relative;
 	color: grey;
 	text-decoration: line-through;

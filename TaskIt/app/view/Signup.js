@@ -31,24 +31,24 @@ Ext.define('TaskIt.view.Signup', {
                                 xtype: 'emailfield',
                                 label: 'Email',
                                 style:'background-color:rgba(0,0,0,0);',
-                                id : 'email'
+                                id : 'signup_email'
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'First Name',
                                 style:'background-color:rgba(0,0,0,0);',
-                                id: 'firstname'
+                                id: 'signup_firstname'
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'Last Name',
                                 style:'background-color:rgba(0,0,0,0);',
-                                id: 'lastname'
+                                id: 'signup_lastname'
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'Group Name',
-                                id: 'groupname'
+                                id: 'signup_groupname'
                             },
                             {
                                 xtype: 'button',

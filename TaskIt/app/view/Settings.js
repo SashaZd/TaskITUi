@@ -13,7 +13,7 @@ Ext.define('TaskIt.view.Settings', {
     config: {
         title: 'Settings',
 		id: 'settingsPanel',
-        iconCls: 'settings',
+        icon: 'settings',
         styleHtmlContent : true,
         layout : {
             type : 'vbox',
@@ -41,7 +41,7 @@ Ext.define('TaskIt.view.Settings', {
                 // data : 
             },
             {
-                xtype : 'titlebar',
+                xtype : 'toolbar',
                 html : '<font color="white">Roommmates</font>',
                 styleHtmlContent : true,
                 style : 'background-color:#0174DF;'
@@ -50,6 +50,7 @@ Ext.define('TaskIt.view.Settings', {
                 xtype : 'roommatesList',
                 layout : 'fit',
                 // id : 'myChoreList',
+
                 flex : 3,
                 styleHtmlContent : true
             },

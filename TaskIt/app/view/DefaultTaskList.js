@@ -22,6 +22,7 @@ Ext.define('TaskIt.view.DefaultTaskList', {
         title : 'DefaultTasks',
         iconCls : 'list',
         store: 'OnlyChores',
+        layout : 'fit',
         // styleHtmlContent : true, 
         itemTpl : defaulttasktpl,
         listeners : {

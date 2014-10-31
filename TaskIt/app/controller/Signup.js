@@ -1,17 +1,25 @@
+
+var myNewRoomm;
 Ext.define('TaskIt.controller.Signup', {
     extend: 'Ext.app.Controller',
 
     config: {
         refs: {
-            signUpButton: 'signup button[action=signUp]'
+            signUpButton: 'signup button[action=signUp]',
+            setupNewGroupMembers : 'setup button[action=addGroupMembers]'
+            setupNewGroupMembers : 'setup button[action=addGroupChores]'
         },
         control: {
+            setupNewGroupMembers : {
+                tap : 'setupNewGroupMembersFn'
+            },
+
             signUpButton: {
                 tap: function() {
-                    var email = Ext.getCmp('email').getValue();
-                    var first = Ext.getCmp('firstname').getValue();
-                    var last = Ext.getCmp('lastname').getValue();
-                    var groupName = Ext.getCmp('groupname').getValue();
+                    var email = Ext.getCmp('signup_email').getValue();
+                    var first = Ext.getCmp('signup_firstname').getValue();
+                    var last = Ext.getCmp('signup_lastname').getValue();
+                    var groupName = Ext.getCmp('signup_groupname').getValue();
 
                     Ext.Ajax.request({
                         type : 'POST',
@@ -82,6 +90,70 @@ Ext.define('TaskIt.controller.Signup', {
                     });
                 }
             }
+        }
+    },
+
+    setupNewGroupMembersFn : function(){
+        var buttonIconCls = Ext.getCmp('addGroupMembersButton').getIconCls();
+
+
+
+        if (buttonIconCls == "add"){
+
+            myNewRoomm = new Ext.Panel({
+                layout : {
+                    type : 'hbox'
+                },
+                items : [
+                    {
+                        xtype: 'textfield',
+                        name: 'name',
+                        id : 'addNewMembersEmail',
+                        width : '80%'
+
+                    },
+                    {xtype : 'spacer', width : '2%'},
+                    {
+                        xtype : 'button',
+                        text : 'Add',
+                        width : '18%',
+                        handler : function(){
+                            var roommate_item=Ext.getCmp('addNewMembersEmail').getValue();
+                            Ext.getStore('Roommates').add({email: Ext.getCmp('addNewMembersEmail').getValue()});
+                            Ext.getStore('Roommates').sync();
+                            var tempURL = "http://tempUrl.com";
+                            // var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
+                            console.log(tempURL);
+                            Ext.Ajax.request({
+                                url: tempURL,
+                                method : 'POST',
+                                params : {
+                                    // user_id: USER_ID,
+                                    group_id: GROUP_ID,
+                                    email: roommate_item
+                                },
+                                success: function(response){
+                                    var text = response.responseText;
+                                    console.log("Successs true...");
+                                    console.log(text);
+                                    Ext.getStore('Roommates').sync();
+                                    Ext.getStore('Roommates').load();
+                                }
+                            });                                
+                        }
+                    }
+                ]
+            });
+
+            Ext.getCmp('addMembersAndChoresPanel').insert(3,myNewRoomm);
+            Ext.getCmp('addGroupMembersButton').setText('<font size=3>Done</font>');
+            Ext.getCmp('addGroupMembersButton').setIconCls('');
+        }
+        else {
+            // console.log('Going in');
+            Ext.getCmp('addGroupMembersButton').setText('');
+            Ext.getCmp('addGroupMembersButton').setIconCls('add');   
+            Ext.getCmp('addMembersAndChoresPanel').remove(myNewRoomm);
         }
     },
 
