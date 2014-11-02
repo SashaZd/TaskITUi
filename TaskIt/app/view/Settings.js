@@ -32,6 +32,7 @@ Ext.define('TaskIt.view.Settings', {
             },
             {
                 xtype : 'panel',
+                id : 'settingsElements',
                 flex : 1,
                 height : '40%',
                 layout : {
@@ -68,9 +69,11 @@ Ext.define('TaskIt.view.Settings', {
                                 xtype : 'button',
                                 iconCls : 'add',
                                 action : 'addGroupMembers',
+                                id : 'settings_addGroupMembers'
                             }
                         ]
                     },
+                //will insert the new member form here from settings controller
                     {
                         xtype : 'panel',
                         flex : 4,
@@ -97,7 +100,8 @@ Ext.define('TaskIt.view.Settings', {
                             {
                                 xtype : 'button',
                                 iconCls : 'add',
-                                action : 'addGroupChores'
+                                action : 'addGroupChores',
+                                id : 'settings_addGroupChores'
                             }
                         ]
                     },

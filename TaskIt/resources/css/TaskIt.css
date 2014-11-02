@@ -20,9 +20,16 @@ p {
 
 .alignleft {
 	float : left;
+	font-weight: bold;
+	font-size: 3;
 }
 .alignright {
-	flat : right;
+	float : right;
+	text-align: right;
+	position: relative;
+	margin: 0;
+	margin-right: 0;
+	font-size: 1;
 }
 .mySemiTransparentList {
 	background-color:rgba(125,125,125,0.5);

@@ -43,7 +43,12 @@ Ext.define('TaskIt.controller.Login', {
                     });
 
                     allChoresTpl = new Ext.XTemplate(
-                        "<div width='100%' class='otherTaskText'><p class='alignleft'>{chore_name}</p><p class='alignright'>{frequency}</p></div>"
+                        "<table width='100%'>",
+                            "<tr width='100%'>",
+                                "<td class='alignleft'>{chore_name}</td>",
+                                "<td class='alignright'>{frequency}</td>",
+                            "</tr>",
+                        "</table>"
                     );
 
                     Ext.getCmp('onlyChoresList').setItemTpl(allChoresTpl);

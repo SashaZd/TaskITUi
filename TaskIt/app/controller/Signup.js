@@ -1,4 +1,3 @@
-
 var myNewRoomm;
 var myNewRoomm1;
 Ext.define('TaskIt.controller.Signup', {
@@ -103,8 +102,6 @@ Ext.define('TaskIt.controller.Signup', {
 
     setupNewGroupMembersFn : function(){
         var buttonIconCls = Ext.getCmp('addGroupMembersButton').getIconCls();
-
-
 
         if (buttonIconCls == "add"){
 

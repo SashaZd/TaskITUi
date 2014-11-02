@@ -18,6 +18,10 @@ Ext.define("TaskIt.store.Roommates", {
             {
                 property : 'last_name',
                 direction : 'ASC'
+            },
+            {
+                property : 'email',
+                direction : 'ASC'
             }
         ]
     }
