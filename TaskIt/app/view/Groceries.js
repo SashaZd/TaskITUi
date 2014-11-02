@@ -7,6 +7,7 @@ myNewGroceryItem = new Ext.Panel({
                 xtype: 'textfield',
                 name: 'name',
                 id : 'addNewGroceryItem',
+                label : 'Item Name',
                 width : '80%'
 
             },
@@ -14,7 +15,7 @@ myNewGroceryItem = new Ext.Panel({
             {
                 xtype : 'button',
                 text : 'Add',
-                width : '18%',
+                width : '24%',
                 handler : function(){
         		    var grocery_item=Ext.getCmp('addNewGroceryItem').getValue();
                     Ext.getStore('Groceries').add({grocery_item: Ext.getCmp('addNewGroceryItem').getValue()});

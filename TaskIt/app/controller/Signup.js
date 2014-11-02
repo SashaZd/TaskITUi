@@ -211,8 +211,8 @@ Ext.define('TaskIt.controller.Signup', {
                     }
                 ]
             });
-
-            Ext.getCmp('addMembersAndChoresPanel').insert(5,myNewChoresNewPanel);
+            var len = Ext.getCmp('addMembersAndChoresPanel').getItems().length;
+            Ext.getCmp('addMembersAndChoresPanel').insert(len-2,myNewChoresNewPanel);
             Ext.getCmp('addGroupChoresButton').setText('<font size=3>Done</font>');
             Ext.getCmp('addGroupChoresButton').setIconCls('');
         }
