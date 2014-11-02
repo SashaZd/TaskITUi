@@ -152,32 +152,9 @@ Ext.define('TaskIt.controller.Login', {
         });
     },
 
-    setGroceryStore: function(){
-        // Ext.Ajax.request({
-        //     type : 'GET',
-        //     url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/grocery/',
-        //     success: function(response){
-        //         myVar = JSON.parse(response.responseText);
-        //         var grocerystore = Ext.getStore('Groceries');
-        //         var x=0;
-
-        //         for (var i = 0; i< myVar.length; i++) {
-        //             myGroceryStore[x]={};
-        //             myGroceryStore[x].id=myVar[i].grocery_id;
-        //             myGroceryStore[x].grocery_item=myVar[i].name;
-        //             myGroceryStore[x].is_done=myVar[i].is_done;
-        //             grocerystore.insert(x,myGroceryStore[x]);
-        //             x++;
-        //         }
-        //     }
-        // });
-    },
-
     //called when the Application is launched, remove if not needed
     launch: function(app) {
         this.setChores();
-
-        this.setGroceryStore();
 
         // GroceryStore.getProxy().clear();
         Ext.getStore('Groceries').removeAll();

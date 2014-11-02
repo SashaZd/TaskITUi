@@ -21,12 +21,12 @@ Ext.define('TaskIt.controller.MainTabs', {
     },
 
     settingsPanelFns: function(){
-        groupSettingsTpl.overwrite(Ext.getCmp('householdDetails').element, Ext.getStore('Settings').getData().all[0].raw);
         
-        Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);
-        console.log('Settings Panel is active');
-
-
+        
+        if(Ext.getStore('Settings').getData().all.length>0){
+            Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);    
+            groupSettingsTpl.overwrite(Ext.getCmp('householdDetails').element, Ext.getStore('Settings').getData().all[0].raw);
+        }
 
     },
 

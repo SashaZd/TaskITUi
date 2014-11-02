@@ -1,5 +1,3 @@
-var mytemp;
-
 Ext.define('TaskIt.view.Home', {
     extend: 'Ext.Panel',
     xtype: 'home',
@@ -16,14 +14,10 @@ Ext.define('TaskIt.view.Home', {
         layout : {
             type : 'vbox'
         },
-        // scrollable : true,
         items: [
             {
                 xtype: 'titlebar',
                 docked: 'top',
-                //style:'background-color:rgba(0,0,0,0);',
-                //styleHtmlContent:true,
-                //styleHtmlCls:'myTitleBar',
                 title: '<font size=3>Home</font>'
             },
             {
