@@ -9,8 +9,6 @@ Ext.define('TaskIt.view.Setup', {
         'Ext.MessageBox'
     ],
     config: {
-        // title: 'Setup',
-        // iconCls: 'home',
         style:'background-color: white; background-image:radial-gradient(circle at top left,rgba(176,18,60,0.5),rgba(255,255,255,0)),radial-gradient(circle at top right,rgba(247,159,16,0.5),rgba(255,255,255,0)),radial-gradient(circle at bottom right,rgba(73,173,2,0.5),rgba(255,255,255,0)),radial-gradient(circle at bottom left,rgba(24,84,162,0.5),rgba(255,255,255,0));',
         styleHtmlContent : true,
           
@@ -90,7 +88,7 @@ Ext.define('TaskIt.view.Setup', {
                                 height : '100%',
                                 style:'background-color:rgba(0,0,0,0);',
                                 styleHtmlCls:'mySemiTransparentList',
-                                styleHtmlContent : true,
+                                styleHtmlContent : true
 
                               },
                         ]
@@ -152,41 +150,7 @@ Ext.define('TaskIt.view.Setup', {
                                 }
                             }
                         ]
-                    },
-        
-                        
-
-                 //    {
-                 //        xtype : 'spacer'
-                 //    },
-                 //    {htm
-                 //        xtype : '',
-                 //        id : 'addToChoreList',
-                 //        iconCls : 'add',
-                 //        // ui : 'add',
-                 //        handler : function(){
-                 //            // add to chores here //
-
-                 //            // var buttonIconCls = Ext.getCmp('addToGroceryList').getIconCls();
-
-                 //            // if (buttonIconCls == "add"){
-                 //            //     Ext.getCmp('groceryPanel').insert(0,myNewGroceryItem);
-                 //            //     Ext.getCmp('addToGroceryList').setText('<font size=3>Done</font>');
-                 //            //     Ext.getCmp('addToGroceryList').setIconCls('');
-                 //            // }
-                 //            // else {
-                 //            //     Ext.getCmp('addToGroceryList').setText('<font size=3>Done</font>');
-                 //            //     Ext.getCmp('addToGroceryList').setIconCls('');
-                 //            //     Ext.getCmp('groceryPanel').remove(myNewGroceryItem);
-                 //            // }
-                 //            Ext.Msg.alert(
-                 //                'Add!',
-                 //                'To the store',
-                 //                Ext.emptyFn
-                 //            );
-                 //        }
-
-                 //    }
+                    }
                 ]
             }
 

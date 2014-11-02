@@ -18,86 +18,118 @@ Ext.define('TaskIt.controller.Signup', {
                 tap : 'setupNewGroupChoresFn'
             },
             signUpButton: {
-                tap: function() {
-                    var email = Ext.getCmp('signup_email').getValue();
-                    var first = Ext.getCmp('signup_firstname').getValue();
-                    var last = Ext.getCmp('signup_lastname').getValue();
-                    var groupName = Ext.getCmp('signup_groupname').getValue();
+                tap: 'signUp'
+            }
+        }
+    },
 
-                    Ext.Ajax.request({
-                        type : 'POST',
-                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/user/',
-                        params: {
-                            email : email,
-                            first_name: first,
-                            last_name: last,
-                            group_name: groupName
-                        },
-                        success: function(response){
-                            var r = JSON.parse(response.responseText);
-                            var userId = r.user_id;
-                            if (!r.group_exists) {
-                                Ext.Msg.confirm(
-                                    'Create New Group',
-                                    "There is no existing group with this name. Would you like to create a new one?",
-                                    // Ext.emptyFn,
-                                    function(button){
-                                        console.log(button);
-                                        if(button=='yes'){
-                                            Ext.Ajax.request({
-                                                type : 'POST',
-                                                url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/',
-                                                params: {
-                                                    group_name: groupName
-                                                },
-                                                success: function(response){
-                                                    var r = JSON.parse(response.responseText);
-                                                    var groupId = r.group_id;
-                                                    Ext.Ajax.request({
-                                                        method: 'POST',
-                                                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/' + groupId + '/user/' + userId + '/',
-                                                     params: {}
-                                                    });
-                                                    setTimeout(function() {
-                                                        Ext.getCmp('startScreen').getLayout().setAnimation({
-                                                            type: 'slide',
-                                                            duration: 300,
-                                                            reverse: true,
-                                                            direction:'right'
-                                                        });
-                                                        Ext.getCmp('startScreen').setActiveItem(1, {type : 'slide', direction:'right'});
-                                                    });
-                                                }
+    signUp : function() {
+                    
+        var email = Ext.getCmp('signup_email').getValue();
+        var first = Ext.getCmp('signup_firstname').getValue();
+        var last = Ext.getCmp('signup_lastname').getValue();
+        var groupName = Ext.getCmp('signup_groupname').getValue();
 
-                                            });
-                                        }//transition to setup screen
-                                    }
-                                );
-                            } else {
+        Ext.Ajax.request({
+            type : 'POST',
+            url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/user/',
+            params: {
+                email : email,
+                first_name: first,
+                last_name: last,
+                group_name : groupName
+            },
+            success: function(response){
+                console.log('User created');
+                var r = JSON.parse(response.responseText);
+                var userId = r.user_id;
+
+                //Create new group if it doesn't already exist
+                if (!r.group_exists) {
+
+                    Ext.Msg.confirm(
+                        'Create New Group',
+                        "There is no existing group with this name. Would you like to create a new one?",
+                        function(button){
+                            console.log(button);
+                            if(button=='yes'){
                                 Ext.Ajax.request({
-                                    type: 'POST',
-                                    url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
+                                    type : 'POST',
+                                    url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/',
                                     params: {
-                                        email: email
+                                        group_name: groupName
                                     },
                                     success: function(response){
-                                        setTimeout(function() {
-                                            Ext.getCmp('startScreen').getLayout().setAnimation({
-                                                type: 'slide',
-                                                duration: 300,
-                                                reverse: true,
-                                                direction:'right'
-                                            });
-                                            Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+                                        console.log('Group created');
+                                        var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userId.toString(), '/');
+                                        var r = JSON.parse(response.responseText);
+                                        var groupId = r.group_id;
+
+                                        //Setting Global variable
+                                        GROUP_ID = groupId;
+
+                                        //assign user to the group made earlier
+                                        Ext.Ajax.request({
+                                            method: 'POST',
+                                            url: tempURL2,
+                                            success : function(response){
+                                                console.log("user assigned to group");
+                                                setTimeout(function() {
+
+                                                    Ext.Ajax.request({
+                                                        type: 'POST',
+                                                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
+                                                        params: {
+                                                            email: email
+                                                        },
+                                                        success: function(response){
+                                                            console.log('Login done');
+                                                            setTimeout(function() {
+                                                                Ext.getCmp('startScreen').getLayout().setAnimation({
+                                                                    type: 'slide',
+                                                                    duration: 300,
+                                                                    reverse: true,
+                                                                    direction:'right'
+                                                                });
+                                                                Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+
+                                                            });
+                                                        }
+                                                    });
+                                                    
+                                                });
+                                            }
                                         });
+                                        
                                     }
+
                                 });
-                            }
+                            }//transition to setup screen
+                        }
+                    );
+                } else {
+                    Ext.Ajax.request({
+                        type: 'POST',
+                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
+                        params: {
+                            email: email
+                        },
+                        success: function(response){
+                            console.log("Login done");
+                            setTimeout(function() {
+                                Ext.getCmp('startScreen').getLayout().setAnimation({
+                                    type: 'slide',
+                                    duration: 300,
+                                    reverse: true,
+                                    direction:'right'
+                                });
+                                Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+                            });
                         }
                     });
                 }
             }
-        }
+        });
     },
 
     setupNewGroupMembersFn : function(){
@@ -111,7 +143,7 @@ Ext.define('TaskIt.controller.Signup', {
                 },
                 items : [
                     {
-                        xtype: 'textfield',
+                        xtype: 'emailfield',
                         name: 'name',
                         id : 'addNewMembersEmail',
                         width : '80%'
@@ -123,28 +155,41 @@ Ext.define('TaskIt.controller.Signup', {
                         text : 'Add',
                         width : '18%',
                         handler : function(){
-                            var roommate_item=Ext.getCmp('addNewMembersEmail').getValue();
-                            Ext.getStore('Roommates').add({email: Ext.getCmp('addNewMembersEmail').getValue()});
-                            Ext.getStore('Roommates').sync();
-                            var tempURL = "http://tempUrl.com";
-                            // var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
+                            var tempURL = base_URL.concat('user/');
                             console.log(tempURL);
+
+                            
+                            //Creating new User
                             Ext.Ajax.request({
                                 url: tempURL,
                                 method : 'POST',
                                 params : {
-                                    // user_id: USER_ID,
-                                    group_id: GROUP_ID,
-                                    email: roommate_item
+                                    first_name: 'Unverified',
+                                    last_name: 'Unverified',
+                                    email: Ext.getCmp('addNewMembersEmail').getValue()
                                 },
                                 success: function(response){
-                                    var text = response.responseText;
-                                    console.log("Successs true...");
-                                    console.log(text);
-                                    Ext.getStore('Roommates').sync();
-                                    Ext.getStore('Roommates').load();
+                                    //get server generated UserID
+                                    console.log(response.responseText);
+                                    setUserId = JSON.parse(response.responseText).user_id;
+
+                                    //add user to the pre-existing group
+                                    var tempURL2 = base_URL.concat('group/', GROUP_ID.toString(), '/user/', setUserId.toString(), '/');
+                                    console.log(tempURL2);
+                                    Ext.Ajax.request({
+                                        url: tempURL,
+                                        method : 'POST',
+                                        success: function(response2){
+                                            console.log(response2.responseText);
+                                            
+                                            Ext.getStore('Roommates').add({email: Ext.getCmp('addNewMembersEmail').getValue().getValue()});
+                                            Ext.getStore('Roommates').sync();
+
+                                            Ext.getCmp('addNewMembersEmail').getValue().setValue('');
+                                        }
+                                    }); 
                                 }
-                            });                                
+                            });
                         }
                     }
                 ]

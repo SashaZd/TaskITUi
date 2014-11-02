@@ -27,18 +27,7 @@ Ext.define('TaskIt.view.DefaultTaskList', {
         itemTpl : defaulttasktpl,
         listeners : {
             itemswipe : function(t, index, target, record, e, eOpts){
-                console.log("default here");    
-
-            //        var tempURL = base_URL.concat('grocery/',record.data.id,'/');
-            //         Ext.Ajax.request({
-            //         method : 'PUT',
-            //         url: tempURL,
-            //         success: function(response){
-            //             console.log(response.responseText);
-            //             console.log('Done the grocery!');
-
-                    // },
-                // }); 
+                console.log("default here");
             }
         }
     }
