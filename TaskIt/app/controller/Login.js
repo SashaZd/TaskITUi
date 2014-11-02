@@ -1,4 +1,3 @@
-
 Ext.define('TaskIt.controller.Login', {
     extend: 'Ext.app.Controller',
 
@@ -39,37 +38,13 @@ Ext.define('TaskIt.controller.Login', {
                             reverse: true,
                             direction:'right'
                         });
+
+                        TaskIt.app.getController('Login').setAllTpls();
+
                         Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
                     });
 
-                    allChoresTpl = new Ext.XTemplate(
-                        "<table width='100%'>",
-                            "<tr width='100%'>",
-                                "<td class='alignleft'>{chore_name}</td>",
-                                "<td class='alignright'>{frequency}</td>",
-                            "</tr>",
-                        "</table>"
-                    );
 
-                    Ext.getCmp('onlyChoresList').setItemTpl(allChoresTpl);
-
-                    chorelisttpl = new Ext.XTemplate(
-                        "<tpl if='email == \"",userEmail,"\" '>",
-                            "<tpl if='is_done==true'>",
-                                "<div class='taskTextCompleted'>You are {chore_name}</div>",
-                            "<tpl else>",
-                                "<div class='myTaskText'>You are {chore_name} </div>",
-                            "</tpl>",
-                        "<tpl else>",
-                        "<tpl if='is_done==true'>",
-                                "<div class='myTaskTextCompleted'>{first_name} : {chore_name}</div>",
-                            "<tpl else>",
-                                "<div class='otherTaskText'>{first_name} : {chore_name}</div>",
-                            "</tpl>",
-                        "</tpl>"
-                    );
-
-                    Ext.getCmp('myChoreList').setItemTpl(chorelisttpl);
                 }
                 else {
                     console.log("Login Error");
@@ -79,6 +54,54 @@ Ext.define('TaskIt.controller.Login', {
             }
         });
     },
+
+    setAllTpls: function(){
+
+        //Chores List for Settings
+            allChoresTpl = new Ext.XTemplate(
+                "<table width='100%'>",
+                    "<tr width='100%'>",
+                        "<td class='alignleft'>{chore_name}</td>",
+                        "<td class='alignright'>{frequency}</td>",
+                    "</tr>",
+                "</table>"
+            );
+
+            Ext.getCmp('onlyChoresList').setItemTpl(allChoresTpl);
+
+        //Daily Chores List for Home Screen
+            chorelisttpl = new Ext.XTemplate(
+                "<tpl if='email == \"",userEmail,"\" '>",
+                    "<tpl if='is_done==true'>",
+                        "<div class='taskTextCompleted'>You are {chore_name}</div>",
+                    "<tpl else>",
+                        "<div class='myTaskText'>You are {chore_name} </div>",
+                    "</tpl>",
+                "<tpl else>",
+                "<tpl if='is_done==true'>",
+                        "<div class='myTaskTextCompleted'>{first_name} : {chore_name}</div>",
+                    "<tpl else>",
+                        "<div class='otherTaskText'>{first_name} : {chore_name}</div>",
+                    "</tpl>",
+                "</tpl>"
+            );
+
+            Ext.getCmp('myChoreList').setItemTpl(chorelisttpl);
+
+        //Grocery List for the Group
+            grocerytpl = new Ext.XTemplate(
+                '<center>',
+                "<tpl if='is_done==true'>",
+                        "<div class='taskTextCompleted'>{grocery_item}</div>",
+                    "<tpl else>",
+                        "<div class='myTaskText'> {grocery_item} </div>",
+                    "</tpl>",   
+                '<center>'
+            );
+
+            Ext.getCmp('myGroceryList').setItemTpl(grocerytpl);
+    },
+
     goToSignUp: function() {
         var email = Ext.getCmp('loginEmail').getValue();
         setTimeout(function() {
@@ -94,9 +117,9 @@ Ext.define('TaskIt.controller.Login', {
 
     setChores: function(){
         console.log('Setting Chores');
-        Ext.getStore('Chores').removeAll();
+        
         Ext.Ajax.request({
-            type : 'GET',
+            method : 'GET',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
             success: function(response){
                 myVar = JSON.parse(response.responseText);
@@ -104,8 +127,7 @@ Ext.define('TaskIt.controller.Login', {
                 GROUP_ID = myVar.group_id;
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
-                        // myChoreStore[x] = myVar.users[i].todays_chores[j];
-                          // console.log(i);
+
                         myChoreStore[x]={};
                         myChoreStore[x].chore_name = myVar.users[i].todays_chores[j].chore_name;
                         myChoreStore[x].chore_id = myVar.users[i].todays_chores[j].chore_id;
@@ -114,10 +136,16 @@ Ext.define('TaskIt.controller.Login', {
                         myChoreStore[x].last_name = myVar.users[i].last_name;
                         myChoreStore[x].email = myVar.users[i].email;
                         // console.log(myVar.users[i].email);
-                        Ext.getStore('Chores').insert(x,myChoreStore[x]);
                         x++;
                     }
                 }
+
+                Ext.getStore('Chores').removeAll();
+                
+                for(var y in myChoreStore) {
+                    Ext.getStore('Chores').add(myChoreStore[y]);
+                }
+                
 
 
             }

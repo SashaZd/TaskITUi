@@ -3,7 +3,7 @@ var myChoreStore={};
 var myGroceryStore={};
 var myVar;
 var GROUP_ID=1;
-var chorelisttpl, allChoresTpl;
+var chorelisttpl, allChoresTpl, grocerytpl; 
 var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/'
 
 

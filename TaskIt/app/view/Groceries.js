@@ -16,17 +16,7 @@ myNewGroceryItem = new Ext.Panel({
                 text : 'Add',
                 width : '18%',
                 handler : function(){
-                    // Ext.Ajax.request({
-                    //     url: 'page.php',
-                    //     params: {
-                    //         addToGroup : 1,
-                    //         groceryItem : Ext.getCmp('addNewGroceryItem').getValue()
-                    //     },
-                    //     success: function(response){
-                    //         var text = response.responseText;
-                    //     }
-                    // });
-		    var grocery_item=Ext.getCmp('addNewGroceryItem').getValue();
+        		    var grocery_item=Ext.getCmp('addNewGroceryItem').getValue();
                     Ext.getStore('Groceries').add({grocery_item: Ext.getCmp('addNewGroceryItem').getValue()});
                     Ext.getStore('Groceries').sync();
                     var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
@@ -34,11 +24,11 @@ myNewGroceryItem = new Ext.Panel({
                     Ext.Ajax.request({
                         url: tempURL,
                         method : 'POST',
-			params : {
-			    // user_id: USER_ID,
-			    group_id: GROUP_ID,
-			    name: grocery_item
-			},
+            			params : {
+            			    // user_id: USER_ID,
+            			    group_id: GROUP_ID,
+            			    name: grocery_item
+            			},
                         success: function(response){
                             var text = response.responseText;
                             console.log("Successs true...");
@@ -46,8 +36,7 @@ myNewGroceryItem = new Ext.Panel({
                             Ext.getStore('Groceries').sync();
                             Ext.getStore('Groceries').load();
                         }
-                    });
-                                    
+                    });             
                 }
             }
         ]

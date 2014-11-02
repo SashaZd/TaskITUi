@@ -55,7 +55,7 @@ Ext.define('TaskIt.view.Home', {
                            Ext.getStore('Chores').each(function(rec) {
                                 // if (something here) {
                                     var array=rec.get('users');
-                                    for (i=0;i<array.length;i++){
+                                    for (i in array){
                                          if (array[i].email == userEmail){
                                             for (var j =0; j< array[i].todays_chores.length; j++) {
                                                 var tempChoreID = array[i].todays_chores[j].chore_id;

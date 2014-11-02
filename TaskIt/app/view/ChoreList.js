@@ -21,8 +21,18 @@ Ext.define('TaskIt.view.ChoreList', {
                         url: tempURL,
                         success: function(response){
                             console.log(tempURL);
-                            console.log(response.responseText);
-                            console.log('Done the chore!');
+                            if(JSON.parse(response.responseText).success){
+                                console.log(response.responseText); 
+                                TaskIt.app.getController('Login').setChores();   
+                            }
+                            else {
+                                Ext.Msg.alert(
+                                    'Oh No!', 
+                                    'There seems to be a network error. Try again later.', 
+                                    Ext.emptyFn
+                                );
+                            }
+                            
                         }
                     });
 
