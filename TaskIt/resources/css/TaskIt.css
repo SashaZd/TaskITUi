@@ -1,22 +1,16 @@
-/*a {
- font-size: 15px;
- font-family: Helvetica, Sans-Serif;
- font-weight: bold;
+/* CHRISTIAN THIS NEXT BIT IS FOR THE GROUP HEADERS FOR THE GROCERIES LIST */
+
+$list-header-bg-color: black;
+$list-header-bg-gradient: none;
+
+.x-list-header
+{
+   height:100px;
+   /*color: Red;*/
+   font-size: 24pt;
 }
 
-a:hover {
- color: #b54090;
- text-decoration: none;
- font-weight: normal;
-}
- 
-p {
- background-color: #e7e8fe;
- font-size: 14pt;
- text-indent: 20px;
- font-family: Arial, Sans-Serif;
-} 
-*/
+/* END OF GROCERY LIST GROUPED HEADERS CSS */
 
 .alignleft {
 	float : left;
@@ -118,7 +112,7 @@ p {
 
 } 
 
-.myTaskTextCompleted {
+.taskTextCompleted {
 	position: relative;
 	color: gray;
 	text-decoration: line-through;

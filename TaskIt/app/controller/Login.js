@@ -92,9 +92,9 @@ Ext.define('TaskIt.controller.Login', {
             grocerytpl = new Ext.XTemplate(
                 '<center>',
                 "<tpl if='is_done==true'>",
-                        "<div class='taskTextCompleted'>{grocery_item}</div>",
+                        "<div class='taskTextCompleted'>{name}</div>",
                     "<tpl else>",
-                        "<div class='myTaskText'> {grocery_item} </div>",
+                        "<div class='myTaskText'> {name} </div>",
                     "</tpl>",   
                 '<center>'
             );
@@ -153,27 +153,24 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     setGroceryStore: function(){
-        Ext.Ajax.request({
-            type : 'GET',
-            url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/grocery/',
-            success: function(response){
-                myVar = JSON.parse(response.responseText);
-                var grocerystore = Ext.getStore('Groceries');
-                var x=0;
+        // Ext.Ajax.request({
+        //     type : 'GET',
+        //     url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/grocery/',
+        //     success: function(response){
+        //         myVar = JSON.parse(response.responseText);
+        //         var grocerystore = Ext.getStore('Groceries');
+        //         var x=0;
 
-                for (var i = 0; i< myVar.length; i++) {
-                    // for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
-                        // myChoreStore[x] = myVar.users[i].todays_chores[j];
-                    // console.log(i);
-                    myGroceryStore[x]={};
-                    myGroceryStore[x].id=myVar[i].grocery_id;
-                    myGroceryStore[x].grocery_item=myVar[i].name;
-                    // console.log(myVar[i].name);
-                    grocerystore.insert(x,myGroceryStore[x]);
-                    x++;
-                }
-            }
-        });
+        //         for (var i = 0; i< myVar.length; i++) {
+        //             myGroceryStore[x]={};
+        //             myGroceryStore[x].id=myVar[i].grocery_id;
+        //             myGroceryStore[x].grocery_item=myVar[i].name;
+        //             myGroceryStore[x].is_done=myVar[i].is_done;
+        //             grocerystore.insert(x,myGroceryStore[x]);
+        //             x++;
+        //         }
+        //     }
+        // });
     },
 
     //called when the Application is launched, remove if not needed

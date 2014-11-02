@@ -11,18 +11,22 @@ Ext.define('TaskIt.view.GroceryList', {
         id : 'myGroceryList',
         iconCls : 'list',
         store: 'Groceries',
+        loadingText : false,
+        grouped : true,
         // styleHtmlContent : true, 
         itemTpl : grocerytpl,
         listeners : {
             itemswipe : function(t, index, target, record, e, eOpts){
-                var tempURL = base_URL.concat('grocery/',record.data.id,'/');
+                console.log(record.data);
+                var tempGID = record.data.grocery_id.toString();
+                var tempURL = base_URL.concat('grocery/', tempGID ,'/');
                 console.log(tempURL);
                 Ext.Ajax.request({
                     method : 'PUT',
                     url: tempURL,
                     success: function(response){
                         console.log(response.responseText);
-                        console.log('Done the grocery!');
+                        Ext.getStore('Groceries').load();
 
                     },
                 }); 

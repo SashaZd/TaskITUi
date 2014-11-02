@@ -2,24 +2,37 @@ myNewGroceryItem = new Ext.Panel({
         layout : {
             type : 'hbox'
         },
+        width : '90%',
         items : [
             {
                 xtype: 'textfield',
                 name: 'name',
                 id : 'addNewGroceryItem',
-                label : 'Item Name',
-                width : '80%'
-
+                label : '<font size=3>Grocery Item</font>',
+                flex : 6,
+                // width : '80%',
+                margin : '0 0 0 -20'
             },
-            {xtype : 'spacer', width : '2%'},
+            {
+                xtype : 'spacer', 
+                // flex : 1
+                width : 3
+            },
             {
                 xtype : 'button',
+                margin : '5 0 0 0',
                 text : 'Add',
-                width : '24%',
+                flex : 1,
+                // width : '18%',
                 handler : function(){
         		    var grocery_item=Ext.getCmp('addNewGroceryItem').getValue();
-                    Ext.getStore('Groceries').add({grocery_item: Ext.getCmp('addNewGroceryItem').getValue()});
+
+                    Ext.getStore('Groceries').add({
+                        name: Ext.getCmp('addNewGroceryItem').getValue()
+                    });
+
                     Ext.getStore('Groceries').sync();
+                    
                     var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
                     console.log(tempURL);
                     Ext.Ajax.request({
