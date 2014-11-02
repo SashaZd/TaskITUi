@@ -61,10 +61,10 @@ Ext.define('TaskIt.controller.Signup', {
                                     },
                                     success: function(response){
                                         console.log('Group created');
-                                        var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userId.toString(), '/');
+                                        
                                         var r = JSON.parse(response.responseText);
                                         var groupId = r.group_id;
-
+                                        var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userId.toString(), '/');
                                         //Setting Global variable
                                         GROUP_ID = groupId;
 
@@ -158,7 +158,7 @@ Ext.define('TaskIt.controller.Signup', {
                             var tempURL = base_URL.concat('user/');
                             console.log(tempURL);
 
-                            
+
                             //Creating new User
                             Ext.Ajax.request({
                                 url: tempURL,
@@ -231,25 +231,20 @@ Ext.define('TaskIt.controller.Signup', {
                         width : '18%',
                         handler : function(){
                             var chore_item=Ext.getCmp('addNewChoresName').getValue();
-                            Ext.getStore('OnlyChore').add({chore_name: Ext.getCmp('addNewChoresName').getValue()});
-                            Ext.getStore('OnlyChore').sync();
-                            var tempURL = "http://tempUrl.com";
-                            // var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
+                            
+                            var tempURL = base_URL.concat('chore/');
                             console.log(tempURL);
+                            //Creating new User
                             Ext.Ajax.request({
                                 url: tempURL,
                                 method : 'POST',
                                 params : {
-                                    // user_id: USER_ID,
-                                    group_id: GROUP_ID,
-                                    chore_name: chore_item
+                                    chore_name: chore_item,
+                                    group_id: GROUP_ID
                                 },
                                 success: function(response){
-                                    var text = response.responseText;
-                                    console.log("Successs true...");
-                                    console.log(text);
-                                    Ext.getStore('OnlyChores').sync();
-                                    Ext.getStore('OnlyChores').load();
+                                    console.log(response.responseText);
+                                    console.log('Added Chore To Group');
                                 }
                             });                                
                         }
