@@ -15,7 +15,6 @@ Ext.define('TaskIt.view.Setup', {
         // scrollable : true,
         listeners : {
             show : function(){
-                // console.log("SHowwwwwwwww");
                 Ext.getCmp('setup_groupname').setValue(Ext.getCmp('signup_groupname').getValue());
             }
         },
@@ -59,6 +58,7 @@ Ext.define('TaskIt.view.Setup', {
                         xtype : 'textfield',
                         label : 'Group Name',
                         id : 'setup_groupname',
+                        disabled : true,
                         flex : 1
                     },
                     {

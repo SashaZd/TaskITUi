@@ -1,10 +1,8 @@
 
 var defaulttasktpl = new Ext.XTemplate(
     '<center>',
-    // "<tpl if='is_done==true'>",
-            // "<div class='taskTextCompleted'>{default_item}</div>",
         "<tpl>",
-            "<div class='myTaskText'> {chore_item} </div>",
+            "<div class='myTaskText'> {chore_name} </div>",
         "</tpl>",   
     '<center>'
 );

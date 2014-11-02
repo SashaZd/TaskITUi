@@ -91,7 +91,7 @@ Ext.define('TaskIt.controller.Signup', {
                                                                     reverse: true,
                                                                     direction:'right'
                                                                 });
-                                                                Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+                                                                Ext.getCmp('startScreen').setActiveItem(1, {type : 'slide', direction:'right'});
 
                                                             });
                                                         }
@@ -123,7 +123,7 @@ Ext.define('TaskIt.controller.Signup', {
                                     reverse: true,
                                     direction:'right'
                                 });
-                                Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+                                Ext.getCmp('startScreen').setActiveItem(1, {type : 'slide', direction:'right'});
                             });
                         }
                     });
