@@ -79,7 +79,7 @@ Ext.define('TaskIt.controller.Login', {
                     "</tpl>",
                 "<tpl else>",
                 "<tpl if='is_done==true'>",
-                        "<div class='myTaskTextCompleted'>{first_name} : {chore_name}</div>",
+                        "<div class='taskTextCompleted'>{first_name} : {chore_name}</div>",
                     "<tpl else>",
                         "<div class='otherTaskText'>{first_name} : {chore_name}</div>",
                     "</tpl>",

@@ -31,7 +31,7 @@ Ext.define('TaskIt.controller.Signup', {
         var groupName = Ext.getCmp('signup_groupname').getValue();
 
         Ext.Ajax.request({
-            type : 'POST',
+            method : 'POST',
             url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/user/',
             params: {
                 email : email,
@@ -54,7 +54,7 @@ Ext.define('TaskIt.controller.Signup', {
                             console.log(button);
                             if(button=='yes'){
                                 Ext.Ajax.request({
-                                    type : 'POST',
+                                    method : 'POST',
                                     url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/',
                                     params: {
                                         group_name: groupName
@@ -77,7 +77,7 @@ Ext.define('TaskIt.controller.Signup', {
                                                 setTimeout(function() {
 
                                                     Ext.Ajax.request({
-                                                        type: 'POST',
+                                                        method: 'POST',
                                                         url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
                                                         params: {
                                                             email: email
@@ -109,7 +109,7 @@ Ext.define('TaskIt.controller.Signup', {
                     );
                 } else {
                     Ext.Ajax.request({
-                        type: 'POST',
+                        method: 'POST',
                         url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
                         params: {
                             email: email
