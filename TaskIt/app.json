@@ -72,13 +72,14 @@
      */
     "css": [
         {
-            "path": "resources/css/TaskIt.css",
+            "path": "resources/css/cupertino.css",
             "update": "delta"
         },
         {
-            "path": "touch/resources/css/cupertino.css",
+            "path": "resources/css/TaskIt.css",
             "update": "delta"
         }
+        
     ],
 
     /**

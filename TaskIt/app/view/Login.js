@@ -59,8 +59,8 @@ Ext.define('TaskIt.view.Login', {
                                     {
                                         xtype : 'button',
                                         text : 'Login',
-                                        action : 'doLogin',
-                                        ui : 'action'
+                                        action : 'doLogin'//,
+                                        //ui : 'action'
                                     }
                                 ]
                             }

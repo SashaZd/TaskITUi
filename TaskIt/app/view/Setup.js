@@ -56,7 +56,8 @@ Ext.define('TaskIt.view.Setup', {
                     },
                     {
                         xtype : 'textfield',
-                        label : 'Group Name',
+                        label : '<p color=black>Group Name</p>',
+                        labelWidth : '1',
                         id : 'setup_groupname',
                         disabled : true,
                         flex : 1

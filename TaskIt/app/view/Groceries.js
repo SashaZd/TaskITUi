@@ -10,6 +10,7 @@ myNewGroceryItem = new Ext.Panel({
                 id : 'addNewGroceryItem',
                 label : '<font size=3>Grocery Item</font>',
                 flex : 6,
+                labelWidth : '1',
                 // width : '80%',
                 margin : '0 0 0 -20'
             },

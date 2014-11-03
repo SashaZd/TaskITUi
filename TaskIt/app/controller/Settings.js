@@ -25,12 +25,13 @@ Ext.define('TaskIt.controller.Settings', {
                 layout : {
                     type : 'hbox'
                 },
-                width : '100%',
-                margin : '0 0 0 -55',
+                width : '90%',
+                margin : '0 0 0 0',
                 items : [
                     {
                         xtype : 'textfield',
                         label : 'Chore Name',
+                        labelWidth : '1',
                         id : 'settings_newChoreName',
                         width : '80%',
 
@@ -89,12 +90,13 @@ Ext.define('TaskIt.controller.Settings', {
                 layout : {
                     type : 'hbox'
                 },
-                width : '100%',
-                margin : '0 0 0 -55',
+                width : '90%',
+                margin : '0 0 0 0',
                 items : [
                     {
                         xtype : 'emailfield',
                         label : 'Email',
+                        labelWidth : '1',
                         id : 'settings_newMemberEmail',
                         width : '80%',
 

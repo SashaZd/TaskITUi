@@ -26,12 +26,43 @@ $list-header-bg-gradient: none;
 	font-size: 1;
 }
 .mySemiTransparentList {
-	background-color:rgba(125,125,125,0.5);
+	background-color: rgba(0, 0, 0, .05);
 	border-radius: 5px;
 }
 .x-toolbar.x-docked-top {
-	background-color: rgba(255,255,255,0.7);
+	background-color:rgba(176,18,60,1);
+	color: white;
 }
+
+.x-toolbar.x-docked-top .x-innerhtml {
+	color: white;
+}
+
+.x-button {
+	background-color: #fff;
+	color:rgba(176,18,60,1);
+}
+.x-button-normal {
+	border-color:rgba(176,18,60,1);
+	color:rgba(176,18,60,1);
+}
+
+/* button outline color */
+div .x-button-normal {
+    border-color:rgba(176,18,60,1);
+}
+div .x-button.x-button-pressing {
+    border-color:rgba(176,18,60,0.2);
+}
+
+/* button label color */
+div .x-button .x-button-label {
+    color: rgba(176,18,60,1);
+}
+div .x-button.x-button-pressing .x-button-label {
+    color:rgba(176,18,60,0.5);
+}
+
 .myToolBars {
 	background-color:rgba(125,125,125,0.5);
 }
@@ -42,7 +73,7 @@ $list-header-bg-gradient: none;
 
 .myAppBackground {
 	background-color: white;
-	background-image:
+	/*background-image:
     radial-gradient(
       circle at top left,
       rgba(176,18,60,0.5),
@@ -62,7 +93,7 @@ $list-header-bg-gradient: none;
       circle at bottom left,
       rgba(24,84,162,0.5),
       rgba(255,255,255,0)
-    );
+    );*/
 }
 
 .x-panel .x-field {
@@ -71,6 +102,7 @@ $list-header-bg-gradient: none;
 
 .x-form-label {
     text-align: right;
+    color: black;
     background-color: transparent;
  }
 
