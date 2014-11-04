@@ -2,6 +2,9 @@ var addNewMemberEmail, addNewChoreName;
 
 Ext.define('TaskIt.controller.Settings', {
     extend: 'Ext.app.Controller',
+    requires : [
+        'Ext.field.Select'
+    ],
     
     config: {
         refs: {
@@ -23,45 +26,54 @@ Ext.define('TaskIt.controller.Settings', {
 
             addNewChoreName = new Ext.Panel({
                 layout : {
-                    type : 'hbox'
+                    type : 'hbox',
+                    align : 'center',
+                    pack : 'center'
                 },
-                width : '90%',
-                margin : '0 0 0 0',
+                defaults : {
+                    // margin : '0 2 0 0',    
+                },
+                
                 items : [
                     {
                         xtype : 'textfield',
-                        label : 'Chore Name',
                         labelWidth : '1',
                         id : 'settings_newChoreName',
-                        width : '80%',
+                        width : '40%'
 
                     },
                     {xtype : 'spacer', width:'2%'},
                     {
+                        xtype: 'selectfield',
+                        id : 'settings_newChoreFreq',
+                        width : '40%',
+                        options: [
+                            {text: 'Daily',  value: 'd'},
+                            {text: 'Weekly', value: 'w'},
+                            {text: 'Monthly',  value: 'm'}
+                        ]
+                    },
+                    {xtype : 'spacer', width:'2%'},
+                    {
                         xtype : 'button',
-                        width : '18%',
+                        width : '16%',
                         text : 'Add',
                         handler : function(){
-                                var choreName = Ext.getCmp('settings_newChoreName');
-
-                                var tempURL = base_URL.concat('chore/');
-                                console.log(tempURL);
-                                //Creating new User
-                                Ext.Ajax.request({
-                                    url: tempURL,
-                                    method : 'POST',
-                                    params : {
-                                        chore_name: choreName,
-                                        group_id: GROUP_ID
-                                    },
-                                    success: function(response){
-
-                                        //get server generated UserID
-                                        console.log(response.responseText);
-                                        setUserId = JSON.parse(response.responseText).user_id;
-                                         
-                                    }
-                                }); 
+                            var tempURL = base_URL.concat('chore/');
+                            console.log(tempURL);
+                            //Creating new User
+                            Ext.Ajax.request({
+                                url: tempURL,
+                                method : 'POST',
+                                params : {
+                                    chore_name: Ext.getCmp('settings_newChoreName'),
+                                    frequency: Ext.getCmp('settings_newChoreFreq'),
+                                    group_id: GROUP_ID
+                                },
+                                success: function(response){
+                                    console.log(response.responseText);
+                                }
+                            }); 
                         }
                     }
                 ]

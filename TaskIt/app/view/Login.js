@@ -37,11 +37,25 @@ Ext.define('TaskIt.view.Login', {
                             {
                                 xtype: 'emailfield',
                                 label: 'Email ID',
-                                id : 'loginEmail'
+                                id : 'loginEmail',
+                                listeners: {
+                                    keyup: function(field, e){
+                                        if(e.browserEvent.keyCode==13){
+                                            TaskIt.app.getController('Login').doLogin()
+                                        }
+                                    }
+                                }
                             },
                             {
                                 xtype: 'passwordfield',
                                 label: 'Password',
+                                listeners: {
+                                    keyup: function(field, e){
+                                        if(e.browserEvent.keyCode==13){
+                                            TaskIt.app.getController('Login').doLogin()
+                                        }
+                                    }
+                                }
                             },
                             {
                                 xtype : 'panel',

@@ -33,6 +33,11 @@ Ext.define('TaskIt.controller.Login', {
                 if (JSON.parse(response.responseText).success){
 
                     GROUP_ID = 1; //Need to change once the server passes us the Group_IDs the User Belongs To
+
+                    TaskIt.app.getController('Login').setAllURLs();
+                    TaskIt.app.getController('Login').setChores();
+                    TaskIt.app.getController('Login').setAllTpls();
+
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
                             type: 'slide',
@@ -41,7 +46,6 @@ Ext.define('TaskIt.controller.Login', {
                             direction:'right'
                         });
 
-                        TaskIt.app.getController('Login').setAllTpls();
 
                         Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
                     });
@@ -55,6 +59,11 @@ Ext.define('TaskIt.controller.Login', {
 
             }
         });
+    },
+
+    setAllURLs: function(){
+
+        //Resets all the URLs for the Stores that depend on Group IDs 
     },
 
     setAllTpls: function(){
@@ -122,7 +131,7 @@ Ext.define('TaskIt.controller.Login', {
         
         Ext.Ajax.request({
             method : 'GET',
-            url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
+            url: base_URL.concat('group/', GROUP_ID.toString(), '/'),   //'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
             success: function(response){
                 myVar = JSON.parse(response.responseText);
                 var x=0;
@@ -156,7 +165,7 @@ Ext.define('TaskIt.controller.Login', {
 
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-        this.setChores();
+        // this.setChores();
 
         // GroceryStore.getProxy().clear();
         Ext.getStore('Groceries').removeAll();
