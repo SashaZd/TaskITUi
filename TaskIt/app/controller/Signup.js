@@ -39,11 +39,20 @@ Ext.define('TaskIt.controller.Signup', {
                 last_name: last,
                 group_name : groupName
             },
-            success: function(response){
-                console.log('User created');
+            success: function(response){  
                 var r = JSON.parse(response.responseText);
-                var userId = r.user_id;
-
+                // console.log(r.success);
+                if(r.success==false){
+                     Ext.Msg.alert(
+                        'Invalid User',
+                        'Or the user already Exists',
+                        Ext.emptyFn
+                     );
+                     return;
+                }
+                console.log('User created');
+                var userID = r.user_id;
+                console.log("User ID :::: ", userID);
                 //Create new group if it doesn't already exist
                 if (!r.group_exists) {
                     
@@ -64,7 +73,7 @@ Ext.define('TaskIt.controller.Signup', {
                                         var r = JSON.parse(response.responseText);
                                         var groupId = r.group_id;
                                         console.log("Group ID :::: ", groupId);
-                                        var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userId.toString(), '/');
+                                        var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userID.toString(), '/');
                                         //Setting Global variable
                                         GROUP_ID = groupId;
 
@@ -248,7 +257,7 @@ Ext.define('TaskIt.controller.Signup', {
                         width : '18%',
                         handler : function(){
                             var chore_item=Ext.getCmp('addNewChores').getValue();
-                            
+                            var chore_freq=Ext.getCmp('ChoreFreq').getValue();
                             var tempURL = base_URL.concat('chore/');
                             console.log(tempURL);
                             //Creating new User
@@ -257,15 +266,17 @@ Ext.define('TaskIt.controller.Signup', {
                                 method : 'POST',
                                 params : {
                                     chore_name: chore_item,
+                                    frequency: chore_freq,
                                     group_id: GROUP_ID
                                 },
                                 success: function(response){
                                     console.log(response.responseText);
                                     console.log('Added Chore To Group');
-                                    Ext.getStore('OnlyChores').add({chore_name: Ext.getCmp('addNewChores').getValue()});
-                                    Ext.getStore('OnlyChores').add({frequency: Ext.getCmp('ChoreFreq').getValue()});            
-                                            // console.log('reaching here3');
-                                    Ext.getStore('Roommates').sync();
+                                    // Ext.getStore('OnlyChores').add({chore_name: chore_name});
+                                    // Ext.getStore('OnlyChores').add({frequency: chor_freq });            
+                                    //         // console.log('reaching here3');
+                                    // Ext.getStore('Roommates').sync();
+                                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
                                 }
                             });                                
                         }

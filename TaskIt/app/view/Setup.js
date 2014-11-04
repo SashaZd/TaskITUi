@@ -86,6 +86,7 @@ Ext.define('TaskIt.view.Setup', {
                              {
                                 xtype : 'roommatesList',
                                 // flex : 3,
+                                id : 'setup_roommatesList',
                                 height : '100%',
                                 style:'background-color:rgba(0,0,0,0);',
                                 styleHtmlCls:'mySemiTransparentList',
@@ -114,8 +115,6 @@ Ext.define('TaskIt.view.Setup', {
                     {
                         xtype : 'panel',
                         flex : 4,
-                        style:'background-color:rgba(0,0,0,0);',
-                        styleHtmlCls:'mySemiTransparentList',
                         items : [
                             {
                                 xtype : 'onlyChoresList',

@@ -118,6 +118,7 @@ Ext.define('TaskIt.controller.Login', {
         );
 
         Ext.getCmp('settings_roommatesList').setItemTpl(roommatesTpl);
+        Ext.getCmp('setup_roommatesList').setItemTpl(roommatesTpl);
 
         //Chores List for Settings
             onlyChoresTpl = new Ext.XTemplate(
@@ -131,6 +132,7 @@ Ext.define('TaskIt.controller.Login', {
 
             Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
 
+            Ext.getCmp('setup_onlyChoresList').setItemTpl(onlyChoresTpl);
         //Daily Chores List for Home Screen
             chorelisttpl = new Ext.XTemplate(
                 "<tpl if='email == \"",userEmail,"\" '>",
