@@ -174,7 +174,7 @@ Ext.define('TaskIt.controller.Login', {
                         myChoreStore[x].first_name = myVar.users[i].first_name;
                         myChoreStore[x].last_name = myVar.users[i].last_name;
                         myChoreStore[x].email = myVar.users[i].email;
-                        // console.log(myVar.users[i].email);
+                        console.log(myVar.users[i].email);
                         x++;
                     }
                 }

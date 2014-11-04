@@ -223,12 +223,24 @@ Ext.define('TaskIt.controller.Signup', {
                 items : [
                     {
                         xtype: 'textfield',
+                        label_width: '1',
                         name: 'name',
                         id : 'addNewChores',
-                        width : '80%'
+                        width : '40%'
 
                     },
                     {xtype : 'spacer', width : '2%'},
+                    {
+                        xtype: 'selectfield',
+                        id : 'ChoreFreq',
+                        width : '40%',
+                        options: [
+                            {text: 'Daily',  value: 'd'},
+                            {text: 'Weekly', value: 'w'},
+                            {text: 'Monthly',  value: 'm'}
+                        ]
+                    },
+                    {xtype : 'spacer', width:'2%'},
                     {
                         xtype : 'button',
                         text : 'Add',
@@ -249,6 +261,10 @@ Ext.define('TaskIt.controller.Signup', {
                                 success: function(response){
                                     console.log(response.responseText);
                                     console.log('Added Chore To Group');
+                                    Ext.getStore('OnlyChores').add({chore_name: Ext.getCmp('addNewChores').getValue()});
+                                    Ext.getStore('OnlyChores').add({frequency: Ext.getCmp('ChoreFreq').getValue()});            
+                                            // console.log('reaching here3');
+                                    Ext.getStore('Roommates').sync();
                                 }
                             });                                
                         }

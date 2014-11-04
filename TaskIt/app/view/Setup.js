@@ -137,8 +137,8 @@ Ext.define('TaskIt.view.Setup', {
                                 styleHtmlContent : true,
                                 id : 'SetupFinish',
                                 handler : function(){
-                                    // TaskIt.app.getController('Login').doLogin();
-                                    TaskIt.app.getController('Login').setChores();
+                                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                                    // TaskIt.app.getController('Login').setChores();
                                     // TaskIt.app.getController('Login').setGroceryStore();
                                     setTimeout(function() {
                                         Ext.getCmp('startScreen').getLayout().setAnimation({
