@@ -18,7 +18,7 @@ Ext.define('TaskIt.view.Home', {
             {
                 xtype: 'titlebar',
                 docked: 'top',
-                title: '<font size=3>Home</font>'
+                title: '<font size=3>TaskIt</font>'
             },
             {
                 xtype : 'choreListPanel',

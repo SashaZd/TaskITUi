@@ -31,6 +31,8 @@ Ext.define('TaskIt.controller.Login', {
             success: function(response){
                 console.log(response.responseText);
                 if (JSON.parse(response.responseText).success){
+
+                    GROUP_ID = 1; //Need to change once the server passes us the Group_IDs the User Belongs To
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
                             type: 'slide',

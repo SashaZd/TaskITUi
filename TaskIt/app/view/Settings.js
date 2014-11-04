@@ -28,7 +28,7 @@ Ext.define('TaskIt.view.Settings', {
                 xtype: 'titlebar',
                 width:'100%',
                 docked: 'top',
-                title: '<font size=3>Setup the Group</font>'
+                title: '<font size=3>Settings</font>'
             },
             {
                 xtype : 'panel',
