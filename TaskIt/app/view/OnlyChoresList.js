@@ -8,7 +8,7 @@ Ext.define('TaskIt.view.OnlyChoresList', {
     ],
     config: {
         store: 'OnlyChores', 
-        itemTpl : allChoresTpl,
+        itemTpl : onlyChoresTpl,
         iconCls : 'list',
         styleHtmlContent : true,
         styleHtmlCls:'mySemiTransparentList',

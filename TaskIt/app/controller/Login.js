@@ -96,7 +96,7 @@ Ext.define('TaskIt.controller.Login', {
         Ext.getCmp('settings_roommatesList').setItemTpl(roommatesTpl);
 
         //Chores List for Settings
-            allChoresTpl = new Ext.XTemplate(
+            onlyChoresTpl = new Ext.XTemplate(
                 "<table width='100%'>",
                     "<tr width='100%'>",
                         "<td class='alignleft'>{chore_name}</td>",
