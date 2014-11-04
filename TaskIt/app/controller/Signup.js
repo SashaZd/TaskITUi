@@ -191,10 +191,10 @@ Ext.define('TaskIt.controller.Signup', {
                                         method : 'POST',
                                         success: function(response2){
                                             console.log("2 :: ", response2.responseText);
-                                            var s='Invited:'
-                                            Ext.getStore('Roommates').add({first_name: s.concat(Ext.getCmp('addNewMembersEmail').getValue())});
-                                            Ext.getStore('Roommates').add({last_name: ''});    
-                                            Ext.getStore('Roommates').add({email: Ext.getCmp('addNewMembersEmail').getValue()});
+                                            var s='Invited: '
+                                            Ext.getStore('Roommates').add({first_name: 'Unverified', last_name: 'Unverified', email: Ext.getCmp('addNewMembersEmail').getValue()});
+                                            // Ext.getStore('Roommates').add({});    
+                                            // Ext.getStore('Roommates').add({});
                                             
                                             // console.log('reaching here3');
                                             Ext.getStore('Roommates').sync();
@@ -271,7 +271,7 @@ Ext.define('TaskIt.controller.Signup', {
                                 },
                                 success: function(response){
                                     console.log(response.responseText);
-                                    console.log('Added Chore To Group');
+                                    // console.log('Added Chore To Group');
                                     // Ext.getStore('OnlyChores').add({chore_name: chore_name});
                                     // Ext.getStore('OnlyChores').add({frequency: chor_freq });            
                                     //         // console.log('reaching here3');

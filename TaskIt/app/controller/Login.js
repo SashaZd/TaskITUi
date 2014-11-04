@@ -32,7 +32,18 @@ Ext.define('TaskIt.controller.Login', {
                 console.log(response.responseText);
                 if (JSON.parse(response.responseText).success){
 
-                    GROUP_ID = 31; //Need to change once the server passes us the Group_IDs the User Belongs To
+                    // Ext.Ajax.request({
+                    //     type : 'GET',
+                    //     url : base_URL.concat('/api/user/'),
+                    //     useDefaultXhrHeader: false,
+
+                    //     success: function(response){
+                    //         console.log("Group ID ? ");
+                    //         console.log(response.responseText);
+                    //     }
+                    // })
+                
+                    GROUP_ID = 36; //Need to change once the server passes us the Group_IDs the User Belongs To
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
