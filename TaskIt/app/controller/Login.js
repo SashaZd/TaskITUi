@@ -82,6 +82,11 @@ Ext.define('TaskIt.controller.Login', {
         //For Roommates Store
         this.loadRoommatesStore();
 
+        //For Groceries Store
+        groceriesStore_URL = base_URL.concat('group/',GROUP_ID.toString(),'/grocery/');
+        Ext.getStore('Groceries').getProxy().setUrl(groceriesStore_URL);
+        Ext.getStore('Groceries').load();
+
     },
 
     loadRoommatesStore : function(){

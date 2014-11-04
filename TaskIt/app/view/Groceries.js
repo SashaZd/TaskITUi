@@ -27,12 +27,6 @@ myNewGroceryItem = new Ext.Panel({
                 // width : '18%',
                 handler : function(){
         		    var grocery_item=Ext.getCmp('addNewGroceryItem').getValue();
-
-                    Ext.getStore('Groceries').add({
-                        name: Ext.getCmp('addNewGroceryItem').getValue()
-                    });
-
-                    Ext.getStore('Groceries').sync();
                     
                     var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/grocery/';
                     console.log(tempURL);
@@ -40,15 +34,12 @@ myNewGroceryItem = new Ext.Panel({
                         url: tempURL,
                         method : 'POST',
             			params : {
-            			    // user_id: USER_ID,
             			    group_id: GROUP_ID,
             			    name: grocery_item
             			},
                         success: function(response){
-                            var text = response.responseText;
-                            console.log("Successs true...");
-                            console.log(text);
-                            Ext.getStore('Groceries').sync();
+                            console.log(response.responseText);
+                            Ext.getCmp('addNewGroceryItem').setValue("");
                             Ext.getStore('Groceries').load();
                         }
                     });             
@@ -89,19 +80,18 @@ Ext.define('TaskIt.view.Groceries', {
                         id : 'addToGroceryList',
                         iconCls : 'add',
                         // ui : 'add',
-                        handler : function(){
+                        handler : function(button){
 
-                            var buttonIconCls = Ext.getCmp('addToGroceryList').getIconCls();
-
-                            if (buttonIconCls == "add"){
+                            if (button.getIconCls() == "add"){
                                 Ext.getCmp('groceryPanel').insert(0,myNewGroceryItem);
                                 Ext.getCmp('addToGroceryList').setText('<font size=3>Done</font>');
                                 Ext.getCmp('addToGroceryList').setIconCls('');
                             }
                             else {
-                                Ext.getCmp('addToGroceryList').setText('<font size=3>Done</font>');
-                                Ext.getCmp('addToGroceryList').setIconCls('');   
+                                Ext.getCmp('addToGroceryList').setText('');
+                                Ext.getCmp('addToGroceryList').setIconCls('add');     
                                 Ext.getCmp('groceryPanel').remove(myNewGroceryItem);
+
                             }
                             
 

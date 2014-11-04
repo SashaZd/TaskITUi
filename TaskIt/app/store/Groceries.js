@@ -5,11 +5,10 @@ GroceryStore=Ext.define("TaskIt.store.Groceries", {
     ],
     config: {
         model: "TaskIt.model.GroceryItem",
-        autoLoad: true,
         proxy : {
             type : 'ajax',
             method: 'get',
-            url : base_URL.concat('group/',GROUP_ID.toString(),'/grocery/'),
+            url : groceriesStore_URL,
             useDefaultXhrHeader : false,
             reader : {
                 type : 'json'
