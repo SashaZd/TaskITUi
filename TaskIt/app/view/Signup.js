@@ -21,6 +21,12 @@ Ext.define('TaskIt.view.Signup', {
                 width : '90%',
                 items : [
                     {
+                        xtype : 'container',
+                        html : '<img src="resources/images/logoAndName.png"></img>',
+                        width : '100%',
+                        margin: '0 0 25 0'
+                    },
+                    {
                         xtype: 'container',
                         styleHtmlContent : true,
                         defaults: {

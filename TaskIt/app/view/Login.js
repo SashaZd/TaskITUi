@@ -22,7 +22,9 @@ Ext.define('TaskIt.view.Login', {
                 width : '90%',
                 items : [
                     {
-                        html : '<div class="otherTaskText">Task It</div>'
+                        xtype : 'container',
+                        html : '<img src="resources/images/logoAndName.png"></img>',
+                        width : '100%'
                     },
                     {
                         xtype: 'container',
