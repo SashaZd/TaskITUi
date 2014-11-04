@@ -17,7 +17,6 @@ Ext.define('TaskIt.view.GroceryList', {
         itemTpl : grocerytpl,
         listeners : {
             itemswipe : function(t, index, target, record, e, eOpts){
-                console.log(record.data);
                 var tempGID = record.data.grocery_id.toString();
                 var tempURL = base_URL.concat('grocery/', tempGID ,'/');
                 console.log(tempURL);

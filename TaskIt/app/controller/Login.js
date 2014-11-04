@@ -135,7 +135,8 @@ Ext.define('TaskIt.controller.Login', {
             success: function(response){
                 myVar = JSON.parse(response.responseText);
                 var x=0;
-                GROUP_ID = myVar.group_id;
+                GROUP_ID = myVar.group_ids[0];
+                console.log("set Chores Group ID : ", GROUP_ID);
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
 

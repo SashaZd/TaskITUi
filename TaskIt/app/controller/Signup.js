@@ -46,7 +46,7 @@ Ext.define('TaskIt.controller.Signup', {
 
                 //Create new group if it doesn't already exist
                 if (!r.group_exists) {
-
+                    
                     Ext.Msg.confirm(
                         'Create New Group',
                         "There is no existing group with this name. Would you like to create a new one?",
@@ -64,6 +64,7 @@ Ext.define('TaskIt.controller.Signup', {
                                         
                                         var r = JSON.parse(response.responseText);
                                         var groupId = r.group_id;
+                                        console.log("Group ID :::: ", groupId);
                                         var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userId.toString(), '/');
                                         //Setting Global variable
                                         GROUP_ID = groupId;
