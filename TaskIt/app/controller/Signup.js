@@ -184,7 +184,11 @@ Ext.define('TaskIt.controller.Signup', {
                                             // console.log('reaching here');
                                             console.log(response2.responseText);
                                             // console.log('reaching here2');
+                                            var s='Invited:'
+                                            Ext.getStore('Roommates').add({first_name: s.concat(Ext.getCmp('addNewMembersEmail').getValue())});
+                                            Ext.getStore('Roommates').add({last_name: ''});    
                                             Ext.getStore('Roommates').add({email: Ext.getCmp('addNewMembersEmail').getValue()});
+                                            
                                             // console.log('reaching here3');
                                             Ext.getStore('Roommates').sync();
 
@@ -233,7 +237,7 @@ Ext.define('TaskIt.controller.Signup', {
                         text : 'Add',
                         width : '18%',
                         handler : function(){
-                            var chore_item=Ext.getCmp('addNewChoresName').getValue();
+                            var chore_item=Ext.getCmp('addNewChores').getValue();
                             
                             var tempURL = base_URL.concat('chore/');
                             console.log(tempURL);
