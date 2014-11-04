@@ -1,5 +1,3 @@
-var settingsStore_URL;
-
 Ext.define('TaskIt.controller.Login', {
     extend: 'Ext.app.Controller',
 
@@ -34,7 +32,7 @@ Ext.define('TaskIt.controller.Login', {
                 console.log(response.responseText);
                 if (JSON.parse(response.responseText).success){
 
-                    GROUP_ID = 1; //Need to change once the server passes us the Group_IDs the User Belongs To
+                    GROUP_ID = 20; //Need to change once the server passes us the Group_IDs the User Belongs To
 
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
 
@@ -45,8 +43,6 @@ Ext.define('TaskIt.controller.Login', {
                             reverse: true,
                             direction:'right'
                         });
-
-
                         Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
                     });
 
@@ -70,17 +66,30 @@ Ext.define('TaskIt.controller.Login', {
     setAllURLs: function(){
 
         //Resets all the URLs for the Stores that depend on Group IDs 
+
+        //For Settings Store
         settingsStore_URL = base_URL.concat('group/',GROUP_ID,'/');
+        console.log("Settings URL Updated :: ", settingsStore_URL);
+        Ext.getStore('Settings').getProxy().setUrl(settingsStore_URL); 
+        Ext.getStore('Settings').load();
 
     },
 
     setAllTpls: function(){
 
         roommatesTpl = new Ext.XTemplate(
-            '<tpl if="email==\'',userEmail,'\'">',
-                '<div class="myTaskText">{first_name}</div>',
+            '<tpl if="first_name==\'Unverified\'">',
+                '<tpl if="email==\'',userEmail,'\'">',
+                    '<div class="myTaskText">Invited : {email}</div>',
+                '<tpl else>',
+                    '<div class="otherTaskText">Invited : {email}</div>',
+                '</tpl>',
             '<tpl else>',
-                '<div class="otherTaskText">{first_name}</div>',
+                '<tpl if="email==\'',userEmail,'\'">',
+                    '<div class="myTaskText">{first_name}</div>',
+                '<tpl else>',
+                    '<div class="otherTaskText">{first_name}</div>',
+                '</tpl>',
             '</tpl>'
         );
 
