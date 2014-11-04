@@ -3,11 +3,11 @@ Ext.define("TaskIt.store.OnlyChores", {
     extend: "Ext.data.Store",
     config: {
         model: "TaskIt.model.OnlyChore",
-        autoLoad : true,
+        // autoLoad : true,
         proxy : {
             type : 'ajax',
             method : 'GET',
-            url : base_URL.concat('http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/',GROUP_ID.toString(),'/chore/'),
+            url : base_URL.concat('group/',GROUP_ID.toString(),'/chore/'),
             useDefaultXhrHeader : false,
             reader : {
                 type : 'json',

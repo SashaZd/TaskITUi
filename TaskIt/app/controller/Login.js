@@ -1,3 +1,5 @@
+var settingsStore_URL;
+
 Ext.define('TaskIt.controller.Login', {
     extend: 'Ext.app.Controller',
 
@@ -34,9 +36,7 @@ Ext.define('TaskIt.controller.Login', {
 
                     GROUP_ID = 1; //Need to change once the server passes us the Group_IDs the User Belongs To
 
-                    TaskIt.app.getController('Login').setAllURLs();
-                    TaskIt.app.getController('Login').setChores();
-                    TaskIt.app.getController('Login').setAllTpls();
+                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
 
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
@@ -61,12 +61,30 @@ Ext.define('TaskIt.controller.Login', {
         });
     },
 
+    doAllGroupIDFunctions : function(){
+        this.setAllURLs();
+        this.setChores();
+        this.setAllTpls();
+    },
+
     setAllURLs: function(){
 
         //Resets all the URLs for the Stores that depend on Group IDs 
+        settingsStore_URL = base_URL.concat('group/',GROUP_ID,'/');
+
     },
 
     setAllTpls: function(){
+
+        roommatesTpl = new Ext.XTemplate(
+            '<tpl if="email==\'',userEmail,'\'">',
+                '<div class="myTaskText">{first_name}</div>',
+            '<tpl else>',
+                '<div class="otherTaskText">{first_name}</div>',
+            '</tpl>'
+        );
+
+        Ext.getCmp('settings_roommatesList').setItemTpl(roommatesTpl);
 
         //Chores List for Settings
             allChoresTpl = new Ext.XTemplate(
