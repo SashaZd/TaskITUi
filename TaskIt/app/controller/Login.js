@@ -57,7 +57,7 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     doAllGroupIDFunctions : function(){
-        console.log("inside do all group id functions");
+        // console.log("inside do all group id functions");
         this.setChores();
         this.setAllTpls();
         this.setAllURLs();
@@ -70,7 +70,7 @@ Ext.define('TaskIt.controller.Login', {
 
         //For Settings Store
         settingsStore_URL = base_URL.concat('group/',GROUP_ID,'/');
-        console.log("Settings URL Updated :: ", settingsStore_URL);
+        // console.log("Settings URL Updated :: ", settingsStore_URL);
         Ext.getStore('Settings').getProxy().setUrl(settingsStore_URL); 
         Ext.getStore('Settings').load();
 
@@ -173,7 +173,7 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     setChores: function(){
-        console.log('Setting Chores');
+        // console.log('Setting Chores');
         
         Ext.Ajax.request({
             method : 'GET',
@@ -182,7 +182,7 @@ Ext.define('TaskIt.controller.Login', {
                 myVar = JSON.parse(response.responseText);
                 var x=0;
                 GROUP_ID = myVar.group_id;
-                console.log("set Chores Group ID : ", GROUP_ID);
+                // console.log("set Chores Group ID : ", GROUP_ID);
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
 
@@ -193,7 +193,6 @@ Ext.define('TaskIt.controller.Login', {
                         myChoreStore[x].first_name = myVar.users[i].first_name;
                         myChoreStore[x].last_name = myVar.users[i].last_name;
                         myChoreStore[x].email = myVar.users[i].email;
-                        // console.log(myVar.users[i].email);
                         x++;
                     }
                 }

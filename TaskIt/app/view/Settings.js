@@ -8,7 +8,9 @@ Ext.define('TaskIt.view.Settings', {
     requires: [
         'Ext.TitleBar',
         'Ext.List',
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.field.DatePicker',
+        'Ext.field.Toggle'
     ],
     config: {
         title: 'Settings',
@@ -56,6 +58,55 @@ Ext.define('TaskIt.view.Settings', {
                         id : 'householdDetails',
                         styleHtmlContent : true,
                         tpl : groupSettingsTpl
+                    },
+                    {
+                        xtype : 'panel',
+                        layout : 'fit',
+                        // pack : 'end',
+                        items : [
+                            {
+                                xtype : 'togglefield',
+                                name : 'vacation',
+                                labelWidth : '85%',
+                                label : 'On Vacation?',
+                                listeners : {
+                                    change : function(toggle, newValue, oldValue, eOpts) {
+                                        if(newValue == 1){
+                                            Ext.getCmp('startVacationDate').show();
+                                            Ext.getCmp('endVacationDate').show();
+                                        }
+                                        else{
+                                            Ext.getCmp('startVacationDate').hide();
+                                            Ext.getCmp('endVacationDate').hide();
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                xtype : 'panel',
+                                layout : {
+                                    type : 'hbox'
+                                },
+                                items : [
+                                    {
+                                        xtype : 'datepickerfield',
+                                        label : 'Start',
+                                        flex : 1,
+                                        id : 'startVacationDate',
+                                        hidden : true,
+                                        value : new Date()
+                                    },
+                                    {
+                                        xtype : 'datepickerfield',
+                                        label : 'End',
+                                        flex : 1,
+                                        id : 'endVacationDate',
+                                        hidden : true,
+                                        value : new Date()
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
                         xtype :'toolbar',

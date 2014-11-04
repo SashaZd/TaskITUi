@@ -30,9 +30,6 @@ Ext.define('TaskIt.controller.Settings', {
                     align : 'center',
                     pack : 'center'
                 },
-                defaults : {
-                    // margin : '0 2 0 0',    
-                },
                 
                 items : [
                     {
@@ -72,15 +69,9 @@ Ext.define('TaskIt.controller.Settings', {
                                 },
                                 success: function(response){
                                     console.log(response.responseText);
-                                    
+
                                     Ext.getCmp('settings_newChoreName').setValue('');
-                                    // Ext.getStore('OnlyChores').add({chore_name: Ext.getCmp('settings_newChoreName').getValue()});
-                                    // Ext.getStore('OnlyChores').add({frequency: Ext.getCmp('settings_newChoreFreq').getValue()}); 
-                                    
                                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
-                                    // Ext.getStore('OnlyChores').load();
-                                    // Ext.getStore('OnlyChores').sync();
-                                    console.log('tes');
                                 }
                             }); 
                         }
