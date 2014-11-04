@@ -180,12 +180,14 @@ Ext.define('TaskIt.controller.Signup', {
                                         url: tempURL,
                                         method : 'POST',
                                         success: function(response2){
+                                            // console.log('reaching here');
                                             console.log(response2.responseText);
-                                            
-                                            Ext.getStore('Roommates').add({email: Ext.getCmp('addNewMembersEmail').getValue().getValue()});
+                                            // console.log('reaching here2');
+                                            Ext.getStore('Roommates').add({email: Ext.getCmp('addNewMembersEmail').getValue()});
+                                            // console.log('reaching here3');
                                             Ext.getStore('Roommates').sync();
 
-                                            Ext.getCmp('addNewMembersEmail').getValue().setValue('');
+                                            Ext.getCmp('addNewMembersEmail').setValue('');
                                         }
                                     }); 
                                 }
