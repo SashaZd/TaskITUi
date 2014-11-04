@@ -27,7 +27,7 @@ GroceryStore=Ext.define("TaskIt.store.Groceries", {
                 }
                 
             }
-        },
+        }
     }
 });
 

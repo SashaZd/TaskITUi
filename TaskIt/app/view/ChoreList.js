@@ -11,6 +11,7 @@ Ext.define('TaskIt.view.ChoreList', {
         id : 'myChoreList',
         styleHtmlContent : true, 
         itemTpl : chorelisttpl,
+        grouped : true,
         iconCls : 'list',
         listeners : {
             itemswipe : function(t, index, target, record, e, eOpts){

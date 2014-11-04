@@ -1,4 +1,4 @@
-var userEmail;
+var userEmail='';
 var myChoreStore={};
 var myGroceryStore={};
 var myVar;

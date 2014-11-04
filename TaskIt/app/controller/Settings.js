@@ -72,6 +72,9 @@ Ext.define('TaskIt.controller.Settings', {
                                 },
                                 success: function(response){
                                     console.log(response.responseText);
+                                    Ext.getCmp('settings_newChoreName').setValue('');
+                                    TaskIt.app.getController('Login').setChores();
+                                    Ext.getStore('OnlyChores').load();
                                 }
                             }); 
                         }
