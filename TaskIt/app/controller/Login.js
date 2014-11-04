@@ -105,7 +105,7 @@ Ext.define('TaskIt.controller.Login', {
                 "</table>"
             );
 
-            Ext.getCmp('onlyChoresList').setItemTpl(allChoresTpl);
+            Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
 
         //Daily Chores List for Home Screen
             chorelisttpl = new Ext.XTemplate(
