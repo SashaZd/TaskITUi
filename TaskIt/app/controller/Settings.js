@@ -131,8 +131,8 @@ Ext.define('TaskIt.controller.Settings', {
                                     url: tempURL,
                                     method : 'POST',
                                     params : {
-                                        first_name: 'Default',
-                                        last_name: 'Default',
+                                        first_name: 'Unverified',
+                                        last_name: 'Unverified',
                                         email: emailComp.getValue()
                                     },
                                     success: function(response){
@@ -149,7 +149,7 @@ Ext.define('TaskIt.controller.Settings', {
                                             success: function(response2){
                                                 console.log(response2.responseText);
                                                 
-                                                Ext.getStore('Roommates').add({email: emailComp.getValue()});
+                                                Ext.getStore('Roommates').add({email: emailComp.getValue(), first_name:'Unverified', last_name:'Unverified'});
                                                 Ext.getStore('Roommates').sync();
 
                                                 emailComp.setValue('');
