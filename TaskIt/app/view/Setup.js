@@ -84,7 +84,7 @@ Ext.define('TaskIt.view.Setup', {
                         // height : '40%',
                         items : [
                              {
-                                xtype : 'defaultTaskList',
+                                xtype : 'roommatesList',
                                 // flex : 3,
                                 height : '100%',
                                 style:'background-color:rgba(0,0,0,0);',
