@@ -22,6 +22,7 @@ Ext.define('TaskIt.controller.MainTabs', {
 
     settingsPanelFns: function(){
         
+        //Loading Roommates Store
         Ext.getStore('OnlyChores').load();
         if(Ext.getStore('Settings').getData().all.length>0){
             Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);    
