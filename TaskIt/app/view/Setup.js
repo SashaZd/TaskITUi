@@ -118,7 +118,8 @@ Ext.define('TaskIt.view.Setup', {
                         styleHtmlCls:'mySemiTransparentList',
                         items : [
                             {
-                                xtype : 'defaultTaskList',
+                                xtype : 'onlyChoresList',
+                                id : 'setup_onlyChoresList',
                                 height : '100%',
                                 style:'background-color:rgba(0,0,0,0);',
                                 styleHtmlCls:'mySemiTransparentList',
@@ -138,7 +139,7 @@ Ext.define('TaskIt.view.Setup', {
                                 handler : function(){
                                     // TaskIt.app.getController('Login').doLogin();
                                     TaskIt.app.getController('Login').setChores();
-                                    TaskIt.app.getController('Login').setGroceryStore();
+                                    // TaskIt.app.getController('Login').setGroceryStore();
                                     setTimeout(function() {
                                         Ext.getCmp('startScreen').getLayout().setAnimation({
                                             type: 'slide',

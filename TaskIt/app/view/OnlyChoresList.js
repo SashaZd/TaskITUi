@@ -1,7 +1,6 @@
 Ext.define('TaskIt.view.OnlyChoresList', {
     extend: 'Ext.List',
     xtype: 'onlyChoresList',
-    id : 'onlyChoresList',
     requires: [
         'Ext.TitleBar',
         'Ext.DataView',

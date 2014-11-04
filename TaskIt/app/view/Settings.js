@@ -111,6 +111,7 @@ Ext.define('TaskIt.view.Settings', {
                         items : [
                             {
                                 xtype : 'onlyChoresList',
+                                id : 'onlyChoresList',
                                 height : '100%',
                                 style:'background-color:rgba(0,0,0,0)',
                                 styleHtmlCls:'mySemiTransparentList',

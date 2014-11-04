@@ -51,7 +51,6 @@ Ext.define('TaskIt.controller.Signup', {
                         'Create New Group',
                         "There is no existing group with this name. Would you like to create a new one?",
                         function(button){
-                            console.log(button);
                             if(button=='yes'){
                                 Ext.Ajax.request({
                                     method : 'POST',
@@ -124,7 +123,7 @@ Ext.define('TaskIt.controller.Signup', {
                                     reverse: true,
                                     direction:'right'
                                 });
-                                Ext.getCmp('startScreen').setActiveItem(1, {type : 'slide', direction:'right'});
+                                Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
                             });
                         }
                     });
@@ -171,19 +170,17 @@ Ext.define('TaskIt.controller.Signup', {
                                 },
                                 success: function(response){
                                     //get server generated UserID
-                                    console.log(response.responseText);
+                                    console.log("1 :: ", response.responseText);
                                     setUserId = JSON.parse(response.responseText).user_id;
 
                                     //add user to the pre-existing group
                                     var tempURL2 = base_URL.concat('group/', GROUP_ID.toString(), '/user/', setUserId.toString(), '/');
                                     console.log(tempURL2);
                                     Ext.Ajax.request({
-                                        url: tempURL,
+                                        url: tempURL2,
                                         method : 'POST',
                                         success: function(response2){
-                                            // console.log('reaching here');
-                                            console.log(response2.responseText);
-                                            // console.log('reaching here2');
+                                            console.log("2 :: ", response2.responseText);
                                             var s='Invited:'
                                             Ext.getStore('Roommates').add({first_name: s.concat(Ext.getCmp('addNewMembersEmail').getValue())});
                                             Ext.getStore('Roommates').add({last_name: ''});    
