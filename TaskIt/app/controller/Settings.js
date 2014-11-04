@@ -144,7 +144,7 @@ Ext.define('TaskIt.controller.Settings', {
                                         var tempURL2 = base_URL.concat('group/', GROUP_ID.toString(), '/user/', setUserId.toString(), '/');
                                         console.log(tempURL2);
                                         Ext.Ajax.request({
-                                            url: tempURL,
+                                            url: tempURL2,
                                             method : 'POST',
                                             success: function(response2){
                                                 console.log(response2.responseText);

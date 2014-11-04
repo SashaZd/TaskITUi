@@ -13,7 +13,91 @@ Ext.define('TaskIt.view.RoommatesList', {
         iconCls : 'list',
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){
-                console.log(record.data)
+                console.log(record.data);
+
+                if(!showDetails){
+                    var showDetails = new Ext.Panel({
+                        styleHtmlContent : true,
+                        //floating configs
+                        left : 0, 
+                        right : 0, 
+                        modal : true, 
+                        hideOnMaskTap : true, 
+                        width : '90%',
+                        // height : '30%',
+
+                        layout : {
+                            type : 'vbox'
+                        },
+                        defaults : {
+                            margin : '0 0 5 0'
+                        },
+                        items : [
+                            {
+                                xtype : 'textfield', 
+                                label : 'First Name',
+                                name : 'first_name',
+                                disabled : true,
+                                id : 'showUserDetails_firstName'
+                            },
+                            {
+                                xtype : 'textfield', 
+                                label : 'Last Name',
+                                name : 'last_name',
+                                disabled : true,
+                                id : 'showUserDetails_lastName'
+                            },
+                            {
+                                xtype : 'textfield', 
+                                label : 'Email',
+                                name : 'email',
+                                disabled : true,
+                                id : 'showUserDetails_email'
+                            },
+                            {
+                                xtype : 'button',
+                                id : 'showUserDetails_Leave',
+                                text : 'Leave This Group',
+                                hidden : true
+                            },
+                            {
+                                xtype : 'button',
+                                text : 'Edit',
+                                id : 'showUserDetails_Edit',
+                                hidden : true,
+                                handler : function(button){
+                                    if(button.getText()=="Edit"){
+                                        Ext.getCmp('showUserDetails_firstName').enable();
+                                        Ext.getCmp('showUserDetails_lastName').enable();
+                                        Ext.getCmp('showUserDetails_email').enable();
+                                        Ext.getCmp('showUserDetails_Leave').show();
+
+                                        button.setText("Done");
+                                    }
+                                    else{
+                                        Ext.getCmp('showUserDetails_firstName').disable();
+                                        Ext.getCmp('showUserDetails_lastName').disable();
+                                        Ext.getCmp('showUserDetails_email').disable();
+                                        Ext.getCmp('showUserDetails_Leave').hide();
+
+                                        button.setText("Edit");
+                                    }
+                                }
+                            }
+                        ]
+                    });
+                }
+
+                Ext.getCmp('showUserDetails_firstName').setValue(record.get('first_name'));
+                Ext.getCmp('showUserDetails_lastName').setValue(record.get('last_name'));
+                Ext.getCmp('showUserDetails_email').setValue(record.get('email'));
+
+                if(record.get('email') == userEmail){
+                    Ext.getCmp('showUserDetails_Edit').show();
+                }
+
+                showDetails.showBy(target);
+
             }
 
         }
