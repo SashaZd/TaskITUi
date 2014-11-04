@@ -32,10 +32,8 @@ Ext.define('TaskIt.controller.Login', {
                 console.log(response.responseText);
                 if (JSON.parse(response.responseText).success){
 
-                    GROUP_ID = 20; //Need to change once the server passes us the Group_IDs the User Belongs To
-
+                    GROUP_ID = 31; //Need to change once the server passes us the Group_IDs the User Belongs To
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
-
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
                             type: 'slide',
@@ -44,6 +42,7 @@ Ext.define('TaskIt.controller.Login', {
                             direction:'right'
                         });
                         Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+
                     });
 
 
@@ -58,13 +57,15 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     doAllGroupIDFunctions : function(){
-        this.setAllURLs();
+        console.log("inside do all group id functions");
         this.setChores();
         this.setAllTpls();
+        this.setAllURLs();
     },
 
     setAllURLs: function(){
 
+        console.log("inside do all group id functions", GROUP_ID);
         //Resets all the URLs for the Stores that depend on Group IDs 
 
         //For Settings Store
@@ -73,6 +74,24 @@ Ext.define('TaskIt.controller.Login', {
         Ext.getStore('Settings').getProxy().setUrl(settingsStore_URL); 
         Ext.getStore('Settings').load();
 
+        //For OnlyChores Store
+        onlyChoresStore_URL = base_URL.concat('group/',GROUP_ID.toString(),'/chore/');
+        Ext.getStore('OnlyChores').getProxy().setUrl(onlyChoresStore_URL);
+        Ext.getStore('OnlyChores').load();
+
+        //For Roommates Store
+        this.loadRoommatesStore();
+
+    },
+
+    loadRoommatesStore : function(){
+        Ext.getStore('OnlyChores').load();
+        if(Ext.getStore('Settings').getData().all.length>0){
+
+            Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);    
+            groupSettingsTpl.overwrite(Ext.getCmp('householdDetails').element, Ext.getStore('Settings').getData().all[0].raw);
+
+        }
     },
 
     setAllTpls: function(){
@@ -174,7 +193,7 @@ Ext.define('TaskIt.controller.Login', {
                         myChoreStore[x].first_name = myVar.users[i].first_name;
                         myChoreStore[x].last_name = myVar.users[i].last_name;
                         myChoreStore[x].email = myVar.users[i].email;
-                        console.log(myVar.users[i].email);
+                        // console.log(myVar.users[i].email);
                         x++;
                     }
                 }

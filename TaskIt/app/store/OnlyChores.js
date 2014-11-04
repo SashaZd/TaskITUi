@@ -7,7 +7,7 @@ Ext.define("TaskIt.store.OnlyChores", {
         proxy : {
             type : 'ajax',
             method : 'GET',
-            url : base_URL.concat('group/',GROUP_ID.toString(),'/chore/'),
+            url : onlyChoresStore_URL,
             useDefaultXhrHeader : false,
             reader : {
                 type : 'json',

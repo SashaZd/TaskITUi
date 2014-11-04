@@ -61,23 +61,25 @@ Ext.define('TaskIt.controller.Settings', {
                         handler : function(){
                             var tempURL = base_URL.concat('chore/');
                             console.log(tempURL);
-                            //Creating new User
+
                             Ext.Ajax.request({
                                 url: tempURL,
                                 method : 'POST',
                                 params : {
-                                    chore_name: Ext.getCmp('settings_newChoreName'),
-                                    frequency: Ext.getCmp('settings_newChoreFreq'),
+                                    chore_name: Ext.getCmp('settings_newChoreName').getValue(),
+                                    frequency: Ext.getCmp('settings_newChoreFreq').getValue(),
                                     group_id: GROUP_ID
                                 },
                                 success: function(response){
                                     console.log(response.responseText);
+                                    
                                     Ext.getCmp('settings_newChoreName').setValue('');
-                                    Ext.getStore('OnlyChores').add({chore_name: Ext.getCmp('settings_newChoreName').getValue()});
-                                    Ext.getStore('OnlyChores').add({frequency: Ext.getCmp('settings_newChoreFreq').getValue()}); 
-                                    TaskIt.app.getController('Login').setChores();
-                                    Ext.getStore('OnlyChores').load();
-                                    Ext.getStore('OnlyChores').sync();
+                                    // Ext.getStore('OnlyChores').add({chore_name: Ext.getCmp('settings_newChoreName').getValue()});
+                                    // Ext.getStore('OnlyChores').add({frequency: Ext.getCmp('settings_newChoreFreq').getValue()}); 
+                                    
+                                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                                    // Ext.getStore('OnlyChores').load();
+                                    // Ext.getStore('OnlyChores').sync();
                                     console.log('tes');
                                 }
                             }); 

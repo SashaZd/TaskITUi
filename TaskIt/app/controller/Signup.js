@@ -75,7 +75,8 @@ Ext.define('TaskIt.controller.Signup', {
                                             success : function(response){
                                                 console.log("user assigned to group");
                                                 setTimeout(function() {
-
+                                                    
+                                                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
                                                     Ext.Ajax.request({
                                                         method: 'POST',
                                                         url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
