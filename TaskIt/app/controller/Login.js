@@ -1,3 +1,4 @@
+var USER_ID;
 Ext.define('TaskIt.controller.Login', {
     extend: 'Ext.app.Controller',
 
@@ -31,6 +32,7 @@ Ext.define('TaskIt.controller.Login', {
             success: function(response){
                 console.log(response.responseText);
                 var testVar= JSON.parse(response.responseText);
+                USER_ID = testVar.user_id;
                 if (JSON.parse(response.responseText).email){
                     if(JSON.parse(response.responseText).first_name=='Unverified'){
                         Ext.Msg.confirm(
@@ -60,7 +62,7 @@ Ext.define('TaskIt.controller.Login', {
                             });
                            return;
                         }//transition to setup screen
-                
+                    
                     GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; //Need to change once the server passes us the Group_IDs the User Belongs To
 
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();

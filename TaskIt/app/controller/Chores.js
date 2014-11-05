@@ -4,7 +4,8 @@ Ext.define('TaskIt.controller.Chores', {
     config: {
         refs: {
             choreList: 'choreList',
-            doneAllButton : 'home button[action=doneAllChores]'
+            doneAllButton : 'home button[action=doneAllChores]',
+            notAtHomeButton : 'home button[action=notAtHomeButton]'
         },
         control: {
             choreList : {
@@ -13,8 +14,33 @@ Ext.define('TaskIt.controller.Chores', {
 
             doneAllButton : {
                 tap: 'doneAllChores'
+            },
+
+            notAtHomeButton : {
+                tap : 'notAtHome'
             }
         }
+    },
+
+    notAtHome : function(){
+
+        var tempURL = base_URL.concat('user/', USER_ID.toString(), '/notathome/');
+
+        Ext.Ajax.request({
+            url: tempURL,
+            method : 'POST',
+            success: function(response){
+                console.log(response.responseText);
+                TaskIt.app.getController('Login').setChores();  
+                Ext.Msg.alert(
+                    'Uh Oh!', 
+                    "Well, we'll getcha tomorrow.", 
+                    Ext.emptyFn
+                ); 
+            }
+        });
+
+        
     },
 
     doneAllChores : function(){

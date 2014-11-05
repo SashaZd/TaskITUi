@@ -74,6 +74,7 @@ Ext.define('TaskIt.controller.Signup', {
                          return;
                     }
                     var userID = r.user_id;
+                    // USER_ID = userID;
                     console.log("User ID :::: ", userID);
                     //Create new group if it doesn't already exist
                     if (!r.group_exists) {
@@ -113,7 +114,9 @@ Ext.define('TaskIt.controller.Signup', {
                                                             params: {
                                                                 email: email
                                                             },
-                                                            success: function(response){
+                                                            success: function(response3){
+                                                                var testVar = JSON.parse(response3.responseText);
+                                                                USER_ID = testVar.user_id;
                                                                 console.log('Login done');
                                                                 setTimeout(function() {
                                                                     Ext.getCmp('startScreen').getLayout().setAnimation({

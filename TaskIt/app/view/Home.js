@@ -54,18 +54,11 @@ Ext.define('TaskIt.view.Home', {
                     },
                     {
                         xtype : 'button',
+                        action : 'notAtHomeButton',
                         text : '<font size=3>Not at Home</font>',
 
                         width : '40%',
                         height : 40,
-                        handler : function(){
-                            Ext.Msg.alert(
-                                'Uh Oh!', 
-                                "Well, we'll getcha tomorrow.", 
-                                Ext.emptyFn
-                            );
-                        }
-
                         // ui : 'decline',
 
                     },
