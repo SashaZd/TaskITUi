@@ -2,7 +2,7 @@ var userEmail='';
 var myChoreStore={};
 var myGroceryStore={};
 var myVar;
-var GROUP_ID=1;
+var GROUP_ID;
 var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl; 
 var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/';
 var settingsStore_URL, onlyChoresStore_URL, groceriesStore_URL;

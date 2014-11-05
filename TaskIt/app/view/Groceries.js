@@ -79,6 +79,7 @@ Ext.define('TaskIt.view.Groceries', {
                         xtype : 'button',
                         id : 'addToGroceryList',
                         iconCls : 'add',
+                        text : '<font color="white"></font>',
                         // ui : 'add',
                         handler : function(button){
 

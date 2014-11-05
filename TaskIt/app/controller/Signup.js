@@ -6,6 +6,7 @@ Ext.define('TaskIt.controller.Signup', {
     config: {
         refs: {
             signUpButton: 'signup button[action=signUp]',
+            cancelSignUpButton : 'signup button[action=cancelSignUp]',
             setupNewGroupMembers : 'setup button[action=addGroupMembers]',
             setupNewGroupChores : 'setup button[action=addGroupChores]'
 
@@ -19,8 +20,23 @@ Ext.define('TaskIt.controller.Signup', {
             },
             signUpButton: {
                 tap: 'signUp'
+            },
+            cancelSignUpButton : {
+                tap : 'cancelSignUp'
             }
         }
+    },
+
+    cancelSignUp: function(){
+        setTimeout(function() {
+            Ext.getCmp('startScreen').getLayout().setAnimation({
+                type: 'slide',
+                duration: 300,
+                reverse: true,
+                direction:'left'
+            });
+            Ext.getCmp('startScreen').setActiveItem(0, {type : 'slide', direction:'left'});
+        });
     },
 
     signUp : function() {
@@ -125,16 +141,28 @@ Ext.define('TaskIt.controller.Signup', {
                             email: email
                         },
                         success: function(response){
-                            console.log("Login done");
-                            setTimeout(function() {
-                                Ext.getCmp('startScreen').getLayout().setAnimation({
-                                    type: 'slide',
-                                    duration: 300,
-                                    reverse: true,
-                                    direction:'right'
+                            // console.log("Login done");
+                            if (JSON.parse(response.responseText).first_name){
+                                GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; 
+                                userEmail = email;
+                                TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                                setTimeout(function() {
+                                    Ext.getCmp('startScreen').getLayout().setAnimation({
+                                        type: 'slide',
+                                        duration: 300,
+                                        reverse: true,
+                                        direction:'right'
+                                    });
+                                    Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
                                 });
-                                Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
-                            });
+                            }
+                            else {
+                                Ext.Msg.alert(
+                                    "Uh oh!",
+                                    "We seem to have hit a snag. Your user account has been activated. Please try logging in again.",
+                                    Ext.emptyFn()
+                                );
+                            }
                         }
                     });
                 }
