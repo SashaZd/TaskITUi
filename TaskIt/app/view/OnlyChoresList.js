@@ -42,15 +42,33 @@ var showChoreDetails = new Ext.Panel({
                     Ext.getCmp('showUserDetails_choreName').enable();
                     Ext.getCmp('showUserDetails_frequency').enable();
                     Ext.getCmp('showUserDetails_DeleteChore').show();
-
                     button.setText("Done");
                 }
                 else{
-                    Ext.getCmp('showUserDetails_choreName').disable();
-                    Ext.getCmp('showUserDetails_frequency').disable();
-                    Ext.getCmp('showUserDetails_DeleteChore').hide();
 
-                    button.setText("Edit");
+                    Ext.Ajax.request({
+                        method : 'POST',
+                        url: tempURL,
+                        params: {
+                            email : Ext.getCmp('showUserDetails_email').getValue(),
+                            first_name: Ext.getCmp('showUserDetails_firstName').getValue(),
+                            last_name: Ext.getCmp('showUserDetails_lastName').getValue()
+                        },
+                        success: function(response){  
+                            var r = JSON.parse(response.responseText);
+                            if(r.success==true){
+                                console.log("Editted Chore");
+
+                                Ext.getCmp('showUserDetails_choreName').disable();
+                                Ext.getCmp('showUserDetails_frequency').disable();
+                                Ext.getCmp('showUserDetails_DeleteChore').hide();
+                                button.setText("Edit");
+
+                                setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
+                            }
+                        }
+                    });
+                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
                 }
             }
         }
@@ -79,7 +97,7 @@ Ext.define('TaskIt.view.OnlyChoresList', {
                 Ext.getCmp('showUserDetails_frequency').setValue(record.get('frequency'));
 
                 showChoreDetails.showBy(target);
-                // setTimeout(function(){t.deselect(index);},1000);
+                setTimeout(function(){t.deselect(index);},1000);
             },
 
         }

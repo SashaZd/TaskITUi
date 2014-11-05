@@ -30,7 +30,30 @@ Ext.define('TaskIt.view.Settings', {
                 xtype: 'titlebar',
                 width:'100%',
                 docked: 'top',
-                title: '<font size=4><b>Settings</b></font>'
+                title: '<font size=4><b>Settings</b></font>',
+                items : [
+                    {
+                        xtype : 'button',
+                        text : '<font color="white">Logout</font>',
+                        handler : function(){
+                            Ext.Ajax.request({
+                                method: 'GET',
+                                url: base_URL.concat('logout/'),
+                                success: function(response){
+                                    setTimeout(function() {
+                                        Ext.getCmp('startScreen').getLayout().setAnimation({
+                                            type: 'slide',
+                                            duration: 300,
+                                            reverse: true,
+                                            direction:'right'
+                                        });
+                                        Ext.getCmp('startScreen').setActiveItem(0, {type : 'slide', direction:'right'});
+                                    });
+                                }
+                            });
+                        }
+                    }
+                ]
             },
             {
                 xtype : 'panel',

@@ -71,7 +71,7 @@ Ext.define('TaskIt.controller.Settings', {
                                     console.log(response.responseText);
 
                                     Ext.getCmp('settings_newChoreName').setValue('');
-                                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                                    setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
                                 }
                             }); 
                         }
@@ -145,10 +145,8 @@ Ext.define('TaskIt.controller.Settings', {
                                             method : 'POST',
                                             success: function(response2){
                                                 console.log(response2.responseText);
-                                                
                                                 Ext.getStore('Roommates').add({email: emailComp.getValue(), first_name:'Unverified', last_name:'Unverified'});
                                                 Ext.getStore('Roommates').sync();
-
                                                 emailComp.setValue('');
                                             }
                                         }); 
