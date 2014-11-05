@@ -213,8 +213,6 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     setChores: function(){
-        console.log('Setting Chores');
-        console.log(GROUP_ID);
         var tempURL = base_URL.concat('group/', GROUP_ID.toString(), '/');
         console.log(tempURL);
         Ext.Ajax.request({
@@ -222,7 +220,7 @@ Ext.define('TaskIt.controller.Login', {
             url: tempURL,
             success: function(response){
                 myVar = JSON.parse(response.responseText);
-                console.log(myVar);
+                // console.log(myVar);
                 var x=0;
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
