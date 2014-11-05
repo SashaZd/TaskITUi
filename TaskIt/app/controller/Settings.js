@@ -56,6 +56,8 @@ Ext.define('TaskIt.controller.Settings', {
                         width : '16%',
                         text : 'Add',
                         handler : function(){
+                            if (Ext.getCmp('settings_newChoreName').getValue()=="")
+                                return;
                             var tempURL = base_URL.concat('chore/');
                             console.log(tempURL);
 
@@ -120,6 +122,9 @@ Ext.define('TaskIt.controller.Settings', {
                         text : 'Invite',
                         handler : function(){
                                 var emailComp = Ext.getCmp('settings_newMemberEmail');
+
+                                if(emailComp=="")
+                                    return;
 
                                 var tempURL = base_URL.concat('user/');
                                 console.log(tempURL);
