@@ -46,128 +46,134 @@ Ext.define('TaskIt.controller.Signup', {
         var last = Ext.getCmp('signup_lastname').getValue();
         var groupName = Ext.getCmp('signup_groupname').getValue();
 
-        Ext.Ajax.request({
-            method : 'POST',
-            url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/user/',
-            params: {
-                email : email,
-                first_name: first,
-                last_name: last,
-                group_name : groupName
-            },
-            success: function(response){  
-                var r = JSON.parse(response.responseText);
-                // console.log(r.success);
-                if(r.success==false){
-                     Ext.Msg.alert(
-                        'Invalid User',
-                        'Or the user already Exists',
-                        Ext.emptyFn
-                     );
-                     return;
-                }
-                console.log('User created');
-                var userID = r.user_id;
-                console.log("User ID :::: ", userID);
-                //Create new group if it doesn't already exist
-                if (!r.group_exists) {
-                    
-                    Ext.Msg.confirm(
-                        'Create New Group',
-                        "There is no existing group with this name. Would you like to create a new one?",
-                        function(button){
-                            if(button=='yes'){
-                                Ext.Ajax.request({
-                                    method : 'POST',
-                                    url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/',
-                                    params: {
-                                        group_name: groupName
-                                    },
-                                    success: function(response){
-                                        console.log('Group created');
-                                        
-                                        var r = JSON.parse(response.responseText);
-                                        var groupId = r.group_id;
-                                        console.log("Group ID :::: ", groupId);
-                                        var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userID.toString(), '/');
-                                        //Setting Global variable
-                                        GROUP_ID = groupId;
+        if(email == "" || first == "" || groupName = ""){
+            Ext.Msg.alert(
+                'Uh Oh!', 
+                'Please fill in all the fields above to sign up.', 
+                Ext.emptyFn
+            );
+        }
+        else {
+            Ext.Ajax.request({
+                method : 'POST',
+                url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/user/',
+                params: {
+                    email : email,
+                    first_name: first,
+                    last_name: last,
+                    group_name : groupName
+                },
+                success: function(response){  
+                    var r = JSON.parse(response.responseText);
+                    if(r.success==false){
+                         Ext.Msg.alert(
+                            'Invalid User',
+                            'Or the user already Exists',
+                            Ext.emptyFn
+                         );
+                         return;
+                    }
+                    var userID = r.user_id;
+                    console.log("User ID :::: ", userID);
+                    //Create new group if it doesn't already exist
+                    if (!r.group_exists) {
+                        Ext.Msg.confirm(
+                            'Create New Group',
+                            "There is no existing group with this name. Would you like to create a new one?",
+                            function(button){
+                                if(button=='yes'){
+                                    Ext.Ajax.request({
+                                        method : 'POST',
+                                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/',
+                                        params: {
+                                            group_name: groupName
+                                        },
+                                        success: function(response){
+                                            console.log('Group created');
+                                            
+                                            var r = JSON.parse(response.responseText);
+                                            var groupId = r.group_id;
+                                            console.log("Group ID :::: ", groupId);
+                                            var tempURL2 = base_URL.concat('group/', groupId.toString(), '/user/', userID.toString(), '/');
+                                            //Setting Global variable
+                                            GROUP_ID = groupId;
 
-                                        //assign user to the group made earlier
-                                        Ext.Ajax.request({
-                                            method: 'POST',
-                                            url: tempURL2,
-                                            success : function(response){
-                                                console.log("user assigned to group");
-                                                setTimeout(function() {
-                                                    
-                                                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
-                                                    Ext.Ajax.request({
-                                                        method: 'POST',
-                                                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
-                                                        params: {
-                                                            email: email
-                                                        },
-                                                        success: function(response){
-                                                            console.log('Login done');
-                                                            setTimeout(function() {
-                                                                Ext.getCmp('startScreen').getLayout().setAnimation({
-                                                                    type: 'slide',
-                                                                    duration: 300,
-                                                                    reverse: true,
-                                                                    direction:'right'
+                                            //assign user to the group made earlier
+                                            Ext.Ajax.request({
+                                                method: 'POST',
+                                                url: tempURL2,
+                                                success : function(response){
+                                                    console.log("user assigned to group");
+                                                    setTimeout(function() {
+                                                        
+                                                        TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                                                        Ext.Ajax.request({
+                                                            method: 'POST',
+                                                            url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
+                                                            params: {
+                                                                email: email
+                                                            },
+                                                            success: function(response){
+                                                                console.log('Login done');
+                                                                setTimeout(function() {
+                                                                    Ext.getCmp('startScreen').getLayout().setAnimation({
+                                                                        type: 'slide',
+                                                                        duration: 300,
+                                                                        reverse: true,
+                                                                        direction:'right'
+                                                                    });
+                                                                    Ext.getCmp('startScreen').setActiveItem(1, {type : 'slide', direction:'right'});
+
                                                                 });
-                                                                Ext.getCmp('startScreen').setActiveItem(1, {type : 'slide', direction:'right'});
-
-                                                            });
-                                                        }
+                                                            }
+                                                        });
+                                                        
                                                     });
-                                                    
-                                                });
-                                            }
-                                        });
-                                        
-                                    }
+                                                }
+                                            });
+                                            
+                                        }
 
-                                });
-                            }//transition to setup screen
-                        }
-                    );
-                } else {
-                    Ext.Ajax.request({
-                        method: 'POST',
-                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
-                        params: {
-                            email: email
-                        },
-                        success: function(response){
-                            // console.log("Login done");
-                            if (JSON.parse(response.responseText).first_name){
-                                GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; 
-                                userEmail = email;
-                                TaskIt.app.getController('Login').doAllGroupIDFunctions();
-                                setTimeout(function() {
-                                    Ext.getCmp('startScreen').getLayout().setAnimation({
-                                        type: 'slide',
-                                        duration: 300,
-                                        reverse: true,
-                                        direction:'right'
                                     });
-                                    Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
-                                });
+                                } //transition to setup screen
                             }
-                            else {
-                                Ext.Msg.alert(
-                                    "Uh oh!",
-                                    "We seem to have hit a snag. Your user account has been activated. Please try logging in again.",
-                                    Ext.emptyFn()
-                                );
+                        );
+                    } else {
+                        Ext.Ajax.request({
+                            method: 'POST',
+                            url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/login/',
+                            params: {
+                                email: email
+                            },
+                            success: function(response){
+                                // console.log("Login done");
+                                if (JSON.parse(response.responseText).first_name){
+                                    GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; 
+                                    userEmail = email;
+                                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                                    setTimeout(function() {
+                                        Ext.getCmp('startScreen').getLayout().setAnimation({
+                                            type: 'slide',
+                                            duration: 300,
+                                            reverse: true,
+                                            direction:'right'
+                                        });
+                                        Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
+                                    });
+                                }
+                                else {
+                                    Ext.Msg.alert(
+                                        "Uh oh!",
+                                        "We seem to have hit a snag. Your user account has been activated. Please try logging in again.",
+                                        Ext.emptyFn()
+                                    );
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
-            }
-        });
+            });
+        } 
     },
 
     setupNewGroupMembersFn : function(){
