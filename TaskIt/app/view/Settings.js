@@ -47,13 +47,13 @@ Ext.define('TaskIt.view.Settings', {
                     margin : '5 5 5 5'
                 },
                 items : [
+                    // {
+                    //     xtype : 'panel',
+                    //     flex : 1
+                    // },
                     {
                         xtype : 'panel',
-                        flex : 1
-                    },
-                    {
-                        xtype : 'panel',
-                        flex : 1,
+                        // flex : 1,
                         layout : 'fit',
                         id : 'householdDetails',
                         styleHtmlContent : true,
@@ -110,7 +110,7 @@ Ext.define('TaskIt.view.Settings', {
                     },
                     {
                         xtype :'toolbar',
-                        flex : 1,
+                        // flex : 1,
                         style:'background-color:rgba(0,0,0,0)',
                         styleHtmlCls:'myInAppToolbar',
                         styleHtmlContent : true,
@@ -147,7 +147,7 @@ Ext.define('TaskIt.view.Settings', {
                         styleHtmlCls:'myInAppToolbar',
                         styleHtmlContent : true,
                         title : '<h3>Group Chores</h3>',
-                        flex : 1,
+                        // flex : 1,
                         items : [
                             {
                                 xtype : 'button',
@@ -170,10 +170,6 @@ Ext.define('TaskIt.view.Settings', {
                                 styleHtmlContent : true
                             }
                         ]
-                    },
-                    {
-                        xtype : 'panel',
-                        flex : 1
                     }
                 ]
             }   

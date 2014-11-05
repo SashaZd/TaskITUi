@@ -46,7 +46,7 @@ Ext.define('TaskIt.controller.Signup', {
         var last = Ext.getCmp('signup_lastname').getValue();
         var groupName = Ext.getCmp('signup_groupname').getValue();
 
-        if(email == "" || first == "" || groupName = ""){
+        if(email == "" || first == "" || groupName == ""){
             Ext.Msg.alert(
                 'Uh Oh!', 
                 'Please fill in all the fields above to sign up.', 

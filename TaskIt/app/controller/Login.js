@@ -60,18 +60,6 @@ Ext.define('TaskIt.controller.Login', {
                             });
                            return;
                         }//transition to setup screen
-                    
-                
-                    // Ext.Ajax.request({
-                    //     type : 'GET',
-                    //     url : base_URL.concat('/api/user/'),
-                    //     useDefaultXhrHeader: false,
-
-                    //     success: function(response){
-                    //         console.log("Group ID ? ");
-                    //         console.log(response.responseText);
-                    //     }
-                    // })
                 
                     GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; //Need to change once the server passes us the Group_IDs the User Belongs To
 
@@ -145,8 +133,9 @@ Ext.define('TaskIt.controller.Login', {
 
     setAllTpls: function(){
 
+        //Roommates for Settings
         roommatesTpl = new Ext.XTemplate(
-            '<tpl if="first_name==\'Unverified\'">',
+            '<tpl if="first_name==\'Unverified\' || first_name==\'\'">',
                 '<tpl if="email==\'',userEmail,'\'">',
                     '<div class="myTaskText">Invited : {email}</div>',
                 '<tpl else>',
@@ -175,8 +164,8 @@ Ext.define('TaskIt.controller.Login', {
             );
 
             Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
-
             Ext.getCmp('setup_onlyChoresList').setItemTpl(onlyChoresTpl);
+
         //Daily Chores List for Home Screen
             chorelisttpl = new Ext.XTemplate(
                 "<tpl if='email == \"",userEmail,"\" '>",
@@ -224,12 +213,13 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     setChores: function(){
-        // console.log('Setting Chores');
+        console.log('Setting Chores');
+        console.log(GROUP_ID);
         var tempURL = base_URL.concat('group/', GROUP_ID.toString(), '/');
         console.log(tempURL);
         Ext.Ajax.request({
             method : 'GET',
-            url: tempURL,   //'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
+            url: tempURL,
             success: function(response){
                 myVar = JSON.parse(response.responseText);
                 console.log(myVar);

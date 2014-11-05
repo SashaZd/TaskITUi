@@ -57,12 +57,30 @@ var showDetails = new Ext.Panel({
                     button.setText("Done");
                 }
                 else{
-                    Ext.getCmp('showUserDetails_firstName').disable();
-                    Ext.getCmp('showUserDetails_lastName').disable();
-                    Ext.getCmp('showUserDetails_email').disable();
-                    Ext.getCmp('showUserDetails_Leave').hide();
+                    Ext.Ajax.request({
+                        method : 'POST',
+                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/user/',
+                        params: {
+                            email : email,
+                            first_name: first,
+                            last_name: last,
+                            group_name : groupName
+                        },
+                        success: function(response){  
+                            var r = JSON.parse(response.responseText);
+                            if(r.success==true){
+                                console.log("Editted User");
+                                button.setText("Edit");
+                                Ext.getCmp('showUserDetails_firstName').disable();
+                                Ext.getCmp('showUserDetails_lastName').disable();
+                                Ext.getCmp('showUserDetails_email').disable();
+                                Ext.getCmp('showUserDetails_Leave').hide();
+                            }
+                        }
+                    });
 
-                    button.setText("Edit");
+
+                    
                 }
             }
         }

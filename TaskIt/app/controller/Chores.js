@@ -7,9 +7,9 @@ Ext.define('TaskIt.controller.Chores', {
             doneAllButton : 'home button[action=doneAllChores]'
         },
         control: {
-            choreList : {
-                itemswipe : 'toggleDoneChore'
-            },
+            // choreList : {
+            //     itemswipe : 'toggleDoneChore'
+            // },
 
             doneAllButton : {
                 tap: 'doneAllChores'
@@ -49,31 +49,32 @@ Ext.define('TaskIt.controller.Chores', {
         );
     },
 
-    toggleDoneChore : function(t, index, target, record, e, eOpts){
-        if(record.data.email == userEmail){
-            var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
-            Ext.Ajax.request({
-                method : 'PUT',
-                url: tempURL,
-                success: function(response){
-                    if(JSON.parse(response.responseText).success){
-                        console.log(response.responseText); 
-                        TaskIt.app.getController('Login').setChores();   
-                    }
-                    else {
-                        Ext.Msg.alert(
-                            'Oh No!', 
-                            'There seems to be a network error. Try again later.', 
-                            Ext.emptyFn
-                        );
-                    }
-                }
-            });
-        }
-        else {
-            console.log("Not your chore to do!!");
-        }
-    },
+    // toggleDoneChore : function(t, index, target, record, e, eOpts){
+    //     console.log("swiping");
+    //     if(record.data.email == userEmail){
+    //         var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
+    //         Ext.Ajax.request({
+    //             method : 'PUT',
+    //             url: tempURL,
+    //             success: function(response){
+    //                 if(JSON.parse(response.responseText).success){
+    //                     console.log(response.responseText); 
+    //                     TaskIt.app.getController('Login').setChores();   
+    //                 }
+    //                 else {
+    //                     Ext.Msg.alert(
+    //                         'Oh No!', 
+    //                         'There seems to be a network error. Try again later.', 
+    //                         Ext.emptyFn
+    //                     );
+    //                 }
+    //             }
+    //         });
+    //     }
+    //     else {
+    //         console.log("Not your chore to do!!");
+    //     }
+    // },
 
 
     
