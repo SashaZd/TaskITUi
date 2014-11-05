@@ -41,54 +41,13 @@ Ext.define('TaskIt.view.Home', {
                         xtype : 'button',
                         width : '40%',
                         text : '<font size=3>Done All</font>',
-
+                        action : 'doneAllChores',
                         height : 40,
                         handler : function(){
                             // var tempStore=Ext.getStore('Chores');
 
-                           Ext.getStore('Chores').each(function(rec) {
-                                // if (something here) {
-                                    var array=rec.get('users');
-                                    for (i in array){
-                                         if (array[i].email == userEmail){
-                                            for (var j =0; j< array[i].todays_chores.length; j++) {
-                                                var tempChoreID = array[i].todays_chores[j].chore_id;
-
-                                                if(!array[i].todays_chores[j].is_done){
-                                                    var tempURL = 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/chore/'+tempChoreID+'/';
-                                                    console.log(tempURL);
-                                                    Ext.Ajax.request({
-                                                        url: tempURL,
-                                                        method : 'PUT',
-                                                        success: function(response){
-                                                            var text = response.responseText;
-                                                            console.log("Successs true...");
-                                                            console.log(text);
-                                                            Ext.getStore('Chores').sync();
-                                                            Ext.getStore('Chores').load();
-                                                        }
-                                                    });
-                                                }
-
-                                            };
-                                         }
-                                    }
-                                // }
-                            });
-
-                            
-
-                            Ext.Msg.alert(
-                                'Great!', 
-                                'Go read a book!', 
-                                Ext.emptyFn
-                            );
+                           
                         }
-
-                        // ui : 'confirm',
-
-
-
                     },
                     {
                         xtype : 'spacer'

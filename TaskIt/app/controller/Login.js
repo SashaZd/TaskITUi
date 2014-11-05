@@ -74,6 +74,7 @@ Ext.define('TaskIt.controller.Login', {
                     // })
                 
                     GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; //Need to change once the server passes us the Group_IDs the User Belongs To
+
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
@@ -89,15 +90,12 @@ Ext.define('TaskIt.controller.Login', {
                 }
                 
                 else {
-                    
-                        Ext.Msg.alert('Bad Login','No userId Found',Ext.emptyFn());
-                        // return;
-                    
-
-                    console.log("Login Error");
+                    Ext.Msg.alert(
+                        'Incorrect Email/Password',
+                        'This user was not found. Please check the entered Email/Password.',
+                        Ext.emptyFn()
+                    );
                 }
-
-
             }
         });
     },
@@ -227,15 +225,15 @@ Ext.define('TaskIt.controller.Login', {
 
     setChores: function(){
         // console.log('Setting Chores');
-        
+        var tempURL = base_URL.concat('group/', GROUP_ID.toString(), '/');
+        console.log(tempURL);
         Ext.Ajax.request({
             method : 'GET',
-            url: base_URL.concat('group/', GROUP_ID.toString(), '/'),   //'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
+            url: tempURL,   //'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/1/',
             success: function(response){
                 myVar = JSON.parse(response.responseText);
+                console.log(myVar);
                 var x=0;
-                GROUP_ID = myVar.group_id;
-                // console.log("set Chores Group ID : ", GROUP_ID);
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
 

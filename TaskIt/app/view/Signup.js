@@ -56,11 +56,30 @@ Ext.define('TaskIt.view.Signup', {
                                 id: 'signup_groupname'
                             },
                             {
-                                xtype: 'button',
-                                text: 'Sign Up',
-                                action: 'signUp',
-                                hidden: false
+
+                                xtype : 'container',
+                                layout : {
+                                    type : 'hbox'
+                                },
+                                defaults : {
+                                    width : '50%',
+                                    margin : '0 5 0 0',
+                                    flex : 1
+                                },
+                                items : [
+                                    {
+                                        xtype : 'button',
+                                        text : 'Cancel',
+                                        action : 'cancelSignUp'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        text: 'Sign Up',
+                                        action: 'signUp'
+                                    }
+                                ]
                             }
+                            
                         ]
                     }
                 ]
