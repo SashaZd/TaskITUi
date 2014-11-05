@@ -126,9 +126,9 @@ Ext.define('TaskIt.controller.Login', {
                 '</tpl>',
             '<tpl else>',
                 '<tpl if="email==\'',userEmail,'\'">',
-                    '<div class="myTaskText">{first_name}</div>',
+                    '<div class="myTaskText">{first_name} {last_name}</div>',
                 '<tpl else>',
-                    '<div class="otherTaskText">{first_name}</div>',
+                    '<div class="otherTaskText">{first_name} {last_name}</div>',
                 '</tpl>',
             '</tpl>'
         );

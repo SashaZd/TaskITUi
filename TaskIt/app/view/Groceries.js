@@ -8,7 +8,7 @@ myNewGroceryItem = new Ext.Panel({
                 xtype: 'textfield',
                 name: 'name',
                 id : 'addNewGroceryItem',
-                label : '<font size=3>Grocery Item</font>',
+                label : '<font size=4><b>Grocery Item</b></font>',
                 flex : 6,
                 labelWidth : '1',
                 // width : '80%',
