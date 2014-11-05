@@ -30,7 +30,7 @@ Ext.define('TaskIt.view.Settings', {
                 xtype: 'titlebar',
                 width:'100%',
                 docked: 'top',
-                title: '<font size=3>Settings</font>'
+                title: '<font size=4><b>Settings</b></font>'
             },
             {
                 xtype : 'panel',
