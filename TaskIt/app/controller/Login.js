@@ -31,7 +31,7 @@ Ext.define('TaskIt.controller.Login', {
             success: function(response){
                 console.log(response.responseText);
                 var testVar= JSON.parse(response.responseText);
-                if (JSON.parse(response.responseText).first_name){
+                if (JSON.parse(response.responseText).email){
                     if(JSON.parse(response.responseText).first_name=='Unverified'){
                         Ext.Msg.confirm(
                         'First Time Login',
