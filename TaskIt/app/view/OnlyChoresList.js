@@ -25,7 +25,8 @@ var showChoreDetails = new Ext.Panel({
             label : 'Frequency',
             name : 'frequency',
             disabled : true,
-            id : 'showUserDetails_frequency'
+            id : 'showUserDetails_frequency',
+            hidden : false
         },
         {
             xtype : 'button',

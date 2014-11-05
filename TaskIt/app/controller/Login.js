@@ -46,7 +46,7 @@ Ext.define('TaskIt.controller.Login', {
                                         direction:'right'
                                     });
                                     Ext.getCmp('signup_email').setValue(testVar.email);
-                                    
+                                    // GROUP_ID=group_ids[0];
                                     Ext.Ajax.request({
                                         method: 'GET',
                                         url: base_URL.concat('group/',testVar.group_ids[0],'/'),
@@ -90,6 +90,11 @@ Ext.define('TaskIt.controller.Login', {
 
     doAllGroupIDFunctions : function(){
         // console.log("inside do all group id functions");
+
+             setInterval(function() {
+                  this.setChores();
+                }, 300000);       
+
         this.setChores();
         this.setAllTpls();
         this.setAllURLs();
