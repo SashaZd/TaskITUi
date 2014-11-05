@@ -29,15 +29,24 @@ Ext.define('TaskIt.controller.Groceries', {
         }); 
     },
 
-    deleteGrocery : function(t, index, target, record, e, eOpts){
-        var tempGName = record.data.grocery_name;
+    deleteGrocery : function(list, index, target, record, e, eOpts){
+        var grocery_id = record.data.grocery_id;
 
         Ext.Msg.confirm(
             'Deleting from Groceries',
             "Are you sure you wish to delete this item?",
             function(button){
                 if(button=='yes'){
-                    console.log("yes delete")
+                    var tempURL = base_URL.concat('grocery/', grocery_id.toString(), '/' );
+                    Ext.Ajax.request({
+                        method : 'DELETE',
+                        url: tempURL,
+                        success: function(response){
+                            console.log(response.responseText);
+                            Ext.getStore('Groceries').load();
+                        }
+                    }); 
+                    setTimeout(function(){list.deselect(index);},500);
                 }
             }
         );

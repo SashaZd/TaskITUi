@@ -30,7 +30,7 @@ Ext.define('TaskIt.controller.Login', {
             useDefaultXhrHeader: false,
             success: function(response){
                 console.log(response.responseText);
-                if (JSON.parse(response.responseText).success){
+                if (JSON.parse(response.responseText).first_name){
 
                     // Ext.Ajax.request({
                     //     type : 'GET',
@@ -43,7 +43,7 @@ Ext.define('TaskIt.controller.Login', {
                     //     }
                     // })
                 
-                    GROUP_ID = 36; //Need to change once the server passes us the Group_IDs the User Belongs To
+                    GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; //Need to change once the server passes us the Group_IDs the User Belongs To
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
                     setTimeout(function() {
                         Ext.getCmp('startScreen').getLayout().setAnimation({
@@ -59,6 +59,11 @@ Ext.define('TaskIt.controller.Login', {
 
                 }
                 else {
+                    
+                        Ext.Msg.alert('Bad Login','No userId Found',Ext.emptyFn());
+                        // return;
+                    
+
                     console.log("Login Error");
                 }
 
@@ -220,10 +225,8 @@ Ext.define('TaskIt.controller.Login', {
                 for(var y in myChoreStore) {
                     Ext.getStore('Chores').add(myChoreStore[y]);
                 }
-                
-
-
             }
+
         });
     },
 
