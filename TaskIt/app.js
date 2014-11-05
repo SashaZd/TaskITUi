@@ -28,7 +28,7 @@ Ext.application({
     ],
 
     controllers : [
-        'Login', 'Signup', 'MainTabs', 'Settings', 'Groceries'
+        'Login', 'Signup', 'MainTabs', 'Settings', 'Groceries', 'Chores'
     ],
 
     models : [

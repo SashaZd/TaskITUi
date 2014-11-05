@@ -1,3 +1,4 @@
+var USER_ID;
 Ext.define('TaskIt.controller.Login', {
     extend: 'Ext.app.Controller',
 
@@ -31,6 +32,7 @@ Ext.define('TaskIt.controller.Login', {
             success: function(response){
                 console.log(response.responseText);
                 var testVar= JSON.parse(response.responseText);
+                USER_ID = testVar.user_id;
                 if (JSON.parse(response.responseText).email){
                     if(JSON.parse(response.responseText).first_name=='Unverified'){
                         Ext.Msg.confirm(
@@ -46,21 +48,21 @@ Ext.define('TaskIt.controller.Login', {
                                         direction:'right'
                                     });
                                     Ext.getCmp('signup_email').setValue(testVar.email);
-                                    // GROUP_ID=group_ids[0];
+
                                     Ext.Ajax.request({
                                         method: 'GET',
                                         url: base_URL.concat('group/',testVar.group_ids[0],'/'),
                                         success: function(response){
                                                 Ext.getCmp('signup_groupname').setValue(JSON.parse(response.responseText).group_name);
                                             }
-                                        
+
                                     });
                                 Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
-                                }                             
+                                }
                             });
                            return;
                         }//transition to setup screen
-                
+
                     GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; //Need to change once the server passes us the Group_IDs the User Belongs To
 
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
@@ -76,7 +78,7 @@ Ext.define('TaskIt.controller.Login', {
                     });
 
                 }
-                
+
                 else {
                     Ext.Msg.alert(
                         'Incorrect Email/Password',
@@ -103,12 +105,12 @@ Ext.define('TaskIt.controller.Login', {
     setAllURLs: function(){
 
         console.log("inside do all group id functions", GROUP_ID);
-        //Resets all the URLs for the Stores that depend on Group IDs 
+        //Resets all the URLs for the Stores that depend on Group IDs
 
         //For Settings Store
         settingsStore_URL = base_URL.concat('group/',GROUP_ID,'/');
         // console.log("Settings URL Updated :: ", settingsStore_URL);
-        Ext.getStore('Settings').getProxy().setUrl(settingsStore_URL); 
+        Ext.getStore('Settings').getProxy().setUrl(settingsStore_URL);
         Ext.getStore('Settings').load();
 
         //For OnlyChores Store
@@ -130,7 +132,7 @@ Ext.define('TaskIt.controller.Login', {
         Ext.getStore('OnlyChores').load();
         if(Ext.getStore('Settings').getData().all.length>0){
 
-            Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);    
+            Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);
             groupSettingsTpl.overwrite(Ext.getCmp('householdDetails').element, Ext.getStore('Settings').getData().all[0].raw);
 
         }
@@ -142,9 +144,9 @@ Ext.define('TaskIt.controller.Login', {
         roommatesTpl = new Ext.XTemplate(
             '<tpl if="first_name==\'Unverified\' || first_name==\'\'">',
                 '<tpl if="email==\'',userEmail,'\'">',
-                    '<div class="myTaskText">Invited : {email}</div>',
+                    '<div class="myTaskText">Invited: {email}</div>',
                 '<tpl else>',
-                    '<div class="otherTaskText">Invited : {email}</div>',
+                    '<div class="otherTaskText">Invited: {email}</div>',
                 '</tpl>',
             '<tpl else>',
                 '<tpl if="email==\'',userEmail,'\'">',
@@ -175,15 +177,15 @@ Ext.define('TaskIt.controller.Login', {
             chorelisttpl = new Ext.XTemplate(
                 "<tpl if='email == \"",userEmail,"\" '>",
                     "<tpl if='is_done==true'>",
-                        "<div class='taskTextCompleted'>You are {chore_name}</div>",
+                        "<div class='taskTextCompleted'>{chore_name}</div>",
                     "<tpl else>",
-                        "<div class='myTaskText'>You are {chore_name} </div>",
+                        "<div class='myTaskText'>{chore_name} </div>",
                     "</tpl>",
                 "<tpl else>",
                 "<tpl if='is_done==true'>",
-                        "<div class='taskTextCompleted'>{first_name} : {chore_name}</div>",
+                        "<div class='taskTextCompleted'>{first_name}: {chore_name}</div>",
                     "<tpl else>",
-                        "<div class='otherTaskText'>{first_name} : {chore_name}</div>",
+                        "<div class='otherTaskText'>{first_name}: {chore_name}</div>",
                     "</tpl>",
                 "</tpl>"
             );
@@ -196,8 +198,8 @@ Ext.define('TaskIt.controller.Login', {
                 "<tpl if='is_done==true'>",
                         "<div class='taskTextCompleted'>{name}</div>",
                     "<tpl else>",
-                        "<div class='myTaskText'> {name} </div>",
-                    "</tpl>",   
+                        "<div class='myTaskText'>{name}</div>",
+                    "</tpl>",
                 '<center>'
             );
 
@@ -218,8 +220,6 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     setChores: function(){
-        console.log('Setting Chores');
-        console.log(GROUP_ID);
         var tempURL = base_URL.concat('group/', GROUP_ID.toString(), '/');
         console.log(tempURL);
         Ext.Ajax.request({
@@ -227,7 +227,7 @@ Ext.define('TaskIt.controller.Login', {
             url: tempURL,
             success: function(response){
                 myVar = JSON.parse(response.responseText);
-                console.log(myVar);
+                // console.log(myVar);
                 var x=0;
                 for (var i = 0; i< myVar.users.length; i++) {
                     for(var j=0; j<myVar.users[i].todays_chores.length; j++) {
@@ -244,7 +244,7 @@ Ext.define('TaskIt.controller.Login', {
                 }
 
                 Ext.getStore('Chores').removeAll();
-                
+
                 for(var y in myChoreStore) {
                     Ext.getStore('Chores').add(myChoreStore[y]);
                 }

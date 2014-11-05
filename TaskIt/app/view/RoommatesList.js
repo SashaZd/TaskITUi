@@ -57,27 +57,34 @@ var showDetails = new Ext.Panel({
                     button.setText("Done");
                 }
                 else{
+                    var tempURL = base_URL.concat('user/',USER_ID.toString(), '/edit/');
+                    console.log(tempURL);
+
                     Ext.Ajax.request({
                         method : 'POST',
-                        url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/user/',
+                        url: tempURL,
                         params: {
-                            email : email,
-                            first_name: first,
-                            last_name: last,
-                            group_name : groupName
+                            email : Ext.getCmp('showUserDetails_email').getValue(),
+                            first_name: Ext.getCmp('showUserDetails_firstName').getValue(),
+                            last_name: Ext.getCmp('showUserDetails_lastName').getValue()
                         },
                         success: function(response){  
                             var r = JSON.parse(response.responseText);
                             if(r.success==true){
                                 console.log("Editted User");
                                 button.setText("Edit");
+
+                                TaskIt.app.getController('Login').doAllGroupIDFunctions();
                                 Ext.getCmp('showUserDetails_firstName').disable();
                                 Ext.getCmp('showUserDetails_lastName').disable();
                                 Ext.getCmp('showUserDetails_email').disable();
                                 Ext.getCmp('showUserDetails_Leave').hide();
+
                             }
                         }
                     });
+                    setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
+
 
 
                     
@@ -112,7 +119,7 @@ Ext.define('TaskIt.view.RoommatesList', {
                 }
 
                 showDetails.showBy(target);
-                // setTimeout(function(){t.deselect(index);},1000);
+                setTimeout(function(){t.deselect(index);},1000);
 
             }
 
