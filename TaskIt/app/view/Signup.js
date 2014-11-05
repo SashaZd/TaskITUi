@@ -37,7 +37,8 @@ Ext.define('TaskIt.view.Signup', {
                             {
                                 xtype: 'emailfield',
                                 label: 'Email',
-                                id : 'signup_email'
+                                id : 'signup_email',
+                                hidden : false
                             },
                             {
                                 xtype: 'textfield',
@@ -57,7 +58,8 @@ Ext.define('TaskIt.view.Signup', {
                             {
                                 xtype: 'button',
                                 text: 'Sign Up',
-                                action: 'signUp'
+                                action: 'signUp',
+                                hidden: false
                             }
                         ]
                     }

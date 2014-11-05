@@ -30,8 +30,38 @@ Ext.define('TaskIt.controller.Login', {
             useDefaultXhrHeader: false,
             success: function(response){
                 console.log(response.responseText);
+                var testVar= JSON.parse(response.responseText);
                 if (JSON.parse(response.responseText).first_name){
-
+                    if(JSON.parse(response.responseText).first_name=='Unverified'){
+                        Ext.Msg.confirm(
+                        'First Time Login',
+                        "Please set your First and Last Name",
+                        function(button){
+                            if(button=='yes'){
+                                    GroupFlag=true;
+                                    Ext.getCmp('startScreen').getLayout().setAnimation({
+                                        type: 'slide',
+                                        duration: 300,
+                                        reverse: true,
+                                        direction:'right'
+                                    });
+                                    Ext.getCmp('signup_email').setValue(testVar.email);
+                                    
+                                    Ext.Ajax.request({
+                                        method: 'GET',
+                                        url: base_URL.concat('group/',testVar.group_ids[0],'/'),
+                                        success: function(response){
+                                                Ext.getCmp('signup_groupname').setValue(JSON.parse(response.responseText).group_name);
+                                            }
+                                        
+                                    });
+                                Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
+                                }                             
+                            });
+                           return;
+                        }//transition to setup screen
+                    
+                
                     // Ext.Ajax.request({
                     //     type : 'GET',
                     //     url : base_URL.concat('/api/user/'),
@@ -56,8 +86,8 @@ Ext.define('TaskIt.controller.Login', {
 
                     });
 
-
                 }
+                
                 else {
                     
                         Ext.Msg.alert('Bad Login','No userId Found',Ext.emptyFn());

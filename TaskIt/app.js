@@ -6,7 +6,7 @@ var GROUP_ID=1;
 var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl; 
 var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/';
 var settingsStore_URL, onlyChoresStore_URL, groceriesStore_URL;
-
+var GroupFlag= false;
 
 /*
     This file is generated and updated by Sencha Cmd. You can edit this file as
