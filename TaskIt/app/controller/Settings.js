@@ -5,7 +5,7 @@ Ext.define('TaskIt.controller.Settings', {
     requires : [
         'Ext.field.Select'
     ],
-    
+
     config: {
         refs: {
             addMemberToGroup: 'settings button[action=addGroupMembers]',
@@ -30,14 +30,20 @@ Ext.define('TaskIt.controller.Settings', {
                     align : 'center',
                     pack : 'center'
                 },
-                
+
                 items : [
                     {
                         xtype : 'textfield',
                         labelWidth : '1',
                         id : 'settings_newChoreName',
-                        width : '40%'
-
+                        width : '40%',
+                        listeners: {
+                            keyup: function(field, e){
+                                if(e.browserEvent.keyCode==13){
+                                    addChore();
+                                }
+                            }
+                        }
                     },
                     {xtype : 'spacer', width:'2%'},
                     {
@@ -55,26 +61,7 @@ Ext.define('TaskIt.controller.Settings', {
                         xtype : 'button',
                         width : '16%',
                         text : 'Add',
-                        handler : function(){
-                            var tempURL = base_URL.concat('chore/');
-                            console.log(tempURL);
-
-                            Ext.Ajax.request({
-                                url: tempURL,
-                                method : 'POST',
-                                params : {
-                                    chore_name: Ext.getCmp('settings_newChoreName').getValue(),
-                                    frequency: Ext.getCmp('settings_newChoreFreq').getValue(),
-                                    group_id: GROUP_ID
-                                },
-                                success: function(response){
-                                    console.log(response.responseText);
-
-                                    Ext.getCmp('settings_newChoreName').setValue('');
-                                    setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
-                                }
-                            }); 
-                        }
+                        handler : addChore
                     }
                 ]
             });
@@ -86,17 +73,14 @@ Ext.define('TaskIt.controller.Settings', {
 
         }
         else {
-            //removing email panel to the list
-            Ext.getCmp('settingsElements').remove(addNewChoreName);
-            Ext.getCmp('settings_addGroupChores').setIconCls('add');
-            Ext.getCmp('settings_addGroupChores').setText('');
+            dismissChoreForm();
         }
     },
 
     addMemberToGroup : function() {
-        
+
         if(Ext.getCmp('settings_addGroupMembers').getIconCls()=='add'){
-        
+
             //creating the email addition
             addNewMemberEmail = new Ext.Panel({
                 layout : {
@@ -111,48 +95,20 @@ Ext.define('TaskIt.controller.Settings', {
                         labelWidth : '1',
                         id : 'settings_newMemberEmail',
                         width : '80%',
-
+                        listeners: {
+                            keyup: function(field, e){
+                                if(e.browserEvent.keyCode==13){
+                                    addMember();
+                                }
+                            }
+                        }
                     },
                     {xtype : 'spacer', width:'2%'},
                     {
                         xtype : 'button',
                         width : '18%',
                         text : 'Invite',
-                        handler : function(){
-                                var emailComp = Ext.getCmp('settings_newMemberEmail');
-
-                                var tempURL = base_URL.concat('user/');
-                                console.log(tempURL);
-                                //Creating new User
-                                Ext.Ajax.request({
-                                    url: tempURL,
-                                    method : 'POST',
-                                    params : {
-                                        first_name: 'Unverified',
-                                        last_name: 'Unverified',
-                                        email: emailComp.getValue()
-                                    },
-                                    success: function(response){
-                                        //get server generated UserID
-                                        console.log(response.responseText);
-                                        setUserId = JSON.parse(response.responseText).user_id;
-
-                                        //add user to the pre-existing group
-                                        var tempURL2 = base_URL.concat('group/', GROUP_ID.toString(), '/user/', setUserId.toString(), '/');
-                                        console.log(tempURL2);
-                                        Ext.Ajax.request({
-                                            url: tempURL2,
-                                            method : 'POST',
-                                            success: function(response2){
-                                                console.log(response2.responseText);
-                                                Ext.getStore('Roommates').add({email: emailComp.getValue(), first_name:'Unverified', last_name:'Unverified'});
-                                                Ext.getStore('Roommates').sync();
-                                                emailComp.setValue('');
-                                            }
-                                        }); 
-                                    }
-                                }); 
-                        }
+                        handler : addMember
                     }
                 ]
             });
@@ -163,17 +119,85 @@ Ext.define('TaskIt.controller.Settings', {
 
         }
         else {
-            //removing email panel to the list
-            Ext.getCmp('settingsElements').remove(addNewMemberEmail);
-            Ext.getCmp('settings_addGroupMembers').setIconCls('add');
-            Ext.getCmp('settings_addGroupMembers').setText('');
+            dismissMemberForm();
         }
-
-
     },
-    
+
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-        
+
     }
 });
+
+function addChore() {
+    var tempURL = base_URL.concat('chore/');
+    console.log(tempURL);
+
+    Ext.Ajax.request({
+        url: tempURL,
+        method : 'POST',
+        params : {
+            chore_name: Ext.getCmp('settings_newChoreName').getValue(),
+            frequency: Ext.getCmp('settings_newChoreFreq').getValue(),
+            group_id: GROUP_ID
+        },
+        success: function(response){
+            console.log(response.responseText);
+
+            Ext.getCmp('settings_newChoreName').setValue('');
+            setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
+            dismissChoreForm();
+        }
+    });
+}
+
+function addMember() {
+    var emailComp = Ext.getCmp('settings_newMemberEmail');
+
+    var tempURL = base_URL.concat('user/');
+    console.log(tempURL);
+    //Creating new User
+    Ext.Ajax.request({
+        url: tempURL,
+        method : 'POST',
+        params : {
+            first_name: 'Unverified',
+            last_name: 'Unverified',
+            email: emailComp.getValue()
+        },
+        success: function(response){
+            //get server generated UserID
+            console.log(response.responseText);
+            setUserId = JSON.parse(response.responseText).user_id;
+
+            //add user to the pre-existing group
+            var tempURL2 = base_URL.concat('group/', GROUP_ID.toString(), '/user/', setUserId.toString(), '/');
+            console.log(tempURL2);
+            Ext.Ajax.request({
+                url: tempURL2,
+                method : 'POST',
+                success: function(response2){
+                    console.log(response2.responseText);
+                    Ext.getStore('Roommates').add({email: emailComp.getValue(), first_name:'Unverified', last_name:'Unverified'});
+                    Ext.getStore('Roommates').sync();
+                    emailComp.setValue('');
+                    dismissMemberForm();
+                }
+            });
+        }
+    });
+}
+
+function dismissChoreForm() {
+    //removing email panel to the list
+    Ext.getCmp('settingsElements').remove(addNewChoreName);
+    Ext.getCmp('settings_addGroupChores').setIconCls('add');
+    Ext.getCmp('settings_addGroupChores').setText('');
+}
+
+function dismissMemberForm() {
+    //removing email panel to the list
+    Ext.getCmp('settingsElements').remove(addNewMemberEmail);
+    Ext.getCmp('settings_addGroupMembers').setIconCls('add');
+    Ext.getCmp('settings_addGroupMembers').setText('');
+}

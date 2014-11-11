@@ -3,7 +3,7 @@ var myChoreStore={};
 var myGroceryStore={};
 var myVar;
 var GROUP_ID;
-var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl; 
+var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl;
 var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/';
 var settingsStore_URL, onlyChoresStore_URL, groceriesStore_URL;
 var GroupFlag= false;
@@ -65,7 +65,8 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
+        //fix for box not dismissing
+        Ext.Msg.defaultAllowedConfig.showAnimation = false;
         // Initialize the main view
         Ext.Viewport.add(Ext.create('TaskIt.view.Start'));
     },
