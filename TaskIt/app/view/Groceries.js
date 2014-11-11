@@ -33,6 +33,8 @@ Ext.define('TaskIt.view.Groceries', {
                         label : '<font size=4><b>Grocery Item</b></font>',
                         flex : 6,
                         labelWidth : '1',
+                        autoCapitalize: true,
+                        autoCorrect: true,
                         // width : '80%',
                         margin : '0 0 0 -20',
                         listeners: {

@@ -64,6 +64,7 @@ Ext.define('TaskIt.view.Signup', {
                                 xtype: 'textfield',
                                 label: 'Last Name',
                                 id: 'signup_lastname',
+                                autoCapitalize: true,
                                 listeners: {
                                     keyup: function(field, e){
                                         if(e.browserEvent.keyCode==13){
@@ -76,6 +77,7 @@ Ext.define('TaskIt.view.Signup', {
                                 xtype: 'textfield',
                                 label: 'Group Name',
                                 id: 'signup_groupname',
+                                autoCapitalize: true,
                                 listeners: {
                                     keyup: function(field, e){
                                         if(e.browserEvent.keyCode==13){

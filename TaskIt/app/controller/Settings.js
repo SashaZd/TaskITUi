@@ -37,6 +37,8 @@ Ext.define('TaskIt.controller.Settings', {
                         labelWidth : '1',
                         id : 'settings_newChoreName',
                         width : '40%',
+                        autoCapitalize: true,
+                        autoCorrect: true,
                         listeners: {
                             keyup: function(field, e){
                                 if(e.browserEvent.keyCode==13){

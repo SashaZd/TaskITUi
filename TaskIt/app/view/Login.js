@@ -36,8 +36,9 @@ Ext.define('TaskIt.view.Login', {
                         items: [
                             {
                                 xtype: 'emailfield',
-                                label: 'Email ID',
+                                label: 'Email',
                                 id : 'loginEmail',
+                                autoComplete: false,
                                 listeners: {
                                     keyup: function(field, e){
                                         if(e.browserEvent.keyCode==13){
