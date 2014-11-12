@@ -21,6 +21,70 @@ Ext.define('TaskIt.controller.Settings', {
         }
     },
 
+    logout: function(){
+        Ext.Ajax.request({
+            method: 'GET',
+            url: base_URL.concat('logout/'),
+            success: function(response){
+                setTimeout(function() {
+                    Ext.getCmp('startScreen').getLayout().setAnimation({
+                        type: 'slide',
+                        duration: 300,
+                        reverse: true,
+                        direction:'left'
+                    });
+                    Ext.getCmp('startScreen').setActiveItem(0, {type : 'slide', direction:'left'});
+                });
+            }
+        });
+    },
+
+    deleteUserFromGroup : function(){
+        Ext.Msg.confirm(
+            'Leave This Group ?',
+            "Are you sure you wish to leave this group? Once you leave, you will need to be added back in by existing members for access.",
+            function(button){
+                if(button=='yes'){
+                    var tempURL = base_URL.concat('group/',GROUP_ID,'/user/',USER_ID,'/');
+
+                    Ext.Ajax.request({
+                        url: tempURL,
+                        method : 'DELETE',
+                        success: function(response){
+                            showDetails.hide();
+                            TaskIt.app.getController('Settings').logout();  
+
+                        }
+                    }); 
+                }
+            }
+        );
+        
+    },
+
+    deleteChoreFromGroup : function(t, chore_id){
+
+        var tempURL = base_URL.concat('chore/', chore_id, '/');
+        
+
+        Ext.Ajax.request({
+            url: tempURL,
+            method : 'DELETE',
+            success: function(response){
+                if (JSON.parse(response.responseText).success){
+                    showChoreDetails.hide();
+                    Ext.getCmp('showChoreDetails_choreName').disable();
+                    Ext.getCmp('showChoreDetails_frequency').disable();
+                    Ext.getCmp('showChoreDetails_DeleteChore').hide();
+                    setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
+                }
+                else {
+                    console.log('An error occurred during delete');
+                }
+            }
+        }); 
+    },
+
     addChoreToGroup : function(){
         if(Ext.getCmp('settings_addGroupChores').getIconCls()=='add'){
 

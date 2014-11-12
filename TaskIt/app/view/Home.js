@@ -8,6 +8,7 @@ Ext.define('TaskIt.view.Home', {
     ],
     config: {
         title: 'Home',
+        id : 'homePanel',
         iconCls: 'home',
         style:'background-color:rgba(0,0,0,0);',
         styleHtmlContent : true,

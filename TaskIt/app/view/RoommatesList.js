@@ -40,7 +40,10 @@ var showDetails = new Ext.Panel({
             xtype : 'button',
             id : 'showUserDetails_Leave',
             text : 'Leave This Group',
-            hidden : true
+            hidden : true,
+            handler : function(){
+                TaskIt.app.getController('Settings').deleteUserFromGroup();
+            }
         },
         {
             xtype : 'button',
@@ -73,8 +76,8 @@ var showDetails = new Ext.Panel({
                             if(r.success==true){
                                 console.log("Editted User");
                                 button.setText("Edit");
-
-                                TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                                Ext.getStore('Settings').load();
+                                TaskIt.app.getController('Login').loadRoommatesStore();
                                 Ext.getCmp('showUserDetails_firstName').disable();
                                 Ext.getCmp('showUserDetails_lastName').disable();
                                 Ext.getCmp('showUserDetails_email').disable();
@@ -83,7 +86,7 @@ var showDetails = new Ext.Panel({
                             }
                         }
                     });
-                    setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
+                    setTimeout(function() {TaskIt.app.getController('Login').loadRoommatesStore();},1000);
 
 
 
@@ -108,7 +111,7 @@ Ext.define('TaskIt.view.RoommatesList', {
         iconCls : 'list',
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){
-                console.log(record.data);
+                // console.log(record.data);
 
                 Ext.getCmp('showUserDetails_firstName').setValue(record.get('first_name'));
                 Ext.getCmp('showUserDetails_lastName').setValue(record.get('last_name'));

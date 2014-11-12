@@ -18,6 +18,10 @@ Ext.define('TaskIt.controller.MainTabs', {
         if(tab.getId() == 'settingsPanel'){
             this.settingsPanelFns();
         }
+
+        if(tab.getId() == 'homePanel'){
+            this.homePanelFns();
+        }
     },
 
     settingsPanelFns: function(){
@@ -27,6 +31,12 @@ Ext.define('TaskIt.controller.MainTabs', {
 
     },
 
+    homePanelFns: function(){
+        
+        //Loading Roommates Store
+        TaskIt.app.getController('Login').doAllGroupIDFunctions();
+
+    },
     
     //called when the Application is launched, remove if not needed
     launch: function(app) {

@@ -63,19 +63,28 @@ Ext.define('TaskIt.controller.Login', {
                            return;
                         }//transition to setup screen
 
-                    GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; //Need to change once the server passes us the Group_IDs the User Belongs To
+                    var tempGroupID = JSON.parse(response.responseText).group_ids;
+                    if (tempGroupID.length == 0){
+                        Ext.Msg.alert(
+                            'Not in a Group',
+                            'You are not currently a member of any group. Set up a new group or join an existing group to continue.',
+                            Ext.emptyFn()
+                        );
+                    }
+                    else {
+                        GROUP_ID =  tempGroupID[0]; //Need to change once the server passes us the Group_IDs the User Belongs To    
+                        TaskIt.app.getController('Login').doAllGroupIDFunctions();
+                        setTimeout(function() {
+                            Ext.getCmp('startScreen').getLayout().setAnimation({
+                                type: 'slide',
+                                duration: 300,
+                                reverse: true,
+                                direction:'right'
+                            });
+                            Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
 
-                    TaskIt.app.getController('Login').doAllGroupIDFunctions();
-                    setTimeout(function() {
-                        Ext.getCmp('startScreen').getLayout().setAnimation({
-                            type: 'slide',
-                            duration: 300,
-                            reverse: true,
-                            direction:'right'
                         });
-                        Ext.getCmp('startScreen').setActiveItem(2, {type : 'slide', direction:'right'});
-
-                    });
+                    }
 
                 }
 
@@ -119,6 +128,7 @@ Ext.define('TaskIt.controller.Login', {
         Ext.getStore('OnlyChores').load();
 
         //For Roommates Store
+        // Ext.getStore('OnlyChores').load();
         this.loadRoommatesStore();
 
         //For Groceries Store
@@ -129,7 +139,6 @@ Ext.define('TaskIt.controller.Login', {
     },
 
     loadRoommatesStore : function(){
-        Ext.getStore('OnlyChores').load();
         if(Ext.getStore('Settings').getData().all.length>0){
 
             Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);
