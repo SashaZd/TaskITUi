@@ -17,6 +17,35 @@ Ext.define('TaskIt.controller.Login', {
         }
     },
 
+    newUserAlreadyCreated : function(t, testVar){
+        Ext.Msg.confirm(
+            'Welcome to TaskIt',
+            "This Email ID has not been used with TaskIt before. Please set up your user account to continue.",
+            function(button){
+                if(button=='yes'){
+                    GroupFlag=true;
+                    Ext.getCmp('startScreen').getLayout().setAnimation({
+                        type: 'slide',
+                        duration: 300,
+                        reverse: true,
+                        direction:'right'
+                    });
+                    Ext.getCmp('signup_email').setValue(testVar.email);
+
+                    Ext.Ajax.request({
+                        method: 'GET',
+                        url: base_URL.concat('group/',testVar.group_ids[0],'/'),
+                        success: function(response){
+                                Ext.getCmp('signup_groupname').setValue(JSON.parse(response.responseText).group_name);
+                            }
+
+                    });
+                    Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
+                }
+        });
+    },
+
+
     doLogin : function(){
 
         userEmail = Ext.getCmp('loginEmail').getValue();
@@ -33,45 +62,40 @@ Ext.define('TaskIt.controller.Login', {
                 console.log(response.responseText);
                 var testVar= JSON.parse(response.responseText);
                 USER_ID = testVar.user_id;
-                if (JSON.parse(response.responseText).email){
-                    if(JSON.parse(response.responseText).first_name=='Unverified'){
-                        Ext.Msg.confirm(
-                        'First Time Login',
-                        "Please set your First and Last Name",
-                        function(button){
-                            if(button=='yes'){
-                                    GroupFlag=true;
-                                    Ext.getCmp('startScreen').getLayout().setAnimation({
-                                        type: 'slide',
-                                        duration: 300,
-                                        reverse: true,
-                                        direction:'right'
-                                    });
-                                    Ext.getCmp('signup_email').setValue(testVar.email);
+                if (JSON.parse(response.responseText).email){       //existing user
+                    if(JSON.parse(response.responseText).first_name=='Unverified'){     //first time login
+                        
+                        TaskIt.app.getController('Login').newUserAlreadyCreated(this, testVar);
+                        return;
 
-                                    Ext.Ajax.request({
-                                        method: 'GET',
-                                        url: base_URL.concat('group/',testVar.group_ids[0],'/'),
-                                        success: function(response){
-                                                Ext.getCmp('signup_groupname').setValue(JSON.parse(response.responseText).group_name);
-                                            }
+                    } //transition to setup screen
 
-                                    });
-                                Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
-                                }
-                            });
-                           return;
-                        }//transition to setup screen
-
-                    var tempGroupID = JSON.parse(response.responseText).group_ids;
-                    if (tempGroupID.length == 0){
+                    var tempGroupID = JSON.parse(response.responseText).group_ids;      //check if belongs to a group
+                    
+                    if (tempGroupID.length == 0){       //doesn't belong to a group yet
+                        
                         Ext.Msg.alert(
                             'Not in a Group',
                             'You are not currently a member of any group. Set up a new group or join an existing group to continue.',
                             Ext.emptyFn()
                         );
+
+                        // GroupFlag=true;
+
+                        Ext.getCmp('signup_email').setValue(testVar.email);
+                        Ext.getCmp('signup_firstname').setValue(testVar.first_name);
+                        Ext.getCmp('signup_lastname').setValue(testVar.last_name);
+
+                        //Allow change only after login
+                        Ext.getCmp('signup_email').disable(); 
+                        Ext.getCmp('signup_firstname').disable(); 
+                        Ext.getCmp('signup_lastname').disable();
+
+                        Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
                     }
-                    else {
+
+                    else {                  //belongs to a group, logging in now
+
                         GROUP_ID =  tempGroupID[0]; //Need to change once the server passes us the Group_IDs the User Belongs To    
                         TaskIt.app.getController('Login').doAllGroupIDFunctions();
                         setTimeout(function() {
