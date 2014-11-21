@@ -128,6 +128,7 @@ Ext.define('TaskIt.controller.Settings', {
                         width : '16%',
                         text : 'Add',
                         handler : addChore
+                    }
                 ]
             });
             //adding email panel to the list
