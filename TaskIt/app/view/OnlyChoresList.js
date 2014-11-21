@@ -18,20 +18,38 @@ var showChoreDetails = new Ext.Panel({
             label : 'Chore',
             name : 'chore_name',
             disabled : true,
-            id : 'showUserDetails_choreName'
+            id : 'showChoreDetails_choreName'
         },
         {
-            xtype : 'textfield', 
+            xtype: 'selectfield',
             label : 'Frequency',
             name : 'frequency',
             disabled : true,
-            id : 'showUserDetails_frequency'
+            id : 'showChoreDetails_frequency',
+            hidden : false,
+            options: [
+                {text: 'Daily',  value: 'd'},
+                {text: 'Weekly', value: 'w'},
+                {text: 'Monthly',  value: 'm'}
+            ]
+        },
+        {
+            xtype : 'textfield', 
+            label : 'chore_id',
+            name : 'chore_id',
+            disabled : true,
+            id : 'showChoreDetails_choreId',
+            hidden : true
         },
         {
             xtype : 'button',
-            id : 'showUserDetails_DeleteChore',
+            id : 'showChoreDetails_DeleteChore',
             text : 'Delete Chore From Group',
-            hidden : true
+            hidden : true,
+            handler : function(){
+                var passChoreId = Ext.getCmp('showChoreDetails_choreId').getValue();
+                TaskIt.app.getController('Settings').deleteChoreFromGroup(this, passChoreId);
+            }
         },
         {
             xtype : 'button',
@@ -39,35 +57,34 @@ var showChoreDetails = new Ext.Panel({
             id : 'showUserDetails_EditChore',
             handler : function(button){
                 if(button.getText()=="Edit"){
-                    Ext.getCmp('showUserDetails_choreName').enable();
-                    Ext.getCmp('showUserDetails_frequency').enable();
-                    Ext.getCmp('showUserDetails_DeleteChore').show();
+                    Ext.getCmp('showChoreDetails_choreName').enable();
+                    Ext.getCmp('showChoreDetails_frequency').enable();
+                    Ext.getCmp('showChoreDetails_DeleteChore').show();
                     button.setText("Done");
                 }
                 else{
+                    var tempChoreId = Ext.getCmp('showChoreDetails_choreId').getValue();
+                    var tempURL = base_URL.concat('chore/', tempChoreId, '/edit/')
 
                     Ext.Ajax.request({
                         method : 'POST',
                         url: tempURL,
                         params: {
-                            email : Ext.getCmp('showUserDetails_email').getValue(),
-                            first_name: Ext.getCmp('showUserDetails_firstName').getValue(),
-                            last_name: Ext.getCmp('showUserDetails_lastName').getValue()
+                            chore_name: Ext.getCmp('showChoreDetails_choreName').getValue(), 
+                            frequency: Ext.getCmp('showChoreDetails_frequency').getValue()
                         },
                         success: function(response){  
                             var r = JSON.parse(response.responseText);
                             if(r.success==true){
                                 console.log("Editted Chore");
-
-                                Ext.getCmp('showUserDetails_choreName').disable();
-                                Ext.getCmp('showUserDetails_frequency').disable();
-                                Ext.getCmp('showUserDetails_DeleteChore').hide();
-                                button.setText("Edit");
-
                                 setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
                             }
                         }
                     });
+                    Ext.getCmp('showChoreDetails_choreName').disable();
+                    Ext.getCmp('showChoreDetails_frequency').disable();
+                    Ext.getCmp('showChoreDetails_DeleteChore').hide();
+                    button.setText("Edit");
                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
                 }
             }
@@ -81,7 +98,8 @@ Ext.define('TaskIt.view.OnlyChoresList', {
     requires: [
         'Ext.TitleBar',
         'Ext.DataView',
-        'Ext.dataview.List'
+        'Ext.dataview.List',
+        'Ext.field.Select'
     ],
     config: {
         store: 'OnlyChores', 
@@ -93,8 +111,9 @@ Ext.define('TaskIt.view.OnlyChoresList', {
             itemtap : function(t, index, target, record, e, eOpts){
                 console.log(record.data);
 
-                Ext.getCmp('showUserDetails_choreName').setValue(record.get('chore_name'));
-                Ext.getCmp('showUserDetails_frequency').setValue(record.get('frequency'));
+                Ext.getCmp('showChoreDetails_choreName').setValue(record.get('chore_name'));
+                Ext.getCmp('showChoreDetails_frequency').setValue(record.get('frequency'));
+                Ext.getCmp('showChoreDetails_choreId').setValue(record.get('chore_id'));
 
                 showChoreDetails.showBy(target);
                 setTimeout(function(){t.deselect(index);},1000);

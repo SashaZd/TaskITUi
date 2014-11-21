@@ -36,21 +36,7 @@ Ext.define('TaskIt.view.Settings', {
                         xtype : 'button',
                         text : '<font color="white">Logout</font>',
                         handler : function(){
-                            Ext.Ajax.request({
-                                method: 'GET',
-                                url: base_URL.concat('logout/'),
-                                success: function(response){
-                                    setTimeout(function() {
-                                        Ext.getCmp('startScreen').getLayout().setAnimation({
-                                            type: 'slide',
-                                            duration: 300,
-                                            reverse: true,
-                                            direction:'right'
-                                        });
-                                        Ext.getCmp('startScreen').setActiveItem(0, {type : 'slide', direction:'right'});
-                                    });
-                                }
-                            });
+                            TaskIt.app.getController('Settings').logout();
                         }
                     }
                 ]

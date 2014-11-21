@@ -532,17 +532,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -667,6 +656,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "TaskIt.controller.Chores": [],
+  "TaskIt.controller.Groceries": [],
   "TaskIt.controller.Login": [],
   "TaskIt.controller.MainTabs": [],
   "TaskIt.controller.Settings": [],
@@ -681,7 +672,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.store.OnlyChores": [],
   "TaskIt.store.Roommates": [],
   "TaskIt.store.Settings": [],
-  "TaskIt.view.AllChoresList": [],
   "TaskIt.view.ChoreList": [],
   "TaskIt.view.ChoreListPanel": [],
   "TaskIt.view.DefaultTaskList": [],
@@ -691,7 +681,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.view.Login": [],
   "TaskIt.view.Main": [],
   "TaskIt.view.OnlyChoresList": [],
-  "TaskIt.view.OthersChoreList": [],
   "TaskIt.view.RoommatesList": [],
   "TaskIt.view.Settings": [],
   "TaskIt.view.Setup": [],
@@ -1278,17 +1267,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -1429,6 +1407,8 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "TaskIt.controller.Chores": [],
+  "TaskIt.controller.Groceries": [],
   "TaskIt.controller.Login": [],
   "TaskIt.controller.MainTabs": [],
   "TaskIt.controller.Settings": [],
@@ -1443,9 +1423,6 @@ Ext.ClassManager.addNameAliasMappings({
   "TaskIt.store.OnlyChores": [],
   "TaskIt.store.Roommates": [],
   "TaskIt.store.Settings": [],
-  "TaskIt.view.AllChoresList": [
-    "widget.allChoresList"
-  ],
   "TaskIt.view.ChoreList": [
     "widget.choreList"
   ],
@@ -1472,9 +1449,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "TaskIt.view.OnlyChoresList": [
     "widget.onlyChoresList"
-  ],
-  "TaskIt.view.OthersChoreList": [
-    "widget.othersChoreList"
   ],
   "TaskIt.view.RoommatesList": [
     "widget.roommatesList"

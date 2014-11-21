@@ -1,0 +1,196 @@
+/* CHRISTIAN THIS NEXT BIT IS FOR THE GROUP HEADERS FOR THE GROCERIES LIST */
+
+$list-header-bg-color: black;
+$list-header-bg-gradient: none;
+
+.x-list-header
+{
+   height:100px;
+   /*color: Red;*/
+   font-size: 24pt;
+}
+
+/* END OF GROCERY LIST GROUPED HEADERS CSS */
+
+.alignleft {
+	float : left;
+	font-weight: bold;
+	font-size: 3;
+}
+.alignright {
+	float : right;
+	text-align: right;
+	position: relative;
+	margin: 0;
+	margin-right: 0;
+	font-size: 1;
+}
+.mySemiTransparentList {
+	background-color: rgba(0, 0, 0, .05);
+	border-radius: 5px;
+}
+
+.mySemiTransparentList .x-list-header {
+    background-color: rgba(176,18,60,1);
+    background-image: none;
+    /*border-color: rgba(176,18,60,1);*/
+    color: white;
+}
+
+.x-toolbar.x-docked-top {
+	background-color:rgba(176,18,60,1);
+	color: white;
+}
+
+.x-toolbar.x-docked-top .x-innerhtml {
+	color: white;
+}
+
+.x-button {
+	background-color: #fff;
+	color:rgba(176,18,60,1);
+}
+.x-button-normal {
+	border-color:rgba(176,18,60,1);
+	color:rgba(176,18,60,1);
+}
+
+/* button outline color */
+div .x-button-normal {
+    border-color:rgba(176,18,60,1);
+}
+div .x-button.x-button-pressing {
+    border-color:rgba(176,18,60,0.2);
+}
+
+/* button label color */
+div .x-button .x-button-label {
+    color: rgba(176,18,60,1);
+}
+div .x-button.x-button-pressing .x-button-label {
+    color:rgba(176,18,60,0.5);
+}
+
+.myToolBars {
+	background-color:rgba(125,125,125,0.5);
+}
+.myInAppToolbar{
+	background-color:rgba(255,255,255,0.5);
+	border-radius: 5px;
+}
+
+.myAppBackground {
+	background-color: white;
+	/*background-image:
+    radial-gradient(
+      circle at top left,
+      rgba(176,18,60,0.5),
+      rgba(255,255,255,0)
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(247,159,16,0.5),
+      rgba(255,255,255,0)
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(73,173,2,0.5),
+      rgba(255,255,255,0)
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(24,84,162,0.5),
+      rgba(255,255,255,0)
+    );*/
+}
+
+.x-panel .x-field {
+	background-color: transparent;
+}
+
+.x-form-label {
+    text-align: right;
+    color: black;
+    background-color: transparent;
+ }
+
+/* highlighted tab bar icon color */
+.x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon:before {
+  	color: white;
+}
+
+/* tab bar highlighted icon background color */
+.x-tabbar-dark.x-docked-bottom .x-tab-active{
+	background-color:black;
+}
+
+/* tab bar background color */
+.x-tabbar-dark.x-docked-bottom {
+	background-color: rgb(224,224,224);
+}
+
+.x-list .x-list-item.strikethrough {
+    background-color: #ffffff;
+}
+
+.myRoommatesText {
+	position: relative;
+	color: white;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+.myTaskBackground {
+	/*background-image: url("../images/mytaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
+	/*background-color: purple;*/
+	text-align: center;
+	max-width: 100%
+
+} 
+
+.taskTextCompleted {
+	position: relative;
+	color: gray;
+	text-decoration: line-through;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;	
+}
+
+.myTaskText {
+	/*background-color: blue;*/
+	position: relative;
+	color: #0174DF;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;	
+}
+
+.otherTaskBackground {
+	/*background-image: url("../images/othertaskBkgImg.jpg"); height: 45px; width: 80%; background-repeat: no-repeat; border-style: none;*/
+	/*background-color: green;*/
+	text-align: center;
+	max-width: 100%
+} 
+
+.otherTaskText {
+	/*background-color: gray;*/
+	position: relative;
+	color: black;
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: Arial, Sans-Serif;
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 15px;
+}

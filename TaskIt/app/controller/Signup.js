@@ -65,18 +65,27 @@ Ext.define('TaskIt.controller.Signup', {
                 },
                 success: function(response){  
                     var r = JSON.parse(response.responseText);
-                    if(r.success==false){
-                         Ext.Msg.alert(
-                            'Invalid User',
-                            'Or the user already Exists',
+
+                    if(r.success==false){       //user already exists
+                        Ext.Msg.alert(
+                            'Welcome Back',
+                            'Will Add You To Your New/Existing Group Soon',
                             Ext.emptyFn
-                         );
-                         return;
+                        );
+
+                        //No such scenario... should return if group_exists & user_exists also !
+
+                        return;
                     }
+
+                    //user has to be created
+
                     var userID = r.user_id;
-                    // USER_ID = userID;
-                    console.log("User ID :::: ", userID);
+                    GROUP_ID=r.group_id; 
+
+                    //Set GROUP_ID Here
                     //Create new group if it doesn't already exist
+
                     if (!r.group_exists) {
                         Ext.Msg.confirm(
                             'Create New Group',
@@ -149,10 +158,13 @@ Ext.define('TaskIt.controller.Signup', {
                                 email: email
                             },
                             success: function(response){
-                                // console.log("Login done");
+                                console.log(response.responseText);
+
+                                // TaskIt.app.getController('Login').doAllGroupIDFunctions();
                                 if (JSON.parse(response.responseText).first_name){
-                                    GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; 
+                                    // GROUP_ID = JSON.parse(response.responseText).group_ids[0] ; 
                                     userEmail = email;
+                                   
                                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
                                     setTimeout(function() {
                                         Ext.getCmp('startScreen').getLayout().setAnimation({

@@ -66,6 +66,15 @@ Ext.define('TaskIt.view.Groceries', {
                 docked : 'top',
 
                 items : [
+                    {
+                        xtype : 'button',
+                        iconCls: 'sync',
+                        text : 'sync',
+                        handler : function(){
+                            console.log('Synced');
+                            Ext.getStore('Groceries').load();
+                        }
+                    },
                     {xtype : 'spacer'},
                     {
                         xtype : 'button',
@@ -74,10 +83,12 @@ Ext.define('TaskIt.view.Groceries', {
                         text : '<font color="white"></font>',
                         // ui : 'add',
                         handler : function(button){
+                            if(!myNewGroceryItem){
+                                console.log("Not here")
+                            }
 
                             if (button.getIconCls() == "add"){
                                 Ext.getCmp('addNewGroceryForm').show();
-
                                 Ext.getCmp('addToGroceryList').setText('<font size=3>Done</font>');
                                 Ext.getCmp('addToGroceryList').setIconCls('');
                             }
