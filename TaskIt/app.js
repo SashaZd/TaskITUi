@@ -4,7 +4,7 @@ var myGroceryStore={};
 var myVar;
 var GROUP_ID;
 var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl;
-var base_URL='http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/';
+var base_URL='http://api.task-it.me/api/';
 var settingsStore_URL, onlyChoresStore_URL, groceriesStore_URL;
 var GroupFlag= false;
 
