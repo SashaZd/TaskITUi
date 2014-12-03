@@ -80,17 +80,17 @@ Ext.define('TaskIt.view.Login', {
                                         //ui : 'action'
                                     }
                                 ]
-                            },
-                            {
-                                html: '<div id="gSignInWrapper">' +
-                                    '<div id="customBtn" class="customGPlusSignIn">' +
-                                    '<span class="icon"> </span>' +
-                                    '<span class="buttonText">Google</span>' +
-                                    '</div>' +
-                                    '</div>',
-                                xtype: 'container',
-                                width: '100%'
-                            }
+                            }//,
+                            // {
+                            //     html: '<div id="gSignInWrapper">' +
+                            //         '<div id="customBtn" class="customGPlusSignIn">' +
+                            //         '<span class="icon"> </span>' +
+                            //         '<span class="buttonText">Google</span>' +
+                            //         '</div>' +
+                            //         '</div>',
+                            //     xtype: 'container',
+                            //     width: '100%'
+                            // }
                         ]
                     }
                 ]
