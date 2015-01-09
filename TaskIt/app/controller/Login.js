@@ -64,16 +64,16 @@ Ext.define('TaskIt.controller.Login', {
                 USER_ID = testVar.user_id;
                 if (JSON.parse(response.responseText).email){       //existing user
                     if(JSON.parse(response.responseText).first_name=='Unverified'){     //first time login
-                        
+
                         TaskIt.app.getController('Login').newUserAlreadyCreated(this, testVar);
                         return;
 
                     } //transition to setup screen
 
                     var tempGroupID = JSON.parse(response.responseText).group_ids;      //check if belongs to a group
-                    
+
                     if (tempGroupID.length == 0){       //doesn't belong to a group yet
-                        
+
                         Ext.Msg.alert(
                             'Not in a Group',
                             'You are not currently a member of any group. Set up a new group or join an existing group to continue.',
@@ -87,8 +87,8 @@ Ext.define('TaskIt.controller.Login', {
                         Ext.getCmp('signup_lastname').setValue(testVar.last_name);
 
                         //Allow change only after login
-                        Ext.getCmp('signup_email').disable(); 
-                        Ext.getCmp('signup_firstname').disable(); 
+                        Ext.getCmp('signup_email').disable();
+                        Ext.getCmp('signup_firstname').disable();
                         Ext.getCmp('signup_lastname').disable();
 
                         Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
@@ -96,7 +96,7 @@ Ext.define('TaskIt.controller.Login', {
 
                     else {                  //belongs to a group, logging in now
 
-                        GROUP_ID =  tempGroupID[0]; //Need to change once the server passes us the Group_IDs the User Belongs To    
+                        GROUP_ID =  tempGroupID[0]; //Need to change once the server passes us the Group_IDs the User Belongs To
                         TaskIt.app.getController('Login').doAllGroupIDFunctions();
                         setTimeout(function() {
                             Ext.getCmp('startScreen').getLayout().setAnimation({
@@ -128,7 +128,7 @@ Ext.define('TaskIt.controller.Login', {
 
              setInterval(function() {
                   this.setChores();
-                }, 300000);       
+                }, 300000);
 
         this.setChores();
         this.setAllTpls();
@@ -292,7 +292,6 @@ Ext.define('TaskIt.controller.Login', {
 
         // GroceryStore.getProxy().clear();
         Ext.getStore('Groceries').removeAll();
-
 
     }
 });

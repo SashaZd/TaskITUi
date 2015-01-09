@@ -65,7 +65,7 @@ Ext.define('TaskIt.view.Groceries', {
                                             margin : '0 0 0 -20'
                                         },
                                         {
-                                            xtype : 'spacer', 
+                                            xtype : 'spacer',
                                             // flex : 1
                                             width : 3
                                         },
@@ -97,7 +97,7 @@ Ext.define('TaskIt.view.Groceries', {
                                                         }
                                                     });
                                                 }
-                                                             
+
                                             }
                                         }
                                     ]
@@ -108,11 +108,11 @@ Ext.define('TaskIt.view.Groceries', {
                             }
                             else {
                                 Ext.getCmp('addToGroceryList').setText('');
-                                Ext.getCmp('addToGroceryList').setIconCls('add');     
+                                Ext.getCmp('addToGroceryList').setIconCls('add');
                                 Ext.getCmp('groceryPanel').remove(myNewGroceryItem);
 
                             }
-                            
+
 
                         }
                     }
@@ -129,7 +129,7 @@ Ext.define('TaskIt.view.Groceries', {
                 width:'90%',
                         //cls:'myAppBackground',
                 flex : 7,
-                styleHtmlContent : true, 
+                styleHtmlContent : true,
                 scrollable : true
             },
             {
@@ -140,5 +140,5 @@ Ext.define('TaskIt.view.Groceries', {
 
 
     }
-    
+
 });

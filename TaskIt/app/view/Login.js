@@ -36,8 +36,9 @@ Ext.define('TaskIt.view.Login', {
                         items: [
                             {
                                 xtype: 'emailfield',
-                                label: 'Email ID',
+                                label: 'Email',
                                 id : 'loginEmail',
+                                autoComplete: false,
                                 listeners: {
                                     keyup: function(field, e){
                                         if(e.browserEvent.keyCode==13){
@@ -79,16 +80,34 @@ Ext.define('TaskIt.view.Login', {
                                         //ui : 'action'
                                     }
                                 ]
-                            }
+                            }//,
+                            // {
+                            //     html: '<div id="gSignInWrapper">' +
+                            //         '<div id="customBtn" class="customGPlusSignIn">' +
+                            //         '<span class="icon"> </span>' +
+                            //         '<span class="buttonText">Google</span>' +
+                            //         '</div>' +
+                            //         '</div>',
+                            //     xtype: 'container',
+                            //     width: '100%'
+                            // }
                         ]
                     }
                 ]
             }
         ]
+    }, initialize: function() {
+        this.on('painted', function() {
+            var additionalParams = {
+                'theme' : 'dark'
+            };
+
+            gapi.signin.render('customBtn', additionalParams);
+        });
     }
 });
 
 
-// I've provided a sample button that switches to the main app screen. When you finish verifying the login, make a similar sort of button to switch to the main screen (with the tabs) : 
+// I've provided a sample button that switches to the main app screen. When you finish verifying the login, make a similar sort of button to switch to the main screen (with the tabs) :
 
 // Check button handler for code

@@ -1,6 +1,6 @@
 Ext.define('TaskIt.controller.Chores', {
     extend: 'Ext.app.Controller',
-    
+
     config: {
         refs: {
             choreList: 'choreList',
@@ -31,16 +31,16 @@ Ext.define('TaskIt.controller.Chores', {
             method : 'POST',
             success: function(response){
                 console.log(response.responseText);
-                TaskIt.app.getController('Login').setChores();  
+                TaskIt.app.getController('Login').setChores();
                 Ext.Msg.alert(
-                    'Uh Oh!', 
-                    "Well, we'll getcha tomorrow.", 
+                    'Uh Oh!',
+                    "Well, we'll getcha tomorrow.",
                     Ext.emptyFn
-                ); 
+                );
             }
         });
 
-        
+
     },
 
     doneAllChores : function(){
@@ -48,56 +48,59 @@ Ext.define('TaskIt.controller.Chores', {
             
             if(record.get('email')==userEmail & record.get('is_done')=="YES"){
                 var tempURL = base_URL.concat('chore/', record.get('chore_id'), '/'); 
+
                 console.log(tempURL);
                 Ext.Ajax.request({
                     url: tempURL,
                     method : 'PUT',
                     success: function(response){
                         console.log(response.responseText);
-                        TaskIt.app.getController('Login').setChores();   
+                        TaskIt.app.getController('Login').setChores();
                     }
                 });
             }
         });
 
         Ext.Msg.alert(
-            'Great!', 
-            'Go read a book!', 
+            'Great!',
+            'Go read a book!',
             Ext.emptyFn
         );
     },
 
     toggleDoneChore : function(t, index, target, record, e, eOpts){
-        console.log("swiping");
-        if(record.data.email == userEmail){
-            var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
-            Ext.Ajax.request({
-                method : 'PUT',
-                url: tempURL,
-                success: function(response){
-                    if(JSON.parse(response.responseText).success){
-                        console.log(response.responseText); 
-                        TaskIt.app.getController('Login').setChores();   
+        if (e.direction == 'left'){
+            console.log("swiping");
+            if(record.data.email == userEmail){
+                var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
+                Ext.Ajax.request({
+                    method : 'PUT',
+                    url: tempURL,
+                    success: function(response){
+                        if(JSON.parse(response.responseText).success){
+                            console.log(response.responseText);
+                            TaskIt.app.getController('Login').setChores();
+                        }
+                        else {
+                            Ext.Msg.alert(
+                                'Oh No!',
+                                'There seems to be a network error. Try again later.',
+                                Ext.emptyFn
+                            );
+                        }
                     }
-                    else {
-                        Ext.Msg.alert(
-                            'Oh No!', 
-                            'There seems to be a network error. Try again later.', 
-                            Ext.emptyFn
-                        );
-                    }
-                }
-            });
-        }
-        else {
-            console.log("Not your chore to do!!");
+                });
+            }
+            else {
+                console.log("Not your chore to do!!");
+            }
         }
     },
 
 
-    
+
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-        
+
     }
 });

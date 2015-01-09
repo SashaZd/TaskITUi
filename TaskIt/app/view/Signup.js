@@ -38,22 +38,53 @@ Ext.define('TaskIt.view.Signup', {
                                 xtype: 'emailfield',
                                 label: 'Email',
                                 id : 'signup_email',
-                                hidden : false
+                                hidden : false,
+                                listeners: {
+                                    keyup: function(field, e){
+                                        if(e.browserEvent.keyCode==13){
+                                            TaskIt.app.getController('Signup').signUp();
+                                        }
+                                    }
+                                }
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'First Name',
-                                id: 'signup_firstname'
+                                id: 'signup_firstname',
+                                autoCapitalize: true,
+                                listeners: {
+                                    keyup: function(field, e){
+                                        if(e.browserEvent.keyCode==13){
+                                            TaskIt.app.getController('Signup').signUp();
+                                        }
+                                    }
+                                }
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'Last Name',
-                                id: 'signup_lastname'
+                                id: 'signup_lastname',
+                                autoCapitalize: true,
+                                listeners: {
+                                    keyup: function(field, e){
+                                        if(e.browserEvent.keyCode==13){
+                                            TaskIt.app.getController('Signup').signUp();
+                                        }
+                                    }
+                                }
                             },
                             {
                                 xtype: 'textfield',
                                 label: 'Group Name',
-                                id: 'signup_groupname'
+                                id: 'signup_groupname',
+                                autoCapitalize: true,
+                                listeners: {
+                                    keyup: function(field, e){
+                                        if(e.browserEvent.keyCode==13){
+                                            TaskIt.app.getController('Signup').signUp();
+                                        }
+                                    }
+                                }
                             },
                             {
 
@@ -79,7 +110,7 @@ Ext.define('TaskIt.view.Signup', {
                                     }
                                 ]
                             }
-                            
+
                         ]
                     }
                 ]
