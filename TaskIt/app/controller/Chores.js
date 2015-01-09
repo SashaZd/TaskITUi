@@ -46,7 +46,7 @@ Ext.define('TaskIt.controller.Chores', {
     doneAllChores : function(){
         Ext.getStore('Chores').each(function(record) {
             
-            if(record.get('email')==userEmail){
+            if(record.get('email')==userEmail & record.get('is_done')=="YES"){
                 var tempURL = base_URL.concat('chore/', record.get('chore_id'), '/'); 
                 console.log(tempURL);
                 Ext.Ajax.request({
