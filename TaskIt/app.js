@@ -54,20 +54,23 @@ Ext.application({
     isIconPrecomposed: true,
 
     startupImage: {
-        '320x460': 'resources/startup/320x460.jpg',
-        '640x920': 'resources/startup/640x920.png',
-        '768x1004': 'resources/startup/768x1004.png',
-        '748x1024': 'resources/startup/748x1024.png',
-        '1536x2008': 'resources/startup/1536x2008.png',
-        '1496x2048': 'resources/startup/1496x2048.png'
+        //This will need to be changed if we're using PhoneGap
+        // '320x460': 'resources/startup/320x460.jpg',
+        // '640x920': 'resources/startup/640x920.png',
+        // '768x1004': 'resources/startup/768x1004.png',
+        // '748x1024': 'resources/startup/748x1024.png',
+        // '1536x2008': 'resources/startup/1536x2008.png',
+        // '1496x2048': 'resources/startup/1496x2048.png'
         // '1280x800': 'resources/startup/SplashImage.png'
     },
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
+
         //fix for box not dismissing
         Ext.Msg.defaultAllowedConfig.showAnimation = false;
+        
         // Initialize the main view
         Ext.Viewport.add(Ext.create('TaskIt.view.Start'));
     },
