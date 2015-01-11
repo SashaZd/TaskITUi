@@ -22,13 +22,14 @@ Ext.define('TaskIt.view.Groceries', {
         items : [
             {
                 xtype : 'toolbar',
+                cls : 'myInAppToolbar',
                 title : '<font size=3>Groceries</font>',
                 docked : 'top',
 
                 items : [
                     {
                         xtype : 'button',
-                        iconCls: 'sync',
+                        iconCls: 'settings',
                         text : 'sync',
                         handler : function(){
                             console.log('Synced');

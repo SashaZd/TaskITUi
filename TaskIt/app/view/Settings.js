@@ -19,21 +19,24 @@ Ext.define('TaskIt.view.Settings', {
         iconCls: 'settings',
         layout : {
             type : 'vbox',
-            align : 'center',
+            align : 'stretch',
             pack : 'center'
         },
         defaults : {
-            width : '90%'
+            // width : '90%'
         },
         items: [
             {
                 xtype: 'titlebar',
+                cls : 'myInAppToolbar',
                 width:'100%',
                 docked: 'top',
+                // ui : 'plain',
                 title: '<font size=4><b>Settings</b></font>',
                 items : [
                     {
                         xtype : 'button',
+                        ui : 'plain',
                         text : '<font color="white">Logout</font>',
                         handler : function(){
                             TaskIt.app.getController('Settings').logout();
@@ -45,15 +48,15 @@ Ext.define('TaskIt.view.Settings', {
                 xtype : 'panel',
                 id : 'settingsElements',
                 flex : 1,
-                height : '40%',
+                // height : '40%',
                 layout : {
                     type : 'vbox',
                     align : 'center',
                     pack : 'center'
                 },
                 defaults : {
-                    width : '90%',
-                    margin : '5 5 5 5'
+                    width : '99%',
+                    // margin : '5 5 5 5'
                 },
                 items : [
                     // {
@@ -179,6 +182,10 @@ Ext.define('TaskIt.view.Settings', {
                                 styleHtmlContent : true
                             }
                         ]
+                    },
+                    {
+                        xtype : 'spacer',
+                        height : '2%'
                     }
                 ]
             }   

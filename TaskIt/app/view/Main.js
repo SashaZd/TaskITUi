@@ -9,6 +9,7 @@ Ext.define('TaskIt.view.Main', {
         style:'background-color:rgba(0,0,0,0);',
         ui:'transparent',
         styleHtmlContent : true,
+        fullscreen : true,
         items: [
             {
                 xtype : 'home',

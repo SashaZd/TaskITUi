@@ -12,6 +12,7 @@ Ext.define('TaskIt.view.ChoreList', {
         styleHtmlContent : true,
         itemTpl : chorelisttpl,
         grouped : true,
+        // fullscreen : true,
         iconCls : 'list'
     }
 

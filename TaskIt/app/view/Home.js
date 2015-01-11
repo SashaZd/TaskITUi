@@ -19,6 +19,7 @@ Ext.define('TaskIt.view.Home', {
             {
                 xtype: 'titlebar',
                 docked: 'top',
+                cls : 'myInAppToolbar',
                 title: '<font size=4><b>TaskIt</b></font>'
             },
             {

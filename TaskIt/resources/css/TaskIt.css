@@ -27,7 +27,7 @@ $list-header-bg-gradient: none;
 }
 .mySemiTransparentList {
 	background-color: rgba(0, 0, 0, .05);
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 }
 
 .mySemiTransparentList .x-list-header {
@@ -45,6 +45,13 @@ $list-header-bg-gradient: none;
 .x-toolbar.x-docked-top .x-innerhtml {
 	color: white;
 }
+
+/*.x-button, .x-toolbar .x-button {
+  /*border: 1px solid #999999;*/
+  /*border-top-color: #a6a6a6;*/
+  /*background-color: white;*/
+  /*color: white;*/
+}*/
 
 .x-button {
 	background-color: #fff;
@@ -76,7 +83,7 @@ div .x-button.x-button-pressing .x-button-label {
 }
 .myInAppToolbar{
 	background-color:rgba(255,255,255,0.5);
-	border-radius: 5px;
+	border-radius: 0px !important;
 }
 
 .myAppBackground {

@@ -10,7 +10,7 @@ var showChoreDetails = new Ext.Panel({
         type : 'vbox'
     },
     defaults : {
-        margin : '0 0 5 0'
+        // margin : '0 0 5 0'
     },
     items : [
         {

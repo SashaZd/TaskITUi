@@ -9,6 +9,7 @@ Ext.define('TaskIt.view.Start', {
         style:'background-color:black;',
         id : 'startScreen',
         layout : 'card',
+        fullscreen : true,
         html:'<p>Poleo</p>',
         items: [
             {
