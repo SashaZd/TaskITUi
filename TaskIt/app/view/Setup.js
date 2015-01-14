@@ -136,6 +136,7 @@ Ext.define('TaskIt.view.Setup', {
                                 styleHtmlContent : true,
                                 id : 'SetupFinish',
                                 handler : function(){
+                                    console.log(GROUP_ID);
                                     TaskIt.app.getController('Login').doAllGroupIDFunctions();
                                     // TaskIt.app.getController('Login').setChores();
                                     // TaskIt.app.getController('Login').setGroceryStore();

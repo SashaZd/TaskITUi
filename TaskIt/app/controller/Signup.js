@@ -127,6 +127,7 @@ Ext.define('TaskIt.controller.Signup', {
                                                                 var testVar = JSON.parse(response3.responseText);
                                                                 USER_ID = testVar.user_id;
                                                                 console.log('Login done');
+                                                                userEmail=email;
                                                                 setTimeout(function() {
                                                                     Ext.getCmp('startScreen').getLayout().setAnimation({
                                                                         type: 'slide',
