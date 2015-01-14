@@ -30,7 +30,9 @@ Ext.define('TaskIt.view.Groceries', {
                     {
                         xtype : 'button',
                         iconCls: 'settings',
-                        text : 'sync',
+                        // ui : 'plain',
+                        // style : 'background-color:white !important;',
+                        // text : 'sync',
                         handler : function(){
                             console.log('Synced');
                             Ext.getStore('Groceries').load();
@@ -120,22 +122,22 @@ Ext.define('TaskIt.view.Groceries', {
                 ]
             },
             {
-                xtype:'spacer',
-                flex:1
+                xtype:'container',
+                height : "1%"
             },
             {
                 xtype : 'groceryList',
                 style:'background-color:rgba(0,0,0,0);',
                 styleHtmlCls:'mySemiTransparentList',
-                width:'90%',
+                width:'98%',
                         //cls:'myAppBackground',
                 flex : 7,
                 styleHtmlContent : true,
                 scrollable : true
             },
             {
-                xtype:'spacer',
-                flex:1
+                xtype:'container',
+                height : "1%"
             }
         ]
 

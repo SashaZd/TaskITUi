@@ -132,7 +132,7 @@ Ext.define('TaskIt.controller.Settings', {
                 ]
             });
             //adding email panel to the list
-            var tempInsertPos = Ext.getCmp('settingsElements').getItems().length - 1;
+            var tempInsertPos = Ext.getCmp('settingsElements').getItems().length - 2;
             Ext.getCmp('settingsElements').insert(tempInsertPos, addNewChoreName);
             Ext.getCmp('settings_addGroupChores').setIconCls('');
             Ext.getCmp('settings_addGroupChores').setText('Done');
