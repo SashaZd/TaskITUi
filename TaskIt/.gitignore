@@ -6,7 +6,5 @@ index.html
 packages/
 touch/
 .sencha/
-
-
-
-
+.DS_Store
+**~
