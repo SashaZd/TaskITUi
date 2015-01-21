@@ -84,6 +84,13 @@ div .x-button.x-button-pressing .x-button-label {
     color:rgba(176,18,60,0.5);
 }
 
+.x-button-icon {
+  width: 1.5em;
+  height: 1.5em;
+  color : white;
+  /*color: #157efb;*/
+}
+
 .myToolBars {
 	background-color:rgba(125,125,125,0.5);
 }
@@ -94,27 +101,6 @@ div .x-button.x-button-pressing .x-button-label {
 
 .myAppBackground {
 	background-color: white;
-	/*background-image:
-    radial-gradient(
-      circle at top left,
-      rgba(176,18,60,0.5),
-      rgba(255,255,255,0)
-    ),
-    radial-gradient(
-      circle at top right,
-      rgba(247,159,16,0.5),
-      rgba(255,255,255,0)
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(73,173,2,0.5),
-      rgba(255,255,255,0)
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(24,84,162,0.5),
-      rgba(255,255,255,0)
-    );*/
 }
 
 .x-panel .x-field {
