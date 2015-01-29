@@ -229,7 +229,9 @@ Ext.define('TaskIt.controller.Login', {
             grocerytpl = new Ext.XTemplate(
                 '<center>',
                 "<tpl if='is_done==true'>",
-                        "<div class='taskTextCompleted'>{name}</div>",
+                        "<div class='taskTextCompleted'>{name}<br>",
+                            "<font size='2' color='grey' >{bought_date},{first_name}</font>  /*future check*/",
+                        "</div>",
                     "<tpl else>",
                         "<div class='myTaskText'>{name}</div>",
                     "</tpl>",
