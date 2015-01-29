@@ -10,6 +10,7 @@ Ext.define('TaskIt.view.Main', {
         ui:'transparent',
         styleHtmlContent : true,
         fullscreen : true,
+        layout : 'card',
         items: [
             {
                 xtype : 'home',

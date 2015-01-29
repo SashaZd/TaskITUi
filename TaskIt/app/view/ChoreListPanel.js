@@ -6,13 +6,17 @@ Ext.define('TaskIt.view.ChoreListPanel', {
     ],
     config: {
         styleHtmlContent : true,
+        width : '100%',
         layout : {
-            type : 'vbox'
+            type : 'vbox',
+            pack : 'center',
+            align : 'stretch'
         },
         items: [
             {
                 xtype : 'choreList',
                 flex : 1,
+                width : '100%',
                 style:'background-color:rgba(0,0,0,0);',
                 styleHtmlCls:'mySemiTransparentList',
                 styleHtmlContent : true

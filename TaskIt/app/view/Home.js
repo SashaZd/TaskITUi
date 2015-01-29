@@ -13,7 +13,9 @@ Ext.define('TaskIt.view.Home', {
         style:'background-color:rgba(0,0,0,0);',
         styleHtmlContent : true,
         layout : {
-            type : 'vbox'
+            type : 'vbox',
+            pack : 'center',
+            align : 'stretch'
         },
         items: [
             {
@@ -25,23 +27,25 @@ Ext.define('TaskIt.view.Home', {
             {
                 xtype : 'choreListPanel',
                 flex : 5,
+                width : '98%',
                 styleHtmlContent : true
             },
             {
                 xtype : 'panel',
                 flex : 1,
+                width : "98%",
                 layout : {
                     type : 'hbox',
-                    align : 'middle'
-
+                    align : 'center'
                 },
                 items : [
                     {
-                        xtype : 'spacer'
+                        xtype : 'spacer',
+                        width : '1%'
                     },
                     {
                         xtype : 'button',
-                        width : '40%',
+                        width : '47%',
                         text : '<font size=3>Done All</font>',
                         action : 'doneAllChores',
                         height : 40,
@@ -52,20 +56,22 @@ Ext.define('TaskIt.view.Home', {
                         }
                     },
                     {
-                        xtype : 'spacer'
+                        xtype : 'spacer', 
+                        width : '4%'
                     },
                     {
                         xtype : 'button',
                         action : 'notAtHomeButton',
                         text : '<font size=3>Not at Home</font>',
 
-                        width : '40%',
+                        width : '47%',
                         height : 40,
                         // ui : 'decline',
 
                     },
                     {
-                        xtype : 'spacer'
+                        xtype : 'spacer',
+                        width : '1%'
                     }
                 ]
             }
