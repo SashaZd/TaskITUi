@@ -232,6 +232,7 @@ Ext.define('TaskIt.controller.Login', {
                         "<div class='taskTextCompleted'>{name}<br>",
                             "<font size='2' color='grey' >{bought_date},{first_name}</font>  /*future check*/",
                         "</div>",
+
                     "<tpl else>",
                         "<div class='myTaskText'>{name}</div>",
                     "</tpl>",
