@@ -43,6 +43,11 @@ $list-header-bg-gradient: none;
   color: black;
 }
 
+.x-toolbar{
+	background-color:rgba(176,18,60,1);
+	color: white;	
+}
+
 .x-toolbar.x-docked-top {
 	background-color:rgba(176,18,60,1);
 	color: white;
@@ -94,10 +99,26 @@ div .x-button.x-button-pressing .x-button-label {
 .myToolBars {
 	background-color:rgba(125,125,125,0.5);
 }
+
 .myInAppToolbar{
-	background-color:rgba(255,255,255,0.5);
+	background-color:rgba(176,18,60,1);
+	color: white;
+	font-weight: bold !important;
 	border-radius: 0px !important;
 }
+
+.internalToolbars{
+	background-color:rgba(176,18,60,1);
+	color: white;
+	/*font-weight: bold !important;*/
+	border-radius: 0px !important;
+}
+
+h3 {
+	color: white;
+	/*font-weight: bold;*/
+}
+
 
 .myAppBackground {
 	background-color: white;

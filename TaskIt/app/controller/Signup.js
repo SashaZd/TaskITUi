@@ -235,7 +235,7 @@ Ext.define('TaskIt.controller.Signup', {
 
                                     //add user to the pre-existing group
                                     var tempURL2 = base_URL.concat('group/', GROUP_ID.toString(), '/user/', setUserId.toString(), '/');
-                                    console.log(tempURL2);
+                                    console.log(tempURL2)
                                     Ext.Ajax.request({
                                         url: tempURL2,
                                         method : 'POST',

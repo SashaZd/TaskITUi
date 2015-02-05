@@ -66,8 +66,7 @@ Ext.define('TaskIt.view.Setup', {
                         xtype :'toolbar',
                         flex : 1,
                         styleHtmlContent : true,
-                        style:'background-color:rgba(0,0,0,0);',
-                        styleHtmlCls:'myInAppToolbar',
+                        cls : 'myInAppToolbar',
                         title : '<h3> Group Members </h3>',
                         items : [
                             {
@@ -99,8 +98,7 @@ Ext.define('TaskIt.view.Setup', {
                     {
                         xtype : 'toolbar',
                         styleHtmlContent : true,
-                        style:'background-color:rgba(0,0,0,0);',
-                        styleHtmlCls:'myInAppToolbar',
+                        cls : 'myInAppToolbar',
                         title : '<h3>Group Chores</h3>',
                         flex : 1,
                         items : [
