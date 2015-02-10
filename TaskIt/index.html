@@ -1,75 +1,168 @@
 <!DOCTYPE HTML>
 <html manifest="" lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <title>TaskIt</title>
-    <style type="text/css">
+    <head>
+	<meta charset="UTF-8">
+	<title>TaskIt</title>
+	<style type="text/css">
 
-        html, body {
-            height: 100%;
-            /*background-image: url("resources/startup/SplashImage.png");*/
-        }
+         html, body {
+             height: 100%;
+             /*background-image: url("resources/startup/SplashImage.png");*/
+         }
 
-        #appLoadingIndicator {
-            background-image: url("resources/startup/SplashImage.png");
-            height: 100%;
-            background-repeat: no-repeat;
-            background-position: center;
-            display: inline-block;
-            width: 100%;
-        }
+         #appLoadingIndicator {
+             background-image: url("resources/startup/SplashImage.png");
+             height: 100%;
+             background-repeat: no-repeat;
+             background-position: center;
+             display: inline-block;
+             width: 100%;
+         }
 
-    </style>
-    <!-- The line below must be kept intact for Sencha Command to build your application -->
-    <script id="microloader" type="text/javascript" src=".sencha/app/microloader/development.js"></script>
-    <script src="util.js" type="text/javascript"></script>
-    <meta name="google-signin-clientid" content="1014642982140-m7f0706v4g3cl01d476ik331nj6gntq1.apps.googleusercontent.com" />
-    <meta name="google-signin-scope" content="profile" />
-    <!--<meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction" />-->
-    <meta name="google-signin-cookiepolicy" content="single_host_origin" />
-    <meta name="google-signin-callback" content="signinCallback" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <script src="https://apis.google.com/js/client:platform.js?onload=render" async defer>
-  </script>
+	</style>
+	<!-- The line below must be kept intact for Sencha Command to build your application -->
+	<script id="microloader" type="text/javascript" src=".sencha/app/microloader/development.js"></script>
+	<script src="util.js" type="text/javascript"></script>
+	<!-- <meta name="google-signin-clientid" content="1014642982140-m7f0706v4g3cl01d476ik331nj6gntq1.apps.googleusercontent.com" /> -->
+	<!-- <meta name="google-signin-scope" content="profile" /> -->
+	<!-- <\!--<meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction" />-\-> -->
+	<!-- <meta name="google-signin-cookiepolicy" content="single_host_origin" /> -->
+	<!-- <meta name="google-signin-callback" content="signinCallback" /> -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+	<script src="https://apis.google.com/js/client:platform.js?onload=render" async defer>
+	</script>
 
-  <style type="text/css">
-    #customBtn {
-      display: inline-block;
-      background: #dd4b39;
-      color: white;
-      width: 165px;
-      border-radius: 5px;
-      white-space: nowrap;
-    }
-    #customBtn:hover {
-      background: #e74b37;
-      cursor: hand;
-    }
-    span.label {
-      font-weight: bold;
-    }
-    span.icon {
-      background: url('resources/images/btn_red.png') transparent 5px 50% no-repeat;
-      display: inline-block;
-      vertical-align: middle;
-      width: 35px;
-      height: 35px;
-      border-right: #bb3f30 1px solid;
-    }
-    span.buttonText {
-      display: inline-block;
-      vertical-align: middle;
-      padding-left: 35px;
-      padding-right: 35px;
-      font-size: 14px;
-      font-weight: bold;
-      /* Use the Roboto font that is loaded in the <head> */
-      font-family: 'Roboto',arial,sans-serif;
-    }
-  </style>
-</head>
-<body>
-    <div id="appLoadingIndicator">
-    </div>
-</body>
+	<!--   <style type="text/css">
+	#customBtn {
+	display: inline-block;
+	background: #dd4b39;
+	color: white;
+	width: 165px;
+	border-radius: 5px;
+	white-space: nowrap;
+	}
+	#customBtn:hover {
+	background: #e74b37;
+	cursor: hand;
+	}
+	span.label {
+	font-weight: bold;
+	}
+	span.icon {
+	background: url('resources/images/btn_red.png') transparent 5px 50% no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	width: 35px;
+	height: 35px;
+	border-right: #bb3f30 1px solid;
+	}
+	span.buttonText {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 35px;
+	padding-right: 35px;
+	font-size: 14px;
+	font-weight: bold;
+	/* Use the Roboto font that is loaded in the <head> */
+	    font-family: 'Roboto',arial,sans-serif;
+	    }  */
+	</style>  -->
+	</head>
+	<body>
+	    <script>
+	     // This is called with the results from from FB.getLoginStatus().
+	     function statusChangeCallback(response) {
+		 console.log('statusChangeCallback');
+		 console.log(response);
+		 // The response object is returned with a status field that lets the
+		 // app know the current login status of the person.
+								    // Full docs on the response object can be found in the documentation
+		 // for FB.getLoginStatus().
+								    if (response.status === 'connected') {
+									// Logged into your app and Facebook.
+													     testAPI();
+									// return response.status;
+								    } else if (response.status === 'not_authorized') {
+									// The person is logged into Facebook, but not your app.
+																document.getElementById('status').innerHTML = 'Please log ' +
+																					      'into this app.';
+								    } else {
+									// The person is not logged into Facebook, so we're not sure if
+									// they are logged into this app or not.
+														document.getElementById('status').innerHTML = 'Please log ' +
+																			      'into Facebook.';
+								    }
+	     }
+
+	     // This function is called when someone finishes with the Login
+	     // Button.  See the onlogin handler attached to it in the sample
+	     // code below.
+	     function checkLoginState() {
+		 FB.getLoginStatus(function(response) {
+		     statusChangeCallback(response);
+		 });
+		 
+	     }
+	     
+	     window.fbAsyncInit = function() {
+		 FB.init({
+		     appId      : '840736842639036',
+		     cookie     : true,  // enable cookies to allow the server to access 
+		     // the session
+		     xfbml      : true,  // parse social plugins on this page
+		     version    : 'v2.1' // use version 2.1
+		 });
+
+		 // Now that we've initialized the JavaScript SDK, we call 
+		 // FB.getLoginStatus().  This function gets the state of the
+		 // person visiting this page and can return one of three states to
+		 // the callback you provide.  They can be:
+		 //
+		 // 1. Logged into your app ('connected')
+		     // 2. Logged into Facebook, but not your app ('not_authorized')
+		     // 3. Not logged into Facebook and can't tell if they are logged into
+		 //    your app or not.
+		       //
+		 // These three cases are handled in the callback function.
+
+		       FB.getLoginStatus(function(response) {
+			   statusChangeCallback(response);
+		       });
+
+	     };
+
+	     // Load the SDK asynchronously
+	     (function(d, s, id) {
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) return;
+		 js = d.createElement(s); js.id = id;
+		 js.src = '//connect.facebook.net/en_US/sdk.js';
+		 fjs.parentNode.insertBefore(js, fjs);
+	     }(document, 'script', 'facebook-jssdk'));
+	     
+	     // Here we run a very simple test of the Graph API after login is
+	     // successful.  See statusChangeCallback() for when this call is made.
+	     function testAPI() {
+		 console.log('Welcome!  Fetching your information.... ');
+		 FB.api('/me', function(response) {
+		     console.log(response);
+		     console.log('Successful login for: ' + response.name);
+		     document.getElementById('status').innerHTML =
+		     'Thanks for logging in, ' + response.name + '!';
+		     Ext.getCmp('loginEmail').setValue(response.email);
+		     TaskIt.app.getController('Login').doLogin();
+		 });
+	     }
+	    </script>
+	    
+
+
+	    
+	    <div id="status">
+		
+	    </div>
+	    <div id="appLoadingIndicator">
+	    </div>
+	</body>
+
 </html>

@@ -113,12 +113,43 @@ Ext.define('TaskIt.controller.Login', {
                 }
 
                 else {
-                    Ext.Msg.alert(
-                        'Incorrect Email/Password',
-                        'This user was not found. Please check the entered Email/Password.',
-                        Ext.emptyFn()
-                    );
-                }
+		    
+		    Ext.Msg.confirm("Signup", "Are you Sure u want to signup?", function(btn){
+			if (btn == 'yes'){
+                            FB.api('/me', function(response) {
+				console.log(response);
+				console.log('Successful login for: ' + response.name);
+				Ext.getCmp('signup_email').setValue(response.email);
+				Ext.getCmp('signup_firstname').setValue(response.first_name);
+				Ext.getCmp('signup_lastname').setValue(response.last_name);
+				Ext.getCmp('signup_email').disable();
+				Ext.getCmp('signup_firstname').disable();
+				Ext.getCmp('signup_lastname').disable();
+				
+
+		    	    });
+			    
+			    
+
+			    
+                            //Allow change only after login
+                            
+                            Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
+			}
+		    });
+
+                    // Ext.Msg.confirm({
+		    // 	title:'Do Something',
+		    // 	msg: 'Ok or Cancel?',
+		    // 	// buttons: Ext.Msg.YESNOCANCEL,
+		    // 	fn: function(){
+		    // 	    console.log(btn);
+		    // 	    //if(btn=='yes'){
+		    // 		console.log("rr");
+		    // 	    //}
+		    // 	}
+		    // });
+		}
             }
         });
     },
@@ -202,7 +233,6 @@ Ext.define('TaskIt.controller.Login', {
                     "</tr>",
                 "</table>"
             );
-
             Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
             Ext.getCmp('setup_onlyChoresList').setItemTpl(onlyChoresTpl);
 

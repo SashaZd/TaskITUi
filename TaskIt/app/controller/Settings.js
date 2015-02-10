@@ -22,21 +22,51 @@ Ext.define('TaskIt.controller.Settings', {
     },
 
     logout: function(){
-        Ext.Ajax.request({
-            method: 'GET',
-            url: base_URL.concat('logout/'),
-            success: function(response){
-                setTimeout(function() {
-                    Ext.getCmp('startScreen').getLayout().setAnimation({
-                        type: 'slide',
-                        duration: 300,
-                        reverse: true,
-                        direction:'left'
-                    });
-                    Ext.getCmp('startScreen').setActiveItem(0, {type : 'slide', direction:'left'});
+	// if(checkLoginState().status=="connected
+	// FB.logout();
+	FB.getLoginStatus(function(response) {
+	    if (response.status === 'connected' || response.status==='not_authorized') {
+		// Logged into your app and Facebook.
+		FB.logout();
+		Ext.getCmp('startScreen').getLayout().setAnimation({
+                    type: 'slide',
+                    duration: 300,
+                    reverse: true,
+                    direction:'left'
                 });
-            }
-        });
+		window.location.reload()
+		Ext.getCmp('startScreen').setActiveItem(0, {type : 'slide', direction:'left'});
+		// return response.status;
+	    // } else if (response.status === 'not_authorized') {
+	    // 	// The person is logged into Facebook, but not your app.
+	    // 	document.getElementById('status').innerHTML = 'Please log ' +
+	    // 	    'into this app.';
+	    } else {
+		// The person is not logged into Facebook, so we're not sure if
+		// they are logged into this app or not.
+		Ext.Ajax.request({
+		    method: 'GET',
+		    url: base_URL.concat('logout/'),
+		    success: function(response){
+			setTimeout(function() {
+			    Ext.getCmp('startScreen').getLayout().setAnimation({
+				type: 'slide',
+				duration: 300,
+				reverse: true,
+				direction:'left'
+			    });
+			    window.location.reload();
+			    Ext.getCmp('startScreen').setActiveItem(0, {type : 'slide', direction:'left'});
+			});
+		    }
+		});
+		document.getElementById('status').innerHTML = 'Please log ' +
+		    'into Facebook.';
+	    }
+	    
+	});
+
+        
     },
 
     deleteUserFromGroup : function(){
