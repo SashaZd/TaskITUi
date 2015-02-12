@@ -10,7 +10,6 @@ Ext.define('TaskIt.view.Start', {
         id : 'startScreen',
         layout : 'card',
         fullscreen : true,
-        html:'<p>Poleo</p>',
         items: [
             {
                 xtype : 'login',
@@ -31,6 +30,11 @@ Ext.define('TaskIt.view.Start', {
                 xtype: 'signup',
                 styleHtmlContent : true,
                 styleHtmlCls:'myAppBackground'
+            },
+            {
+                xtype : 'history',
+                styleHtmlContent : true,
+                styleHtmlCls : 'myAppBackground'
             }
         ]
     }

@@ -5,7 +5,8 @@ Ext.define('TaskIt.controller.Chores', {
         refs: {
             choreList: 'choreList',
             doneAllButton : 'home button[action=doneAllChores]',
-            notAtHomeButton : 'home button[action=notAtHomeButton]'
+            notAtHomeButton : 'home button[action=notAtHomeButton]',
+            historyButton : 'home button[action=historyButton]'
         },
         control: {
             choreList : {
@@ -16,10 +17,19 @@ Ext.define('TaskIt.controller.Chores', {
                 tap: 'doneAllChores'
             },
 
+            historyButton : {
+                tap: 'showHistory'
+            },
+
             notAtHomeButton : {
                 tap : 'notAtHome'
             }
         }
+    },
+
+    showHistory : function(argument) {
+        console.log("showing history")
+        Ext.getCmp('startScreen').setActiveItem(4, {type : 'slide', direction:'up', duration:300});
     },
 
     notAtHome : function(){

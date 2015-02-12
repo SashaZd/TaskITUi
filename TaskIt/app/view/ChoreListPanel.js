@@ -10,7 +10,7 @@ Ext.define('TaskIt.view.ChoreListPanel', {
         layout : {
             type : 'vbox',
             pack : 'center',
-            align : 'stretch'
+            align : 'center'
         },
         items: [
             {

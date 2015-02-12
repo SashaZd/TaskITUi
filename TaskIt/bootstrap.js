@@ -688,6 +688,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "TaskIt.view.DefaultTaskList": [],
   "TaskIt.view.Groceries": [],
   "TaskIt.view.GroceryList": [],
+  "TaskIt.view.History": [],
   "TaskIt.view.Home": [],
   "TaskIt.view.Login": [],
   "TaskIt.view.Main": [],
@@ -1459,6 +1460,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "TaskIt.view.GroceryList": [
     "widget.groceryList"
+  ],
+  "TaskIt.view.History": [
+    "widget.history"
   ],
   "TaskIt.view.Home": [
     "widget.home"

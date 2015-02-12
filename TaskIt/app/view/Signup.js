@@ -1,4 +1,3 @@
-
 Ext.define('TaskIt.view.Signup', {
     extend: 'Ext.Panel',
     xtype: 'signup',
@@ -87,7 +86,6 @@ Ext.define('TaskIt.view.Signup', {
                                 }
                             },
                             {
-
                                 xtype : 'container',
                                 layout : {
                                     type : 'hbox'

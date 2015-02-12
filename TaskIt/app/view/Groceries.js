@@ -25,7 +25,6 @@ Ext.define('TaskIt.view.Groceries', {
                 cls : 'myInAppToolbar',
                 title: '<font size=4><b>Groceries</b></font>',
                 docked : 'top',
-
                 items : [
                     {
                         xtype : 'button',
@@ -43,7 +42,6 @@ Ext.define('TaskIt.view.Groceries', {
                         id : 'addToGroceryList',
                         iconCls : 'add',
                         text : '<font color="white"></font>',
-                        // ui : 'add',
                         handler : function(button){
                             if(!myNewGroceryItem){
                                 console.log("Not here")

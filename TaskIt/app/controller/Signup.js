@@ -241,13 +241,7 @@ Ext.define('TaskIt.controller.Signup', {
                                         method : 'POST',
                                         success: function(response2){
                                             console.log("2 :: ", response2.responseText);  //apparently user is not being added here.
-                                          //  var s='Invited: '                                     //This stuff should happen automatically
-                                           // Ext.getStore('Roommates').add({first_name: 'Unverified', last_name: 'Unverified', email: Ext.getCmp('addNewMembersEmail').getValue()});
-                                            // Ext.getStore('Roommates').add({});    
-                                            // Ext.getStore('Roommates').add({});
-                                            
-                                            // console.log('reaching here3');
-                                           // Ext.getStore('Roommates').sync();
+                                          
                                             TaskIt.app.getController('Login').doAllGroupIDFunctions();
                                             Ext.getCmp('addNewMembersEmail').setValue('');
                                         }

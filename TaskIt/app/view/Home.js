@@ -14,29 +14,41 @@ Ext.define('TaskIt.view.Home', {
         styleHtmlContent : true,
         layout : {
             type : 'vbox',
-            pack : 'center',
-            align : 'stretch'
+            align : 'center',
+            pack : 'center'
         },
         items: [
             {
-                xtype: 'titlebar',
-                docked: 'top',
+                xtype : 'toolbar',
                 cls : 'myInAppToolbar',
-                title: '<font size=4><b>TaskIt</b></font>'
+                title: '<font size=4><b>TaskIt</b></font>',
+                docked : 'top',
+                items : [
+                    {
+                        xtype : 'spacer'
+                    },
+                    {
+                        xtype : 'button',
+                        ui : 'plain',
+                        text: '<font color="white">History</font>',
+                        iconCls : 'action',
+                        action : 'historyButton'
+                    }
+                ]
             },
             {
                 xtype : 'choreListPanel',
                 flex : 5,
-                width : '98%',
+                width : '100%',
                 styleHtmlContent : true
             },
             {
                 xtype : 'panel',
                 flex : 1,
-                width : "98%",
+                width : "100%",
                 layout : {
                     type : 'hbox',
-                    align : 'center'
+                    align : 'stretch'
                 },
                 items : [
                     {

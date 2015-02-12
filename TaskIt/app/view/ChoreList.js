@@ -8,11 +8,11 @@ Ext.define('TaskIt.view.ChoreList', {
     ],
     config: {
         store: 'Chores',
+        width : '100%',
         id : 'myChoreList',
         styleHtmlContent : true,
         itemTpl : chorelisttpl,
         grouped : true,
-        // fullscreen : true,
         iconCls : 'list'
     }
 

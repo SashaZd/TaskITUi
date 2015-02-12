@@ -15,5 +15,7 @@ $form-label-background-color : black;
 // Examples of using the icon mixin:
 // @include icon('user');
 
+
+@includepictos-iconmask('eye');
+@include icon('eye');
 @include icon('settings2');
-@include icon('network');

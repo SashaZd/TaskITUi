@@ -39,7 +39,7 @@ $list-header-bg-gradient: none;
 
 .x-button, .x-toolbar .x-button {
   /*border: 1px solid #999999;*/
-  /*border-top-color: #a6a6a6;*/
+  border-top-color: #a6a6a6;
   color: black;
 }
 
@@ -61,7 +61,7 @@ $list-header-bg-gradient: none;
   /*border: 1px solid #999999;*/
   /*border-top-color: #a6a6a6;*/
   /*background-color: white;*/
-  /*color: white;*/
+  /*color: white;
 }*/
 
 .x-button {
@@ -87,6 +87,13 @@ div .x-button .x-button-label {
 }
 div .x-button.x-button-pressing .x-button-label {
     color:rgba(176,18,60,0.5);
+}
+
+.buttoncls {
+  width: 1.5em;
+  height: 1.5em;
+  color : white;
+  /*color: #157efb;*/
 }
 
 .x-button-icon {
