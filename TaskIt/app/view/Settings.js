@@ -38,7 +38,7 @@ Ext.define('TaskIt.view.Settings', {
                         xtype : 'button',
                         ui : 'plain',
                         iconCls : 'power',
-                        // text : '<font color="white">Logout</font>',
+                        text : '<font color="white">Logout</font>',
                         handler : function(){
                             TaskIt.app.getController('Settings').logout();
                         }

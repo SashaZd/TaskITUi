@@ -3,7 +3,7 @@ var myChoreStore={};
 var myGroceryStore={};
 var myVar;
 var GROUP_ID;
-var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl;
+var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl,facebookTpl;
 var base_URL='http://api.task-it.me/api/';
 var settingsStore_URL, onlyChoresStore_URL, groceriesStore_URL;
 var GroupFlag= false;
