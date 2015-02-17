@@ -25,14 +25,15 @@ Ext.define('TaskIt.view.Setup', {
 
                 },
                 defaults : {
-                    width : '90%'
+                    width : '98%'
                 },
         items: [
             {
                 xtype: 'titlebar',
+                cls : 'myInAppToolbar',
                 docked: 'top',
                 width:'100%',
-                title: '<font size=3>Setup the Group</font>'
+                title: '<font size=4><b>Setup Group</b></font>',
             },
             {
                 xtype : 'panel',
@@ -46,13 +47,12 @@ Ext.define('TaskIt.view.Setup', {
                 },
                 defaults : {
                     width : '100%',
-                    margin : '5 5 5 5'
                 },
 
                 items : [
                     {
                         xtype : 'panel',
-                        flex : 1
+                        height : 15
                     },
                     {
                         xtype : 'textfield',
@@ -64,10 +64,10 @@ Ext.define('TaskIt.view.Setup', {
                     },
                     {
                         xtype :'toolbar',
+                        cls : 'myInAppToolbar',
                         flex : 1,
                         styleHtmlContent : true,
-                        cls : 'myInAppToolbar',
-                        title : '<h3> Group Members </h3>',
+                        title: '<font size=4 color="white">Group Members</font>',
                         items : [
                             {
                                 xtype : 'button',
@@ -80,7 +80,6 @@ Ext.define('TaskIt.view.Setup', {
                     {
                         xtype : 'panel',
                         flex : 4,
-                        // height : '40%',
                         items : [
                              {
                                 xtype : 'roommatesList',
@@ -96,10 +95,11 @@ Ext.define('TaskIt.view.Setup', {
         
                     },
                     {
-                        xtype : 'toolbar',
-                        styleHtmlContent : true,
+                        xtype :'toolbar',
                         cls : 'myInAppToolbar',
-                        title : '<h3>Group Chores</h3>',
+                        flex : 1,
+                        styleHtmlContent : true,
+                        title: '<font size=4 color="white">Group Chores</font>',
                         flex : 1,
                         items : [
                             {
@@ -130,7 +130,10 @@ Ext.define('TaskIt.view.Setup', {
                         items : [
                             {
                                 xtype : 'button',
-                                text : 'Finish',
+                                text : '<font size=4><b>Finish & Login</b></font>',
+                                height : 50,
+                                width : '100%',
+                                centered : true,
                                 styleHtmlContent : true,
                                 id : 'SetupFinish',
                                 handler : function(){
@@ -150,6 +153,10 @@ Ext.define('TaskIt.view.Setup', {
                                 }
                             }
                         ]
+                    },
+                    {
+                        xtype : 'panel',
+                        height : 10
                     }
                 ]
             }
