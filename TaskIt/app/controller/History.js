@@ -33,7 +33,7 @@ Ext.define('TaskIt.controller.History', {
                 break;
             case "By Date": 
                 profGroupBy = 'HISTORY_GROUPBY_DATE'
-                Ext.getStore('History').sort('completed_on');
+                Ext.getStore('History').sort('completed_on', 'DESC');
                 break;
         }
 

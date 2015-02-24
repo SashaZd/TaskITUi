@@ -4,7 +4,7 @@ Ext.define("TaskIt.store.Chores", {
     config: {
         model: "TaskIt.model.Chore",
         autoLoad : true,
-
+        sorters : 'is_done',
         grouper: {
             groupFn: function(record) {
                 if (record.get('email')==userEmail)

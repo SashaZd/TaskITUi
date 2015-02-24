@@ -14,6 +14,7 @@ Ext.define("TaskIt.store.History", {
                 type : 'json'
             }
         },
+
         grouper: {
             groupFn: function(record) {
                 if (profGroupBy == 'HISTORY_GROUPBY_NAME'){
@@ -25,7 +26,10 @@ Ext.define("TaskIt.store.History", {
                     return sortDate.toDateString()
                 }
             }
-        }
+        },
+        groupDir: 'DESC',           
+        sorters: 'completed_on',
+
     }
 });
 
