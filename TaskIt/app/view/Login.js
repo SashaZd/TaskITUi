@@ -52,7 +52,6 @@ Ext.define('TaskIt.view.Login', {
 			  //  },// Check button handler for code
 			    {
 				xtype: 'panel',
-				//tpl : facebookLoginButton,
 				html : '<center><fb:login-button scope="public_profile,email" onlogin="checkLoginState();" data-size="xlarge" data-auto-logout-link=true ></fb:login-button></center>',
 				style : 'background-color:#fcc;',
 				width : '100%',

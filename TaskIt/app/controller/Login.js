@@ -36,13 +36,13 @@ Ext.define('TaskIt.controller.Login', {
                         method: 'GET',
                         url: base_URL.concat('group/',testVar.group_ids[0],'/'),
                         success: function(response){
-                                Ext.getCmp('signup_groupname').setValue(JSON.parse(response.responseText).group_name);
-                            }
+                            Ext.getCmp('signup_groupname').setValue(JSON.parse(response.responseText).group_name);
+                        }
 
                     });
                     Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
                 }
-        });
+            });
     },
 
 
@@ -94,9 +94,7 @@ Ext.define('TaskIt.controller.Login', {
 
                         Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
                     }
-
                     else {                  //belongs to a group, logging in now
-
                         GROUP_ID =  tempGroupID[0]; //Need to change once the server passes us the Group_IDs the User Belongs To
                         TaskIt.app.getController('Login').doAllGroupIDFunctions();
                         setTimeout(function() {
@@ -115,39 +113,28 @@ Ext.define('TaskIt.controller.Login', {
 
                 else {
 		    
-        		    Ext.Msg.confirm("New User", "TaskIt doesn't recognize this email ID. Would you like to sign up?", function(btn){
-        			if (btn == 'yes'){
-                        FB.api('/me', function(response) {
-            				console.log(response);
-            				console.log('Successful login for: ' + response.name);
-                            Ext.getCmp('signup_email').enable();
-                            Ext.getCmp('signup_firstname').enable();
-                            Ext.getCmp('signup_lastname').enable();
-            				Ext.getCmp('signup_firstname').setValue(response.first_name);
-            				Ext.getCmp('signup_lastname').setValue(response.last_name);
-                            Ext.getCmp('signup_email').setValue(userEmail);
-        		    	});  
+        	    Ext.Msg.confirm("New User", "TaskIt doesn't recognize this email ID. Would you like to sign up?", function(btn){
+        		if (btn == 'yes'){
+			    FB.api('/me', function(response) {
+            			console.log(response);
+            			console.log('Successful login for: ' + response.name);
+				Ext.getCmp('signup_email').enable();
+				Ext.getCmp('signup_firstname').enable();
+				Ext.getCmp('signup_lastname').enable();
+            			Ext.getCmp('signup_firstname').setValue(response.first_name);
+            			Ext.getCmp('signup_lastname').setValue(response.last_name);
+				Ext.getCmp('signup_email').setValue(userEmail);
+        		    });  
 			    
 			    
-
+			    
 			    
                             //Allow change only after login
                             
                             Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
-			    }
+			}
 		    });
 
-                    // Ext.Msg.confirm({
-		    // 	title:'Do Something',
-		    // 	msg: 'Ok or Cancel?',
-		    // 	// buttons: Ext.Msg.YESNOCANCEL,
-		    // 	fn: function(){
-		    // 	    console.log(btn);
-		    // 	    //if(btn=='yes'){
-		    // 		console.log("rr");
-		    // 	    //}
-		    // 	}
-		    // });
 		}
             }
         });
@@ -156,9 +143,9 @@ Ext.define('TaskIt.controller.Login', {
     doAllGroupIDFunctions : function(){
         // console.log("inside do all group id functions");
 
-             setInterval(function() {
-                  this.setChores();
-                }, 300000);
+        setInterval(function() {
+            this.setChores();
+        }, 300000);
 
         this.setChores();
         this.setAllTpls();
@@ -206,17 +193,17 @@ Ext.define('TaskIt.controller.Login', {
         //Roommates for Settings
         roommatesTpl = new Ext.XTemplate(
             '<tpl if="first_name==\'Unverified\' || first_name==\'\'">',
-                '<tpl if="email==\'',userEmail,'\'">',
-                    '<div class="myTaskText">Invited: {email}</div>',
-                '<tpl else>',
-                    '<div class="otherTaskText">Invited: {email}</div>',
-                '</tpl>',
+            '<tpl if="email==\'',userEmail,'\'">',
+            '<div class="myTaskText">Invited: {email}</div>',
             '<tpl else>',
-                '<tpl if="email==\'',userEmail,'\'">',
-                    '<div class="myTaskText">{first_name} {last_name}</div>',
-                '<tpl else>',
-                    '<div class="otherTaskText">{first_name} {last_name}</div>',
-                '</tpl>',
+            '<div class="otherTaskText">Invited: {email}</div>',
+            '</tpl>',
+            '<tpl else>',
+            '<tpl if="email==\'',userEmail,'\'">',
+            '<div class="myTaskText">{first_name} {last_name}</div>',
+            '<tpl else>',
+            '<div class="otherTaskText">{first_name} {last_name}</div>',
+            '</tpl>',
             '</tpl>'
         );
 
@@ -224,51 +211,51 @@ Ext.define('TaskIt.controller.Login', {
         Ext.getCmp('setup_roommatesList').setItemTpl(roommatesTpl);
 
         //Chores List for Settings
-            onlyChoresTpl = new Ext.XTemplate(
-                "<table width='100%'>",
-                    "<tr width='100%'>",
-                        "<td class='alignleft'>{chore_name}</td>",
-                        "<td class='alignright'>{frequency}</td>",
-                    "</tr>",
-                "</table>"
-            );
-            Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
-            Ext.getCmp('setup_onlyChoresList').setItemTpl(onlyChoresTpl);
+        onlyChoresTpl = new Ext.XTemplate(
+            "<table width='100%'>",
+            "<tr width='100%'>",
+            "<td class='alignleft'>{chore_name}</td>",
+            "<td class='alignright'>{frequency}</td>",
+            "</tr>",
+            "</table>"
+        );
+        Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
+        Ext.getCmp('setup_onlyChoresList').setItemTpl(onlyChoresTpl);
 
         //Daily Chores List for Home Screen
-            chorelisttpl = new Ext.XTemplate(
-                "<tpl if='email == \"",userEmail,"\" '>",
-                    "<tpl if='is_done==true'>",
-                        "<div class='taskTextCompleted'>{chore_name}</div>",
-                    "<tpl else>",
-                        "<div class='myTaskText'>{chore_name} </div>",
-                    "</tpl>",
-                "<tpl else>",
-                "<tpl if='is_done==true'>",
-                        "<div class='taskTextCompleted'>{first_name}: {chore_name}</div>",
-                    "<tpl else>",
-                        "<div class='otherTaskText'>{first_name}: {chore_name}</div>",
-                    "</tpl>",
-                "</tpl>"
-            );
+        chorelisttpl = new Ext.XTemplate(
+            "<tpl if='email == \"",userEmail,"\" '>",
+            "<tpl if='is_done==true'>",
+            "<div class='taskTextCompleted'>{chore_name}</div>",
+            "<tpl else>",
+            "<div class='myTaskText'>{chore_name} </div>",
+            "</tpl>",
+            "<tpl else>",
+            "<tpl if='is_done==true'>",
+            "<div class='taskTextCompleted'>{first_name}: {chore_name}</div>",
+            "<tpl else>",
+            "<div class='otherTaskText'>{first_name}: {chore_name}</div>",
+            "</tpl>",
+            "</tpl>"
+        );
 
-            Ext.getCmp('myChoreList').setItemTpl(chorelisttpl);
+        Ext.getCmp('myChoreList').setItemTpl(chorelisttpl);
 
         //Grocery List for the Group
-            grocerytpl = new Ext.XTemplate(
-                '<center>',
-                "<tpl if='is_done==true'>",
-                        "<div class='taskTextCompleted'>{name}<br>",
-                            "<font size='2' color='grey' >{bought_date},{first_name}</font>",
-                        "</div>",
+        grocerytpl = new Ext.XTemplate(
+            '<center>',
+            "<tpl if='is_done==true'>",
+            "<div class='taskTextCompleted'>{name}<br>",
+            "<font size='2' color='grey' >{bought_date},{first_name}</font>",
+            "</div>",
 
-                    "<tpl else>",
-                        "<div class='myTaskText'>{name}</div>",
-                    "</tpl>",
-                '<center>'
-            );
+            "<tpl else>",
+            "<div class='myTaskText'>{name}</div>",
+            "</tpl>",
+            '<center>'
+        );
 
-            Ext.getCmp('myGroceryList').setItemTpl(grocerytpl);
+        Ext.getCmp('myGroceryList').setItemTpl(grocerytpl);
     },
 
     goToSignUp: function() {

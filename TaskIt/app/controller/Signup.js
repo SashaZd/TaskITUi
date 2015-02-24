@@ -90,11 +90,11 @@ Ext.define('TaskIt.controller.Signup', {
                     //Create new group if it doesn't already exist
 
                     if (!r.group_exists) {
-                        Ext.Msg.confirm(
-                            'Create New Group',
-                            "There is no existing group with this name. Would you like to create a new one?",
-                            function(button){
-                                if(button=='yes'){
+                        // Ext.Msg.confirm(
+                        //     'Create New Group',
+                        //     "There is no existing group with this name. Would you like to create a new one?",
+                        //     function(button){
+                        //         if(button=='yes'){
                                     Ext.Ajax.request({
                                         method : 'POST',
                                         url: 'http://ec2-54-69-145-233.us-west-2.compute.amazonaws.com/api/group/',
@@ -151,9 +151,9 @@ Ext.define('TaskIt.controller.Signup', {
                                         }
 
                                     });
-                                } //transition to setup screen
-                            }
-                        );
+                                // } //transition to setup screen
+                            // }
+                        // );
                     } else {
                         Ext.Ajax.request({
                             method: 'POST',

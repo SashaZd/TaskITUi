@@ -3,7 +3,7 @@ var addNewMemberEmail, addNewChoreName;
 Ext.define('TaskIt.controller.Settings', {
     extend: 'Ext.app.Controller',
     requires : [
-        'Ext.field.Select'
+       'Ext.field.Select'
     ],
 
     config: {
