@@ -112,7 +112,6 @@ Ext.define('TaskIt.view.RoommatesList', {
         listeners : {
             itemtap : function(t, index, target, record, e, eOpts){
                 // console.log(record.data);
-
                 Ext.getCmp('showUserDetails_firstName').setValue(record.get('first_name'));
                 Ext.getCmp('showUserDetails_lastName').setValue(record.get('last_name'));
                 Ext.getCmp('showUserDetails_email').setValue(record.get('email'));

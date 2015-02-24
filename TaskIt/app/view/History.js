@@ -28,7 +28,7 @@ Ext.define('TaskIt.view.History', {
                 styleHtmlCls:'mySemiTransparentList',
                 styleHtmlContent : true,
                 itemTpl : 'Hello',
-                store : 'HistoryStore',
+                store : 'History',
                 grouped : true
             }
         ]

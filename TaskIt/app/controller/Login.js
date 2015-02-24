@@ -194,7 +194,6 @@ Ext.define('TaskIt.controller.Login', {
 
     loadRoommatesStore : function(){
         if(Ext.getStore('Settings').getData().all.length>0){
-
             Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);
             groupSettingsTpl.overwrite(Ext.getCmp('householdDetails').element, Ext.getStore('Settings').getData().all[0].raw);
 
@@ -227,8 +226,8 @@ Ext.define('TaskIt.controller.Login', {
             onlyChoresTpl = new Ext.XTemplate(
                 "<table width='100%'>",
                     "<tr width='100%'>",
-                        "<td class='alignleft'>{chore_name}</td>",
-                        "<td class='alignright'>{frequency}</td>",
+                        "<td class='alignleft'><div class='otherTaskText'>{chore_name}</div></td>",
+                        "<td class='alignright'><div class='otherTaskText'>{frequency}</div></td>",
                     "</tr>",
                 "</table>"
             );
