@@ -1,5 +1,5 @@
 var groupSettingsTpl = new Ext.XTemplate(
-    '<h2>Group Joined : <b>{group_name}</b></h2>'
+    '<font size=3>Group Joined : <b>{group_name}</b></font>'
 )
 
 Ext.define('TaskIt.view.Settings', {
@@ -31,7 +31,6 @@ Ext.define('TaskIt.view.Settings', {
                 cls : 'myInAppToolbar',
                 width:'100%',
                 docked: 'top',
-                // ui : 'plain',
                 title: '<font size=4><b>Settings</b></font>',
                 items : [
                     {
@@ -49,7 +48,6 @@ Ext.define('TaskIt.view.Settings', {
                 xtype : 'panel',
                 id : 'settingsElements',
                 flex : 1,
-                // height : '40%',
                 layout : {
                     type : 'vbox',
                     align : 'center',
@@ -57,13 +55,8 @@ Ext.define('TaskIt.view.Settings', {
                 },
                 defaults : {
                     width : '99%',
-                    // margin : '5 5 5 5'
                 },
                 items : [
-                    // {
-                    //     xtype : 'panel',
-                    //     flex : 1
-                    // },
                     {
                         xtype : 'panel',
                         // flex : 1,
@@ -75,7 +68,6 @@ Ext.define('TaskIt.view.Settings', {
                     {
                         xtype : 'panel',
                         layout : 'fit',
-                        // pack : 'end',
                         items : [
                             {
                                 xtype : 'togglefield',
@@ -122,10 +114,10 @@ Ext.define('TaskIt.view.Settings', {
                         ]
                     },
                     {
-                        xtype :'titlebar',
+                        xtype :'toolbar',
                         cls : 'myInAppToolbar',
                         styleHtmlContent : true,
-                        title : '<h3>Group Members</h3>',
+                        title : '<font size=4 color="white">Group Members</font>',
                         items : [
                             {
                                 xtype : 'button',
@@ -156,7 +148,7 @@ Ext.define('TaskIt.view.Settings', {
                         xtype : 'toolbar',
                         cls : 'myInAppToolbar',
                         styleHtmlContent : true,
-                        title : '<h3><b>Group Chores</b></h3>',
+                        title : '<font size=4 color="white">Group Chores</font>',
                         // flex : 1,
                         items : [
                             {

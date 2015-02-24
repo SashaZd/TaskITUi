@@ -65,12 +65,11 @@ Ext.define('TaskIt.controller.Signup', {
                 },
                 success: function(response){  
                     var r = JSON.parse(response.responseText);
-                    console.log("here")
-                    console.log(r)
+                    
                     if(r.success==false){       //user already exists
                         Ext.Msg.alert(
                             'Welcome Back',
-                            "You don't need to sign up. You're already a member of this group. Logging in now.",
+                            "You're already a member of a group. To join a new group, first exit the earlier one. Logging in now.",
                             Ext.emptyFn
                         );
 

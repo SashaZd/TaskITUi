@@ -181,7 +181,6 @@ Ext.define('TaskIt.controller.Login', {
 
     loadRoommatesStore : function(){
         if(Ext.getStore('Settings').getData().all.length>0){
-
             Ext.getStore('Roommates').setData(Ext.getStore('Settings').getData().all[0].raw.users);
             groupSettingsTpl.overwrite(Ext.getCmp('householdDetails').element, Ext.getStore('Settings').getData().all[0].raw);
 
@@ -211,6 +210,7 @@ Ext.define('TaskIt.controller.Login', {
         Ext.getCmp('setup_roommatesList').setItemTpl(roommatesTpl);
 
         //Chores List for Settings
+
         onlyChoresTpl = new Ext.XTemplate(
             "<table width='100%'>",
             "<tr width='100%'>",
@@ -221,7 +221,6 @@ Ext.define('TaskIt.controller.Login', {
         );
         Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
         Ext.getCmp('setup_onlyChoresList').setItemTpl(onlyChoresTpl);
-
         //Daily Chores List for Home Screen
         chorelisttpl = new Ext.XTemplate(
             "<tpl if='email == \"",userEmail,"\" '>",

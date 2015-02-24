@@ -165,7 +165,7 @@ Ext.define('TaskIt.controller.Settings', {
             var tempInsertPos = Ext.getCmp('settingsElements').getItems().length - 2;
             Ext.getCmp('settingsElements').insert(tempInsertPos, addNewChoreName);
             Ext.getCmp('settings_addGroupChores').setIconCls('');
-            Ext.getCmp('settings_addGroupChores').setText('Done');
+            Ext.getCmp('settings_addGroupChores').setText('<font size=4 color="white">Done</font>');
 
         }
         else {
@@ -211,7 +211,7 @@ Ext.define('TaskIt.controller.Settings', {
             //adding email panel to the list
             Ext.getCmp('settingsElements').insert(3, addNewMemberEmail);
             Ext.getCmp('settings_addGroupMembers').setIconCls('');
-            Ext.getCmp('settings_addGroupMembers').setText('Done');
+            Ext.getCmp('settings_addGroupMembers').setText('<font size=4 color="white">Done</font>');
 
         }
         else {
@@ -241,9 +241,21 @@ function addChore() {
         },
         success: function(response){
             console.log(response.responseText);
-
+            var tempFreq = ""
+            switch(Ext.getCmp('settings_newChoreFreq').getValue()){
+                case 'd':
+                    tempFreq = "Daily"
+                case 'w':
+                    tempFreq = "Weekly"
+                case 'm':
+                    tempFreq = "Monthly"
+            }
+            
+            Ext.getStore('OnlyChores').add({group_id: GROUP_ID, chore_name:Ext.getCmp('settings_newChoreName').getValue(), frequency:tempFreq});
+            Ext.getStore('OnlyChores').sync();
             Ext.getCmp('settings_newChoreName').setValue('');
-            setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
+            Ext.getCmp('settings_newChoreFreq').setValue('d');
+            // setTimeout(function() {TaskIt.app.getController('Login').doAllGroupIDFunctions();},1000);
         }
     });
 }
@@ -251,9 +263,15 @@ function addChore() {
 function addMember() {
     var emailComp = Ext.getCmp('settings_newMemberEmail');
 
-    if(emailComp=="")
+    if(emailComp==""){
+        Ext.Msg.alert(
+            "Invalid Email",
+            "Enter a valid email to continue.",
+            Ext.emptyFn()
+        );
         return;
-
+    }
+        
     var tempURL = base_URL.concat('user/');
     console.log(tempURL);
     //Creating new User
@@ -266,6 +284,7 @@ function addMember() {
             email: emailComp.getValue()
         },
         success: function(response){
+
             //get server generated UserID
             console.log(response.responseText);
             setUserId = JSON.parse(response.responseText).user_id;
