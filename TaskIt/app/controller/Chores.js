@@ -70,26 +70,56 @@ Ext.define('TaskIt.controller.Chores', {
 
     toggleDoneChore : function(t, index, target, record, e, eOpts){
         if (e.direction == 'left'){
-            console.log("swiping");
             if(record.data.email == userEmail){
-                var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
-                Ext.Ajax.request({
-                    method : 'PUT',
-                    url: tempURL,
-                    success: function(response){
-                        if(JSON.parse(response.responseText).success){
-                            console.log(response.responseText);
-                            TaskIt.app.getController('Login').setChores();
+                //left does the chore, right is  undo
+                if (record.data.is_done == false){
+                    var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
+                    Ext.Ajax.request({
+                        method : 'PUT',
+                        url: tempURL,
+                        success: function(response){
+                            if(JSON.parse(response.responseText).success){
+                                console.log(response.responseText);
+                                TaskIt.app.getController('Login').setChores();
+                            }
+                            else {
+                                Ext.Msg.alert(
+                                    'Oh No!',
+                                    'There seems to be a network error. Try again later.',
+                                    Ext.emptyFn
+                                );
+                            }
                         }
-                        else {
-                            Ext.Msg.alert(
-                                'Oh No!',
-                                'There seems to be a network error. Try again later.',
-                                Ext.emptyFn
-                            );
+                    });
+                }
+            }
+            else {
+                console.log("Not your chore to do!!");
+            }
+        }
+        else {
+            if(record.data.email == userEmail){
+                //left does the chore, right is  undo
+                if (record.data.is_done == true){
+                    var tempURL = base_URL.concat('chore/',record.data.chore_id,'/');
+                    Ext.Ajax.request({
+                        method : 'PUT',
+                        url: tempURL,
+                        success: function(response){
+                            if(JSON.parse(response.responseText).success){
+                                console.log(response.responseText);
+                                TaskIt.app.getController('Login').setChores();
+                            }
+                            else {
+                                Ext.Msg.alert(
+                                    'Oh No!',
+                                    'There seems to be a network error. Try again later.',
+                                    Ext.emptyFn
+                                );
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
             else {
                 console.log("Not your chore to do!!");
