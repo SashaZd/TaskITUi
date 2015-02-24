@@ -10,7 +10,7 @@ Ext.define('TaskIt.model.HistoryItem', {
             { name: 'chore_id', type: 'auto' },
             { name: 'chore_name', type: 'auto' },
             { name: 'is_done', type: 'boolean'},
-            { name : 'completed_on', type: 'date', format:'d.m.Y'}
+            { name : 'completed_on', type: 'date'}
         ]
     }
 });

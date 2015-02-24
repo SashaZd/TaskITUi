@@ -30,7 +30,7 @@ Ext.define('TaskIt.view.Home', {
                     {
                         xtype : 'button',
                         ui : 'plain',
-                        text: '<font color="white">History</font>',
+                        // text: '<font color="white">History</font>',
                         iconCls : 'time',
                         action : 'historyButton'
                     }

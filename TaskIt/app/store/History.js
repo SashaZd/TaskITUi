@@ -1,3 +1,5 @@
+var profGroupBy= 'HISTORY_GROUPBY_NAME'
+
 Ext.define("TaskIt.store.History", {
     extend: "Ext.data.Store",
     config: {
@@ -14,12 +16,13 @@ Ext.define("TaskIt.store.History", {
         },
         grouper: {
             groupFn: function(record) {
-                if (record.get('email')==userEmail)
-                {
-                    return "My History"
+                if (profGroupBy == 'HISTORY_GROUPBY_NAME'){
+                    var userName = record.get('user_first_name') + " " + record.get('user_last_name')
+                    return userName
                 }
-                else {
-                    return "Others History"
+                else{
+                    var sortDate = new Date(record.get('completed_on'))
+                    return sortDate.toDateString()
                 }
             }
         }

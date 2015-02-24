@@ -23,9 +23,28 @@ Ext.define('TaskIt.view.History', {
                     {
                         xtype : 'button',
                         ui : 'plain',
-                        iconCls : 'arrow_left',
+                        iconCls : 'home',
                         // text : '<font color="white">Back</font>',
                         action: 'backToHome'
+                    }
+                ]
+            },
+            {
+                xtype : 'container',
+                height : 50,
+                items : [
+                    {
+                        xtype : 'segmentedbutton',
+                        centered : true,
+                        items : [
+                            {
+                                text : 'By Person',
+                                pressed : true
+                            },
+                            {
+                                text : 'By Date'
+                            }
+                        ]
                     }
                 ]
             },
@@ -34,6 +53,7 @@ Ext.define('TaskIt.view.History', {
                 id : 'historyList',
                 flex : 1,
                 width : '100%',
+                // height : '90%',
                 style:'background-color:rgba(0,0,0,0);',
                 styleHtmlCls:'mySemiTransparentList',
                 styleHtmlContent : true,
