@@ -3,9 +3,9 @@ var myChoreStore={};
 var myGroceryStore={};
 var myVar;
 var GROUP_ID;
-var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl,facebookTpl;
+var chorelisttpl, onlyChoresTpl, grocerytpl, roommatesTpl, facebookTpl, historyTpl;
 var base_URL='http://api.task-it.me/api/';
-var settingsStore_URL, onlyChoresStore_URL, groceriesStore_URL;
+var settingsStore_URL, onlyChoresStore_URL, groceriesStore_URL, historyStore_URL;
 var GroupFlag= false;
 
 /*
@@ -28,7 +28,7 @@ Ext.application({
     ],
 
     controllers : [
-        'Login', 'Signup', 'MainTabs', 'Settings', 'Groceries', 'Chores'
+        'Login', 'Signup', 'MainTabs', 'Settings', 'Groceries', 'Chores', 'History'
     ],
 
     models : [

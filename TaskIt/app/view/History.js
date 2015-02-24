@@ -1,6 +1,7 @@
 Ext.define('TaskIt.view.History', {
     extend: 'Ext.Panel',
     xtype: 'history',
+    id : 'history',
     requires: [
         'Ext.TitleBar'
     ],
@@ -17,7 +18,16 @@ Ext.define('TaskIt.view.History', {
                 xtype : 'toolbar',
                 title : '<font size=4><b>History</b></font>',
                 cls : 'myInAppToolbar',
-                docked : 'top'
+                docked : 'top',
+                items : [
+                    {
+                        xtype : 'button',
+                        ui : 'plain',
+                        iconCls : 'arrow_left',
+                        // text : '<font color="white">Back</font>',
+                        action: 'backToHome'
+                    }
+                ]
             },
             {
                 xtype : 'list',
@@ -27,7 +37,7 @@ Ext.define('TaskIt.view.History', {
                 style:'background-color:rgba(0,0,0,0);',
                 styleHtmlCls:'mySemiTransparentList',
                 styleHtmlContent : true,
-                itemTpl : 'Hello',
+                // itemTpl : 'Hello',
                 store : 'History',
                 grouped : true
             }

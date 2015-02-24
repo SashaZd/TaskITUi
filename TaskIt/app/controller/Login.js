@@ -113,29 +113,25 @@ Ext.define('TaskIt.controller.Login', {
 
                 else {
 		    
-        	    Ext.Msg.confirm("New User", "TaskIt doesn't recognize this email ID. Would you like to sign up?", function(btn){
-        		if (btn == 'yes'){
-			    FB.api('/me', function(response) {
-            			console.log(response);
-            			console.log('Successful login for: ' + response.name);
-				Ext.getCmp('signup_email').enable();
-				Ext.getCmp('signup_firstname').enable();
-				Ext.getCmp('signup_lastname').enable();
-            			Ext.getCmp('signup_firstname').setValue(response.first_name);
-            			Ext.getCmp('signup_lastname').setValue(response.last_name);
-				Ext.getCmp('signup_email').setValue(userEmail);
-        		    });  
-			    
-			    
-			    
-			    
-                            //Allow change only after login
-                            
-                            Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
-			}
-		    });
+            	    Ext.Msg.confirm("New User", "TaskIt doesn't recognize this email ID. Would you like to sign up?", function(btn){
+            		if (btn == 'yes'){
+        			    FB.api('/me', function(response) {
+                			console.log(response);
+                			console.log('Successful login for: ' + response.name);
+            				Ext.getCmp('signup_email').enable();
+            				Ext.getCmp('signup_firstname').enable();
+            				Ext.getCmp('signup_lastname').enable();
+                			Ext.getCmp('signup_firstname').setValue(response.first_name);
+                			Ext.getCmp('signup_lastname').setValue(response.last_name);
+            				Ext.getCmp('signup_email').setValue(userEmail);
+            		    });  
+    			    
+                        //Allow change only after login
+                        Ext.getCmp('startScreen').setActiveItem(3, {type : 'slide', direction:'right'});
+    			    }
+    		    });
 
-		}
+		        }
             }
         });
     },
@@ -221,6 +217,7 @@ Ext.define('TaskIt.controller.Login', {
         );
         Ext.getCmp('onlyChoresList').setItemTpl(onlyChoresTpl);
         Ext.getCmp('setup_onlyChoresList').setItemTpl(onlyChoresTpl);
+
         //Daily Chores List for Home Screen
         chorelisttpl = new Ext.XTemplate(
             "<tpl if='email == \"",userEmail,"\" '>",

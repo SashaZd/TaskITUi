@@ -31,20 +31,22 @@ Ext.define('TaskIt.view.Home', {
                         xtype : 'button',
                         ui : 'plain',
                         text: '<font color="white">History</font>',
-                        iconCls : 'action',
+                        iconCls : 'time',
                         action : 'historyButton'
                     }
                 ]
             },
             {
                 xtype : 'choreListPanel',
-                flex : 5,
+                // flex : 5,
+                height : '90%',
                 width : '100%',
                 styleHtmlContent : true
             },
             {
                 xtype : 'panel',
-                flex : 1,
+                // flex : 1,
+                height : '10%',
                 width : "100%",
                 layout : {
                     type : 'hbox',
